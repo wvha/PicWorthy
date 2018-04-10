@@ -1,0 +1,19 @@
+{
+  "name": "picworthy",
+  "version": "1.0.0",
+  "description": "Find picture worthy locations around you",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/PicWorthy/PicWorthy.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/PicWorthy/PicWorthy/issues"
+  },
+  "homepage": "https://github.com/PicWorthy/PicWorthy#readme"
+}
