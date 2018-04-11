@@ -20,6 +20,7 @@
   },
   "homepage": "https://github.com/PicWorthy/PicWorthy#readme",
   "dependencies": {
+    "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "morgan": "^1.9.0",
