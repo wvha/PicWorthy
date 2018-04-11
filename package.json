@@ -3,8 +3,11 @@
   "version": "1.0.0",
   "description": "Find picture worthy locations around you",
   "main": "index.js",
+  "jest": {
+    "verbose": true
+  },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "jest",
     "start": "node server/index.js",
     "server-dev": "nodemon server/index.js",
     "react-dev": "webpack -d --watch"
@@ -34,6 +37,7 @@
     "babel-preset-es2015": "^6.24.1",
     "babel-preset-react": "^6.23.0",
     "dotenv": "^5.0.1",
+    "jest": "^22.4.3",
     "webpack": "^3.11.0"
   }
 }
