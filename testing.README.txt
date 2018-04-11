@@ -1,4 +1,4 @@
-
+main link for travis CI for node: https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
 ***TRAVIS CI NOTES***
 
 https://www.youtube.com/watch?v=ymPOI4gWQFY
