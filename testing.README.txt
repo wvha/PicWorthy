@@ -1,3 +1,6 @@
+JEST
+  see __tests__/sample-tests.js to see how to write a test.  Any tests in any file in that folder will automatically be ran after running npm test in terminal or with travis ci after pushing to github.
+
 main link for travis CI for node: https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
 ***TRAVIS CI NOTES***
 
