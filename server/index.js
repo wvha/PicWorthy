@@ -8,6 +8,10 @@ const app = express();
 
 // middleware
 app.use(express.static(`${__dirname}/../client/dist`));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({
+  extended: true
+}));
 app.use(morgan);
 
 app.use('/', router);

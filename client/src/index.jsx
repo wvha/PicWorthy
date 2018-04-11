@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
+import Signup from './components/signup.jsx'
+
 class App extends Component {
   constructor(props) {
     super(props);
@@ -10,7 +12,9 @@ class App extends Component {
 
   render() {
     return (
-      <div>did this render?</div>
+      <div>did this render?
+        <Signup />
+      </div>
     );
   }
 }
