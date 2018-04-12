@@ -1,7 +1,8 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
-import Signup from './components/signup.jsx'
+import Signup from './components/signup.jsx';
+import Login from './components/login.jsx';
 
 class App extends Component {
   constructor(props) {
@@ -13,7 +14,8 @@ class App extends Component {
   render() {
     return (
       <div>did this render?
-        <Signup />
+        <Signup /><br/><br/>
+        <Login />
       </div>
     );
   }

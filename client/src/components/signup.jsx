@@ -5,15 +5,22 @@ class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      firstName: 'christina',
-      lastName: 'yuen',
-      username: 'ceyuen',
-      password: 'hello'
+      firstName: '',
+      lastName: '',
+      username: '',
+      password: ''
     },
+    this.updateInfo = this.updateInfo.bind(this);
     this.sendInfo = this.sendInfo.bind(this);
   }
 
-  sendInfo() {
+  updateInfo(e) {
+    this.setState({
+      [e.target.name]: e.target.value,
+    });
+  }
+
+  sendInfo() { 
     console.log(this.state);
     axios.post('/signup', this.state)
       .then(() => {
@@ -21,12 +28,12 @@ class Signup extends Component {
       })
   }
 
-  render () {
+  render() {
     return (<div>
-      First Name: <input type="text"/><br/>
-      Last Name: <input type="text"/><br/>
-      Username: <input type="text"/><br/>
-      Password: <input type="text"/><br/><br/>
+      First Name: <input type="text" name="firstName" onChange = {this.updateInfo}/><br/>
+      Last Name: <input type="text" name="lastName" onChange = {this.updateInfo} /><br/>
+      Username: <input type="text" name="username" onChange = {this.updateInfo} /><br/>
+      Password: <input type="text" name="password" onChange = {this.updateInfo} /><br/><br/>
       <button onClick={this.sendInfo}>Sign Up</button>
     </div>)
   }
