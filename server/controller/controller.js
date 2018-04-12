@@ -1,8 +1,11 @@
 const db = require ('../../database/database.js');
 
 const handleSignup = (req, res) => {
-  db.saveUser(req.body)
-  res.end();
+  if (!db.saveUser(req.body)) {
+    res.end('Username already exists')
+  } else {
+    res.end('User successfully created')
+  }
 };
 
 module.exports.handleSignup = handleSignup;

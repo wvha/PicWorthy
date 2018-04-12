@@ -23,8 +23,8 @@ class Signup extends Component {
   sendInfo() { 
     console.log(this.state);
     axios.post('/signup', this.state)
-      .then(() => {
-        alert('you\'re signed up');
+      .then((result) => {
+        alert(JSON.stringify(result.data));
       })
   }
 

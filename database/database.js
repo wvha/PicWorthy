@@ -16,26 +16,33 @@ db.on('error', () => console.log('error connecting to database!'));
 db.once('open', () => console.log('connection successful!'));
 
 const saveUser = (obj) => {
-  const saltRounds = 10;
-
-  bcrypt.genSaltAsync(saltRounds)
-    .then ((salt) => {
-      return bcrypt.hashAsync(obj.password, salt, null)
-      .then ((hash) => {
-        obj.password = hash;
-        return models.Users.create({
-          firstName: obj.firstName,
-          lastName: obj.lastName,
-          username: obj.username,
-          password: obj.password
-        }, (err) => {
-          console.log(err);
-        });
-      })
-      .catch((err) => 
-        console.log(err)
-      )
-  }) 
+  return models.Users.findOne({username: obj.username})
+    .then((result) => {
+      console.log('line 21 in database.js')
+      if (result === null) {
+        const saltRounds = 10;
+        return bcrypt.genSaltAsync(saltRounds)
+          .then ((salt) => {
+            return bcrypt.hashAsync(obj.password, salt, null)
+            .then ((hash) => {
+              obj.password = hash;
+              return models.Users.create({
+                firstName: obj.firstName,
+                lastName: obj.lastName,
+                username: obj.username,
+                password: obj.password
+              }, (err) => {
+                console.log(err);
+              });
+            })
+            .catch((err) => 
+              console.log(err)
+            )
+        }) 
+      } else {
+        return 'Username already exists';
+      }
+    })
 };
 
 const fetchUser = (username) => {
