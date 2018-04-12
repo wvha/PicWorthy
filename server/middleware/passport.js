@@ -20,13 +20,13 @@ passport.use(new LocalStrategy(
   (username, password, done) => {
     console.log('username password', username, password);
     db.fetchUser(username)
-      .then((userArr) => {
-        if (userArr.length !== 0) {
-          return bcrypt.compareAsync(password, userArr[0].password)
+      .then((user) => {
+        if (user) {
+          return bcrypt.compareAsync(password, user.password)
             .then((result) => {
               console.log('line 30 passport.js', result)
               if (result) {
-                done(null, userArr[0])
+                done(null, user)
               } else {
                 done(null, false, {message: 'Password Incorrect'})
               }

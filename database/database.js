@@ -15,11 +15,15 @@ const db = mongoose.connection;
 db.on('error', () => console.log('error connecting to database!'));
 db.once('open', () => console.log('connection successful!'));
 
+const fetchUser = (username) => {
+  return models.Users.findOne({username: username})
+}
+
 const saveUser = (obj) => {
-  return models.Users.findOne({username: obj.username})
-    .then((result) => {
+  return fetchUser(obj.username)
+    .then((user) => {
       console.log('line 21 in database.js')
-      if (result === null) {
+      if (user === null) {
         const saltRounds = 10;
         return bcrypt.genSaltAsync(saltRounds)
           .then ((salt) => {
@@ -45,9 +49,6 @@ const saveUser = (obj) => {
     })
 };
 
-const fetchUser = (username) => {
-  return models.Users.find({username: username})
-}
 
 module.exports = db;
 module.exports.saveUser = saveUser;
