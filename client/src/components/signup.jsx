@@ -24,7 +24,7 @@ class Signup extends Component {
     console.log(this.state);
     axios.post('/signup', this.state)
       .then(() => {
-        console.log('im in then in signup.jsx')
+        alert('you\'re signed up');
       })
   }
 

@@ -6,10 +6,11 @@ router.post('/signup', controller.handleSignup);
 
 router.post('/login',
   passport.authenticate('local', {
-    successRedirect: '/home',
+    successRedirect: '/',
     failureRedirect: '/login'
   })
 );
+
 // example of how to use router
 // just pass in the url for the first argument
 // pass in the controller clalback function as 2nd lineup
