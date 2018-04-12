@@ -33,7 +33,8 @@
     "passport-local": "^1.0.0",
     "passport-session": "^1.0.2",
     "react": "^16.3.1",
-    "react-dom": "^16.3.1"
+    "react-dom": "^16.3.1",
+    "react-password-mask": "^3.3.0"
   },
   "devDependencies": {
     "babel": "^6.23.0",

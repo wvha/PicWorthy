@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import PasswordMask from 'react-password-mask'; // go to https://www.npmjs.com/package/react-password-mask for styling
 
 class Login extends Component {
   constructor(props) {
@@ -29,7 +30,14 @@ class Login extends Component {
     return (
       <div>
         Username: <input type="text" name="username" onChange={this.updateInfo} /><br/>
-        Password: <input type="text" name="password" onChange={this.updateInfo} /><br/>
+        Password: <PasswordMask
+          id="loginPassword"
+          name="password"
+          placeholder="Enter password"
+          value={this.state.password}
+          onChange={this.updateInfo}
+        />
+        <br/>
         <button onClick={this.sendLogin}> Login </button>
       </div>
     );
