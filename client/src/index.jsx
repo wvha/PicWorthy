@@ -3,6 +3,8 @@ import ReactDOM from 'react-dom';
 import NavbarComp from './components/navbar.jsx';
 import { Navbar } from 'react-bootstrap';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import Login from './components/login.jsx';
+import Signup from './components/signup.jsx';
 // import 'bootstrap/dist/css/bootstrap.css';
 
 // I am testing the react router here this can be deleted
@@ -23,8 +25,8 @@ class App extends Component {
         <NavbarComp />
         <Switch>
           <Route exact path='/' component={fakeHomePageComponent} />
-          <Route path='/login' component={fakeLoginComponent} />
-          <Route path='/signup' component={fakeSignupComponent} />
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={Signup} />
         </Switch>
       </div>
     );
