@@ -27,6 +27,7 @@
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
     "history": "^4.7.2",
+    "mongodb-memory-server": "^1.7.3",
     "morgan": "^1.9.0",
     "react": "^16.3.1",
     "react-bootstrap": "^0.32.1",
