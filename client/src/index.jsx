@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import NavbarComp from './components/navbar.jsx';
+import { Navbar } from 'react-bootstrap';
+
+// import 'bootstrap/dist/css/bootstrap.css';
+
 
 class App extends Component {
   constructor(props) {
@@ -10,7 +15,10 @@ class App extends Component {
 
   render() {
     return (
-      <div>did this render?</div>
+      <div>
+        <NavbarComp />
+        <div>did this render?</div>
+      </div>
     );
   }
 }
