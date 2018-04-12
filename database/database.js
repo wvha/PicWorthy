@@ -22,7 +22,6 @@ const fetchUser = (username) => {
 const saveUser = (obj) => {
   return fetchUser(obj.username)
     .then((user) => {
-      console.log('line 21 in database.js')
       if (user === null) {
         const saltRounds = 10;
         return bcrypt.genSaltAsync(saltRounds)

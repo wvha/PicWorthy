@@ -21,6 +21,9 @@ class Login extends Component {
 
   sendLogin(e) {
     axios.post('/login', this.state)
+      .then((data) => {
+        window.location.replace(window.location.origin);
+      })
       .catch((err) => {
         throw err;
       });
