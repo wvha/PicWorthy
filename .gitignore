@@ -9,3 +9,7 @@ package-lock.json
 .env
 
 client/dist/bundles.js
+
+.vscode/
+
+imgur-api-notes.md
