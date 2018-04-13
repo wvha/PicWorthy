@@ -23,13 +23,16 @@
   },
   "homepage": "https://github.com/PicWorthy/PicWorthy#readme",
   "dependencies": {
+    "axios": "^0.18.0",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
     "express": "^4.16.3",
+    "form-data": "^2.3.2",
     "morgan": "^1.9.0",
     "react": "^16.3.1",
     "react-bootstrap": "^0.32.1",
     "react-dom": "^16.3.1",
+    "react-dropzone": "^4.2.9",
     "react-fontawesome": "^1.6.1"
   },
   "devDependencies": {
