@@ -3,13 +3,20 @@ import { withScriptjs, withGoogleMap, GoogleMap, Marker } from 'react-google-map
 import { Grid, Row } from 'react-bootstrap';
 
 /*
-EXAMPLE OF HOW TO USE WORTHY MAP
-zoom = 13
-center = {
+EXAMPLE OF HOW TO USE WORTHY MAP on a render function
+A worthy map takes 3 parameters, zoom, center, and places
+
+// zoom is how zoomed in the map should be
+const zoom = 13
+
+// center is the latitude and longitude of the location of the map
+const center = {
   lat: 34.05,
   lng: 118.24
 };
-places = [
+
+// places is an array of clickable pins and their location
+const places = [
   {
     lat: 35,
     lng: 119,
@@ -21,14 +28,16 @@ places = [
     clickHandler: () => {alert('I am another place that got clicked on')}
   }
 ];
-<WorthyMap
+
+// pass those properties into our map
+return <WorthyMap
   center={center}
   places={places}
   zoom={zoom}
 >
 */
 
-// TODO need to add functionality for the places and center prop
+// WorthyMap is a wrapper around the google map making it easier for us to use
 const WorthyMap = ({ center, places, zoom }) => {
   
   return (
@@ -44,7 +53,7 @@ const WorthyMap = ({ center, places, zoom }) => {
   )
 }
 
-
+// GM is the google map component our WorthyMap wraps
 const GM = 
   withScriptjs(withGoogleMap(
     ({ places=[], center={lat: 34.05, lng: -118.24}, zoom=13 }) => {

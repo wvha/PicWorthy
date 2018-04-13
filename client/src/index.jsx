@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
 import NavbarComp from './components/navbar.jsx';
 import { Navbar } from 'react-bootstrap';
@@ -7,34 +7,21 @@ import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
 import Landing from './components/landing.jsx'
 import Locations from './components/locations.jsx';
-// import 'bootstrap/dist/css/bootstrap.css';
 
-// I am testing the react router here this can be deleted
-const fakeHomePageComponent = (props) => <div>this is a fake home page</div>;
-const fakeLoginComponent = (props) => <div>fake login component</div>;
-const fakeSignupComponent = (props) => <div>fake signup compoonent</div>;
-
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
-
-  render() {
-    return (
-      <div>
-        <NavbarComp />
-        <Switch>
-          <Route exact path='/' component={Landing} />
-          <Route path='/login' component={Login} />
-          <Route path='/signup' component={Signup} />
-          <Route path='/locations' component={Locations} />
-        </Switch>
-      </div>
-    );
-  }
-}
+// App component renders components based on the URL Route using React Router
+const App = (props) => {
+  return (
+    <div>
+      <NavbarComp />
+      <Switch>
+        <Route exact path='/' component={Landing} />
+        <Route path='/login' component={Login} />
+        <Route path='/signup' component={Signup} />
+        <Route path='/locations' component={Locations} />
+      </Switch>
+    </div>
+  );
+};
 
 ReactDOM.render((
   <BrowserRouter>

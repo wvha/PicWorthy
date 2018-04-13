@@ -1,6 +1,10 @@
 const db = require ('../../database/database.js');
+const passport = require('../middleware/passport.js');
 
-const handleSignup = (req, res) => {
+module.exports.post = {};
+module.exports.get = {};
+
+module.exports.post.signup = (req, res) => {
   if (!db.saveUser(req.body)) {
     res.end('Username already exists')
   } else {
@@ -8,4 +12,22 @@ const handleSignup = (req, res) => {
   }
 };
 
-module.exports.handleSignup = handleSignup;
+module.exports.post.login = (req, res, next) => {
+  passport.authenticate('local', function (err, user, info) {
+    if (err || !user) {
+      res.status(422).send(info);
+    } else {
+      // Remove sensitive data before login
+      user.password = undefined;
+      user.salt = undefined;
+
+      req.login(user, function (err) {
+        if (err) {
+          res.status(400).send(err);
+        } else {
+          res.json(user);
+        }
+      });
+    }
+  })(req, res, next);
+};
