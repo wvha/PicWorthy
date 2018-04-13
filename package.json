@@ -23,12 +23,26 @@
   },
   "homepage": "https://github.com/PicWorthy/PicWorthy#readme",
   "dependencies": {
+    "axios": "^0.18.0",
+    "bcrypt-nodejs": "0.0.3",
     "bluebird": "^3.5.1",
     "body-parser": "^1.18.2",
+    "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
+    "express-session": "^1.15.6",
+    "mongoose": "^5.0.14",
+    "history": "^4.7.2",
     "morgan": "^1.9.0",
+    "passport": "^0.4.0",
+    "passport-local": "^1.0.0",
+    "passport-session": "^1.0.2",
     "react": "^16.3.1",
-    "react-dom": "^16.3.1"
+    "react-bootstrap": "^0.32.1",
+    "react-dom": "^16.3.1",
+    "react-password-mask": "^3.3.0",
+    "react-fontawesome": "^1.6.1",
+    "react-router": "^4.2.0",
+    "react-router-dom": "^4.2.2"
   },
   "devDependencies": {
     "babel": "^6.23.0",
