@@ -7,13 +7,12 @@ const db = require('../../database/database.js');
 Promise.promisifyAll(bcrypt);
 
 passport.serializeUser(function(user, done) {
+  console.log('user', user)
   done(null, user.id);
 });
 
-passport.deserializeUser(function(id, done) {
-  // User.findById(id, function(err, user) {
-  //   done(err, user);
-  // });
+passport.deserializeUser(function(userid, done) {
+  done(null, userid);
 });
 
 passport.use(new LocalStrategy(
