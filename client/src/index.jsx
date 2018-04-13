@@ -2,9 +2,17 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import NavbarComp from './components/navbar.jsx';
 import { Navbar } from 'react-bootstrap';
-
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import Login from './components/login.jsx';
+import Signup from './components/signup.jsx';
+import Landing from './components/landing.jsx'
+import Locations from './components/locations.jsx';
 // import 'bootstrap/dist/css/bootstrap.css';
 
+// I am testing the react router here this can be deleted
+const fakeHomePageComponent = (props) => <div>this is a fake home page</div>;
+const fakeLoginComponent = (props) => <div>fake login component</div>;
+const fakeSignupComponent = (props) => <div>fake signup compoonent</div>;
 
 class App extends Component {
   constructor(props) {
@@ -17,10 +25,19 @@ class App extends Component {
     return (
       <div>
         <NavbarComp />
-        <div>did this render?</div>
+        <Switch>
+          <Route exact path='/' component={Landing} />
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={Signup} />
+          <Route path='/locations' component={Locations} />
+        </Switch>
       </div>
     );
   }
 }
 
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render((
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+), document.getElementById('app'));
