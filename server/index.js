@@ -27,6 +27,7 @@ app.use('/', router);
 app.use(express.static(`${__dirname}/../client/dist`));
 app.use('/login', express.static(`${__dirname}/../client/dist`));
 app.use('/signup', express.static(`${__dirname}/../client/dist`));
+app.use('/locations', express.static(`${__dirname}/../client/dist`));
 
 const PORT = 3000;
 

@@ -31,6 +31,7 @@
     "cookie-parser": "^1.4.3",
     "express": "^4.16.3",
     "express-session": "^1.15.6",
+    "google-maps-react": "^2.0.0",
     "history": "^4.7.2",
     "imgur": "^0.2.1",
     "imgur-uploader": "^4.2.1",
@@ -45,6 +46,7 @@
     "react-dom": "^16.3.1",
     "react-dropzone": "^4.2.9",
     "react-fontawesome": "^1.6.1",
+    "react-google-maps": "^9.4.5",
     "react-password-mask": "^3.3.0",
     "react-router": "^4.2.0",
     "react-router-dom": "^4.2.2"
