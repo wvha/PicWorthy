@@ -33,11 +33,12 @@ class Landing extends Component {
         </Carousel.Item>
       </Carousel>
 
-      <Jumbotron>
-        <h1>Hello, world!</h1>
+      <Jumbotron style={jumbotronStyle}>
+        <h1>Explore the world. Share the adventure.</h1>
         <p>
-          This is a simple hero unit, a simple jumbotron-style component for calling
-          extra attention to featured content or information.
+          PicWorthy lets you share your favorite spots and find new spots worth visiting. <br/>
+          It gives you a map of locations and a preview of them through another person's lenses. <br/>
+          Discover places you never knew existed, right around the corner.
         </p>
       </Jumbotron>;
     </div>)
@@ -54,6 +55,14 @@ const imgStyle = {
   width: '100%',
   height: '500px',
   objectFit: 'cover'
+}
+
+const jumbotronStyle = {
+  backgroundColor: 'white',
+  width: '80%',
+  margin: 'auto',
+  padding: '0px',
+  textAlign: 'center'
 }
 
 export default Landing;
