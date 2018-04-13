@@ -5,6 +5,7 @@ import { Navbar } from 'react-bootstrap';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
+import Landing from './components/landing.jsx'
 // import 'bootstrap/dist/css/bootstrap.css';
 
 // I am testing the react router here this can be deleted
@@ -24,7 +25,7 @@ class App extends Component {
       <div>
         <NavbarComp />
         <Switch>
-          <Route exact path='/' component={fakeHomePageComponent} />
+          <Route exact path='/' component={Landing} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Signup} />
         </Switch>
