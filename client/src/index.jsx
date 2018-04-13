@@ -5,7 +5,11 @@ import { Navbar } from 'react-bootstrap';
 import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
+<<<<<<< HEAD
 import Accept from './components/imjur.jsx';
+=======
+import Landing from './components/landing.jsx'
+>>>>>>> 846bc7ae6ed4dae635c7387825f5dc57dbce9158
 // import 'bootstrap/dist/css/bootstrap.css';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
@@ -60,6 +64,7 @@ class App extends Component {
 
   render() {
     return (
+<<<<<<< HEAD
       <section>
         <div className="dropzone">
           <Dropzone
@@ -86,6 +91,16 @@ class App extends Component {
         </aside>
         <button type="submit">upload</button>
       </section>
+=======
+      <div>
+        <NavbarComp />
+        <Switch>
+          <Route exact path='/' component={Landing} />
+          <Route path='/login' component={Login} />
+          <Route path='/signup' component={Signup} />
+        </Switch>
+      </div>
+>>>>>>> 846bc7ae6ed4dae635c7387825f5dc57dbce9158
     );
   }
 }
