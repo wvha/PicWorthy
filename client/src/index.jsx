@@ -6,6 +6,7 @@ import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
 import Landing from './components/landing.jsx'
+import Locations from './components/locations.jsx';
 // import 'bootstrap/dist/css/bootstrap.css';
 
 // I am testing the react router here this can be deleted
@@ -28,6 +29,7 @@ class App extends Component {
           <Route exact path='/' component={Landing} />
           <Route path='/login' component={Login} />
           <Route path='/signup' component={Signup} />
+          <Route path='/locations' component={Locations} />
         </Switch>
       </div>
     );
