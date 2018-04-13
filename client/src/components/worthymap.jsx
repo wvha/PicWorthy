@@ -4,11 +4,11 @@ import { Grid, Row } from 'react-bootstrap';
 
 /*
 EXAMPLE OF HOW TO USE WORTHY MAP
+zoom = 13
 center = {
   lat: 34.05,
   lng: 118.24
 };
-
 places = [
   {
     lat: 35,
@@ -24,38 +24,45 @@ places = [
 <WorthyMap
   center={center}
   places={places}
+  zoom={zoom}
 >
 */
 
 // TODO need to add functionality for the places and center prop
-class WorthyMap extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-
-    };
-  }
+const WorthyMap = ({ center, places, zoom }) => {
   
-  render() {
-    return (
-      <GM 
-        isMarkerShown={true}
-        googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-        loadingElement={<div></div>}
-        containerElement={<div style={{ height: '800px'}} />}
-        mapElement={<div style={{ height: '100%' }} />}
-      />
-    )
-  }
+  return (
+    <GM 
+      googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
+      loadingElement={<div></div>}
+      containerElement={<div style={{ height: '800px'}} />}
+      mapElement={<div style={{ height: '100%' }} />}
+      places={places}
+      center={center}
+      zoom={zoom}
+    />
+  )
 }
 
-const GM = withScriptjs(withGoogleMap((props) => {
+
+const GM = 
+  withScriptjs(withGoogleMap(
+    ({ places=[], center={lat: 34.05, lng: -118.24}, zoom=13 }) => {
+
+  const renderPlaces = places.map(
+    ({ lat, lng, clickHandler}) =>
+      <Marker 
+        position={{ lat: lat, lng: lng }}
+        onClick={ clickHandler }
+      />
+  )
+  
   return (
     <GoogleMap
-      defaultZoom={13}
-      defaultCenter={{ lat: 34.05, lng: -118.24 }}
+      defaultZoom={zoom}
+      defaultCenter={center}
     >
-      {props.isMarkerShown && <Marker position={{ lat: -34.05, lng: 118.24 }} />}
+      {renderPlaces}
     </GoogleMap>
   )
 }));

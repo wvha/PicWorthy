@@ -13,13 +13,7 @@ export default class Locations extends Component {
     return (
       <Grid>
         <Row>
-        <WorthyMap 
-          isMarkerShown={true}
-          googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-          loadingElement={<div></div>}
-          containerElement={<div style={{ height: '800px'}} />}
-          mapElement={<div style={{ height: '100%' }} />}
-        />
+        {testMap()}
         </Row>
         <span>
           Places
@@ -37,4 +31,29 @@ export default class Locations extends Component {
       </Grid>
     );
   }
+}
+
+const testMap = () => {
+  const zoom = 13
+  const center = {
+    lat: 34.05,
+    lng: -118.24
+  };
+  const places = [
+    {
+      lat: 34.05,
+      lng: -118.24,
+      clickHandler: () => {alert('I am a Click handler for clicking on place here.  A real click handler goes here')}
+    },
+    {
+      lat: 34.07,
+      lng: -118.25,
+      clickHandler: () => {alert('I am another place that got clicked on.  Real click handler goes here.')}
+    }
+  ];
+  return <WorthyMap
+    center={center}
+    places={places}
+    zoom={zoom}
+  />
 }
