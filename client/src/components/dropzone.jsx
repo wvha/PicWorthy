@@ -2,7 +2,10 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
-
+/*
+ * We use the imgur API to host our photos on imgur and store the links in our database
+ * 
+ */
 
 var reader = new FileReader();
 
