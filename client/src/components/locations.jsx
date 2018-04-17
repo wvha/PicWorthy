@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Row } from 'react-bootstrap';
 import WorthyMap from './worthymap.jsx';
+import RowComp from './row.jsx';
 
 export default class Locations extends Component {
   constructor(props) {
@@ -20,7 +21,7 @@ export default class Locations extends Component {
         </span>
         <button>go back to places</button>
         <Row>
-          {'REPLACE WITH SCROLLER THING COMPONENTS'}
+          <RowComp />
         </Row>
         <Row>
           {'Replace with description component'}

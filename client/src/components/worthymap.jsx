@@ -44,7 +44,7 @@ const WorthyMap = ({ center, places, zoom }) => {
     <GM 
       googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
       loadingElement={<div></div>}
-      containerElement={<div style={{ height: '800px'}} />}
+      containerElement={<div style={{ height: '400px'}} />}
       mapElement={<div style={{ height: '100%' }} />}
       places={places}
       center={center}
