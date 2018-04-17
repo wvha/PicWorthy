@@ -31,3 +31,10 @@ module.exports.post.login = (req, res, next) => {
     }
   })(req, res, next);
 };
+
+module.exports.get.logout = (req, res) => {
+  req.logout();
+  req.session.destroy();
+  console.log('session destroyed');
+  res.redirect('/');
+}
