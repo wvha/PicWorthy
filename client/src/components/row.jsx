@@ -7,7 +7,6 @@ class Row extends Component {
     super(props);
     this.displayAmount = 5;
     this.startIndex = 0;
-    this.displayArr = [];
     this.state = {
       picsDisplay: picsDb.slice(0, this.displayAmount)
     }
