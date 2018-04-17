@@ -6,18 +6,29 @@ import Card from './card.jsx';
 class Row extends Component {
   constructor(props) {
     super(props);
-    this.displayAmount = 4;
+    this.displayAmount;
     this.startIndex = 0;
     this.state = {
       picsDisplay: picsDb.slice(0, this.displayAmount)
     }
     this.handleNext = this.handleNext.bind(this);
     this.handlePrevious = this.handlePrevious.bind(this);
+    this.updateDisplayAmount = this.updateDisplayAmount.bind(this);
+    this.updateRow = this.updateRow.bind(this);
   }
 
-  handleNext() {
+  updateDisplayAmount() {
+    this.displayAmount = Math.floor(window.innerWidth/250);
+    this.updateRow();
+  }
+
+  componentDidMount() {
+    this.updateDisplayAmount();
+    window.addEventListener('resize', this.updateDisplayAmount)
+  }
+
+  updateRow() {
     let displayArr = [];
-    this.startIndex++; 
     for (var i = 0; i < this.displayAmount; i++) {
       displayArr.push(picsDb[(this.startIndex + i) % picsDb.length])
     }
@@ -26,13 +37,18 @@ class Row extends Component {
     });
   }
 
+  handleNext() {
+    this.startIndex++; 
+    this.updateRow();
+  }
+
   handlePrevious() {
     if (this.startIndex < this.displayAmount) {
       this.startIndex = this.startIndex - this.displayAmount + picsDb.length;
     } else {
-      this.startIndex -= 2;
+      this.startIndex--;
     }
-    this.handleNext();
+    this.updateRow();
   }
 
   render() {

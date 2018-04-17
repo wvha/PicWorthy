@@ -15,7 +15,9 @@ const spanStyle ={
   width: "250px",
   border: "1px solid black",  
   margin: "5px",
-  borderRadius: "3px"
+  borderRadius: "3px",
+  boxShadow: "5px 5px 3px grey",
+  backgroundColor: "white"
 }
 
 const imgStyle = {
@@ -27,9 +29,9 @@ const imgStyle = {
 
 const locationStyle = {
   textTransform: "capitalize",
-  fontFamily: "Comic Sans MS, Arial, sans-serif",
+  fontFamily: "billabong, Comic Sans MS, Arial, sans-serif",
   fontWeight: "bold",
-  fontSize: "large"
+  fontSize: "xx-large"
 }
 
 export default Card;

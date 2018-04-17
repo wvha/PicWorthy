@@ -12,16 +12,16 @@ export default class Locations extends Component {
 
   render() {
     return (
-      <Grid>
+      <Grid style={{margin: "0"}}>
         <Row>
           <WorthyMap 
             isForUploadPage={ true }
           />
         </Row>
+        <br />
         <span>
           Places
         </span>
-        <button>go back to places</button>
         <Row>
           <RowComp />
         </Row>

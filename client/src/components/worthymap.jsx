@@ -9,7 +9,7 @@ const ClusteredMap = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `600px` }} />,
+    containerElement: <div style={{ height: `400px`, width: `100vw`, border: `10px solid #fdfdfd`}}/>,
     mapElement: <div style={{ height: `100%` }} />,
   }),
   withHandlers({
@@ -136,35 +136,6 @@ const testingMarkers = [
     lng: -118.24,
     clickHandler: () => {alert('i got clicked and my location is ' + this.lat + ' ' + this.lng)}
   }
-<<<<<<< HEAD
-];
-
-// pass those properties into our map
-return <WorthyMap
-  center={center}
-  places={places}
-  zoom={zoom}
->
-*/
-
-// WorthyMap is a wrapper around the google map making it easier for us to use
-const WorthyMap = ({ center, places, zoom }) => {
-  
-  return (
-    <GM 
-      googleMapURL="https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places"
-      loadingElement={<div></div>}
-      containerElement={<div style={{ height: '400px'}} />}
-      mapElement={<div style={{ height: '100%' }} />}
-      places={places}
-      center={center}
-      zoom={zoom}
-    />
-  )
-}
-=======
->>>>>>> 7883853e4c2eaf5681df76473165b30a08afeb6a
-
 
 ]
 

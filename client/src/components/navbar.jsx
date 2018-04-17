@@ -13,16 +13,16 @@ class NavbarComp extends React.Component {
 
   render() {
     return (
-      <Navbar fluid>
+      <Navbar fluid style={{marginBottom: "0px", backgroundColor: "white", borderBottom: "1px solid #cccccc", borderRadius: "0px"}}>
         <Navbar.Header>
           <Navbar.Brand>
-            <Link to='/'>PicWorthy</Link>
+            <Link to='/' style={{fontFamily: `billabong`, fontSize: `250%`, color: `#1e65df`, textShadow: `2px 1px #cccccc`}}>Pic Worthy</Link>
           </Navbar.Brand>
           <Navbar.Form pullLeft>
-            <FormGroup>
+            {/* <FormGroup>
               <FormControl type="text" placeholder="Search" />
             </FormGroup>
-            <Button type="submit"><FontAwesome name="search" /></Button>
+            <Button type="submit"><FontAwesome name="search" /></Button> */}
             </Navbar.Form>
         </Navbar.Header>
 
