@@ -9,7 +9,7 @@ const ClusteredMap = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px`, width: `100vw`, border: `10px solid #fdfdfd`}}/>,
+    containerElement: <div style={{ height: `400px`, width: `100%`, border: `1px solid grey`, borderRadius: `3px`}}/>,
     mapElement: <div style={{ height: `100%` }} />,
   }),
   withHandlers({

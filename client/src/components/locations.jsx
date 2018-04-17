@@ -12,16 +12,15 @@ export default class Locations extends Component {
 
   render() {
     return (
-      <Grid style={{margin: "0"}}>
-        <Row>
+      <Grid style={{margin: `0`, width: `100vw`, paddingLeft: `0px`, paddingRight: `0px`}}>
+        <Row style={{margin: `20px`}}>
           <WorthyMap 
             isForUploadPage={ true }
           />
         </Row>
-        <br />
-        <span>
-          Places
-        </span>
+        <div style={{textAlign: `center`, fontFamily: `billabong`, fontSize: `275%`}}>
+          Around You
+        </div>
         <Row>
           <RowComp />
         </Row>

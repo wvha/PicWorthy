@@ -18,7 +18,9 @@ class Row extends Component {
   }
 
   updateDisplayAmount() {
-    this.displayAmount = Math.floor(window.innerWidth/250);
+    // 90 is based on chevron padding
+    // 250 based on width of cards
+    this.displayAmount = Math.floor((window.innerWidth - 90)/250);
     this.updateRow();
   }
 
