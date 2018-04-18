@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Row } from 'react-bootstrap';
 import WorthyMap from './worthymap.jsx';
+import RowComp from './row.jsx';
 
 export default class Locations extends Component {
   constructor(props) {
@@ -11,18 +12,17 @@ export default class Locations extends Component {
 
   render() {
     return (
-      <Grid>
-        <Row>
+      <Grid style={{margin: `0`, width: `100vw`, paddingLeft: `0px`, paddingRight: `0px`}}>
+        <Row style={{margin: `20px`}}>
           <WorthyMap 
             isForUploadPage={ true }
           />
         </Row>
-        <span>
-          Places
-        </span>
-        <button>go back to places</button>
+        <div style={{textAlign: `center`, fontFamily: `billabong`, fontSize: `275%`}}>
+          Around You
+        </div>
         <Row>
-          {'REPLACE WITH SCROLLER THING COMPONENTS'}
+          <RowComp />
         </Row>
         <Row>
           {'Replace with description component'}
