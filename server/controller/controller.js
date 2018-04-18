@@ -25,6 +25,7 @@ module.exports.post.login = (req, res, next) => {
         if (err) {
           res.status(400).send(err);
         } else {
+          console.log(user);
           res.json(user);
         }
       });
@@ -37,4 +38,13 @@ module.exports.get.logout = (req, res) => {
   req.session.destroy();
   console.log('session destroyed');
   res.redirect('/');
+}
+
+module.exports.get.loggedInYet = (req, res) => {
+  if (req.user) {
+    console.log(req.user);
+    res.json(req.user);
+  } else {
+    console.log('user not logged in');
+  }
 }
