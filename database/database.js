@@ -22,7 +22,7 @@ db.fetchUser = (username) =>  models.Users.findOne({username: username});
 
 // saves a user to the database
 db.saveUser = (obj) => {
-  return fetchUser(obj.username)
+  return db.fetchUser(obj.username)
   .then((user) => {
     if (user === null) {
       const saltRounds = 10;
