@@ -1,6 +1,7 @@
 import React from 'react';
+import Row from './row.jsx';
 
-class UserPage extends React.Component {
+class Userpage extends React.Component {
   constructor(props) {
     super(props);
     this.state = {};
@@ -8,9 +9,26 @@ class UserPage extends React.Component {
 
   render() {
     return (
-      <h1>Hello this is the user page.</h1>
+      <div>
+        <div>
+        <h1>Hello this is the user page.</h1>
+        <h2>username</h2>
+        <h3>location</h3>
+        <br />
+        </div>
+
+      <p>User's places</p>
+      <Row />
+      <br />
+      
+      <p>User's likes</p>
+      <Row />
+
+
+
+      </div>
     )
   }
 }
 
-export default UserPage;
+export default Userpage;
