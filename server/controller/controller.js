@@ -37,7 +37,7 @@ module.exports.get.logout = (req, res) => {
   req.logout();
   req.session.destroy();
   console.log('session destroyed');
-  res.redirect('/');
+  return res.redirect('/');
 }
 
 module.exports.get.loggedInYet = (req, res) => {

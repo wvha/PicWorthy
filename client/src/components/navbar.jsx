@@ -16,7 +16,9 @@ class NavbarComp extends React.Component {
 
   logout() {
     axios.get('/logout')
-      .then((result) => console.log('logout success in axios of navbar', result))
+      .then((result) => console.log('logout success in axios of navbar', result));
+      window.location.reload();
+      // this.setState({userData:{}});
   }
 
   componentDidMount() {
