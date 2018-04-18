@@ -7,7 +7,19 @@ export default class Locations extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      position: {lat: 41.9, lng: -87.624},
+      zoom: 5
     };
+  }
+
+  componentDidMount() {
+    navigator.geolocation.getCurrentPosition(({coords}) => {
+      console.log(coords);
+      this.setState({
+        position: {lat: coords.latitude, lng: coords.longitude},
+        zoom: 9
+      })
+    });
   }
 
   render() {
@@ -15,19 +27,19 @@ export default class Locations extends Component {
       <Grid style={{margin: `0`, width: `100vw`, paddingLeft: `0px`, paddingRight: `0px`}}>
         <Row style={{margin: `20px`}}>
           <WorthyMap 
-            isForUploadPage={ true }
+            isForUploadPage={ true } position={this.state.position} zoom={this.state.zoom}
           />
         </Row>
         <div style={{textAlign: `center`, fontFamily: `billabong`, fontSize: `275%`}}>
           Around You
         </div>
-        <Row>
+        <Row style={rowStyle}>
           <RowComp />
         </Row>
-        <Row>
+        <Row style={rowStyle}>
           {'Replace with description component'}
         </Row>
-        <Row>
+        <Row style={rowStyle}>
           {'Replace with footer component'}
         </Row>
       </Grid>
@@ -35,3 +47,7 @@ export default class Locations extends Component {
   }
 }
 
+const rowStyle = {
+  marginLeft: `0px`, 
+  marginRight: `0px`
+}
