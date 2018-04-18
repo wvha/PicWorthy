@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Carousel, CarouselItem } from 'react-bootstrap';
 import { Jumbotron } from 'react-bootstrap';
+import UploadForm from './upload.jsx';
 
 class Landing extends Component {
   constructor(props) {
@@ -41,6 +42,8 @@ class Landing extends Component {
           Discover places you never knew existed, right around the corner.
         </p>
       </Jumbotron>
+      
+      <UploadForm />
 
     </div>)
   }

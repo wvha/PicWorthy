@@ -33,6 +33,11 @@ module.exports.post.login = (req, res, next) => {
   })(req, res, next);
 };
 
+module.exports.post.upload = (req, res, next) => {
+  //take in information from the component and save it in the database
+  
+}
+
 module.exports.get.logout = (req, res) => {
   req.logout();
   req.session.destroy();
