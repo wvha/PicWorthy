@@ -40,7 +40,8 @@ class Landing extends Component {
           It gives you a map of locations and a preview of them through another person's lenses. <br/>
           Discover places you never knew existed, right around the corner.
         </p>
-      </Jumbotron>;
+      </Jumbotron>
+
     </div>)
   }
 };
