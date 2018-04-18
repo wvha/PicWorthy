@@ -53,8 +53,6 @@ class NavbarComp extends React.Component {
     }
   }
   
-
-
   render() {
     return (
       <Navbar fluid>
