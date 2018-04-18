@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Row } from 'react-bootstrap';
 import WorthyMap from './worthymap.jsx';
+import RowComp from './row.jsx';
 
 export default class Locations extends Component {
   constructor(props) {
@@ -11,16 +12,17 @@ export default class Locations extends Component {
 
   render() {
     return (
-      <Grid>
-        <Row>
-        {testMap()}
+      <Grid style={{margin: `0`, width: `100vw`, paddingLeft: `0px`, paddingRight: `0px`}}>
+        <Row style={{margin: `20px`}}>
+          <WorthyMap 
+            isForUploadPage={ true }
+          />
         </Row>
-        <span>
-          Places
-        </span>
-        <button>go back to places</button>
+        <div style={{textAlign: `center`, fontFamily: `billabong`, fontSize: `275%`}}>
+          Around You
+        </div>
         <Row>
-          {'REPLACE WITH SCROLLER THING COMPONENTS'}
+          <RowComp />
         </Row>
         <Row>
           {'Replace with description component'}
@@ -33,27 +35,3 @@ export default class Locations extends Component {
   }
 }
 
-const testMap = () => {
-  const zoom = 13
-  const center = {
-    lat: 34.05,
-    lng: -118.24
-  };
-  const places = [
-    {
-      lat: 34.05,
-      lng: -118.24,
-      clickHandler: () => {alert('I am a Click handler for clicking on place here.  A real click handler goes here')}
-    },
-    {
-      lat: 34.07,
-      lng: -118.25,
-      clickHandler: () => {alert('I am another place that got clicked on.  Real click handler goes here.')}
-    }
-  ];
-  return <WorthyMap
-    center={center}
-    places={places}
-    zoom={zoom}
-  />
-}

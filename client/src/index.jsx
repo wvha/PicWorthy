@@ -11,7 +11,7 @@ import Locations from './components/locations.jsx';
 // App component renders components based on the URL Route using React Router
 const App = (props) => {
   return (
-    <div>
+    <div style={{backgroundColor: "#fdfdfd"}}>
       <NavbarComp />
       <Switch>
         <Route exact path='/' component={Landing} />
