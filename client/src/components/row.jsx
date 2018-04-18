@@ -55,10 +55,10 @@ class Row extends Component {
 
   render() {
     return (
-      <div style={{textAlign: "center"}}>
+      <div style={{textAlign: `center`}}>
         <FaChevronLeft onClick={this.handlePrevious} style={chevronStyle}/>
         {/* {this.state.picsDisplay.map((pic, i) => {
-          return <img src={pic} key={i} style={{padding:"10px"}}/>
+          return <img src={pic} key={i} style={{padding:`10px`}}/>
         })} */}
         {this.state.picsDisplay.map((pic, i) => {
           return <Card src={pic.src} key={i} location={pic.location}/>
@@ -72,12 +72,12 @@ class Row extends Component {
 }
 
 const chevronStyle = {
-  verticalAlign: "top",
-  paddingRight: "45px",
-  paddingTop: "170px",
-  paddingBottom: "180px",
-  display: "inline-block",
-  margin: "5px"
+  verticalAlign: `top`,
+  paddingRight: `45px`,
+  paddingTop: `170px`,
+  paddingBottom: `180px`,
+  display: `inline-block`,
+  margin: `5px`
 }
 
 const picsDb = [
