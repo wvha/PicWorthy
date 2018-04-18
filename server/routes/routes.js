@@ -5,4 +5,8 @@ router.post('/signup', controller.post.signup);
 
 router.post('/login', controller.post.login);
 
+router.get('/logout', controller.get.logout);
+
+router.get('/loggedInYet', controller.get.loggedInYet);
+
 module.exports = router;
