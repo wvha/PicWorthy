@@ -4,17 +4,56 @@ import { Navbar, NavItem, MenuItem, Nav, NavDropdown, FormGroup, FormControl, Bu
 import FontAwesome from 'react-fontawesome';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+// import controller from '../server/controller/controller.js';
 
 class NavbarComp extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      userData: {}
+    };
   }
 
   logout() {
     axios.get('/logout')
-      .then((result) => console.log('logout sucess in axios of navbar', result))
+      .then((result) => console.log('logout success in axios of navbar', result))
   }
+
+  componentDidMount() {
+    axios.get('/loggedInYet').then((result) => {
+      console.log('comp did mount: ', result.data);
+      this.setState({
+        userData: result.data
+      });
+    });
+  }
+
+  renderName() {
+    if (this.state.userData.firstName) {
+      console.log(this.state.userData.firstName);
+      return (
+        <Nav pullRight>
+          <NavItem eventKey={1}><Link to='/'><FontAwesome name="home" /></Link></NavItem>
+          <NavItem eventKey={2} href="#"><FontAwesome name="heart" /></NavItem>
+          <NavItem eventKey={3} href="#"><FontAwesome name="plus" /></NavItem>
+          <NavItem eventKey={4}>{this.state.userData.firstName}</NavItem>
+          <NavItem eventKey={6} onClick={this.logout}><Link to='/'>Logout</Link></NavItem>
+        </Nav>
+      )
+    } else {
+      return (
+        <Nav pullRight>
+          <NavItem eventKey={1}><Link to='/'><FontAwesome name="home" /></Link></NavItem>
+          <NavItem eventKey={2} href="#"><FontAwesome name="heart" /></NavItem>
+          <NavItem eventKey={3} href="#"><FontAwesome name="plus" /></NavItem>
+          <NavItem eventKey={4}><Link to='/login'>Login</Link></NavItem>
+          <NavItem eventKey={5}><Link to='/signup'>SignUp</Link></NavItem>
+        </Nav>
+      )
+    }
+  }
+  
+
 
   render() {
     return (
@@ -31,15 +70,7 @@ class NavbarComp extends React.Component {
             </Navbar.Form>
         </Navbar.Header>
 
-
-          <Nav pullRight>
-            <NavItem eventKey={1}><Link to='/'><FontAwesome name="home" /></Link></NavItem>
-            <NavItem eventKey={2} href="#"><FontAwesome name="heart" /></NavItem>
-            <NavItem eventKey={3} href="#"><FontAwesome name="plus" /></NavItem>
-            <NavItem eventKey={4}><Link to='/login'>Login</Link></NavItem>
-            <NavItem eventKey={5}><Link to='/signup'>SignUp</Link></NavItem>
-            <NavItem eventKey={6} onClick={this.logout}><Link to='/'>Logout</Link></NavItem>
-          </Nav>
+        {this.renderName()}
 
       </Navbar>
 
