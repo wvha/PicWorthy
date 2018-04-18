@@ -27,6 +27,7 @@ app.use(passport.session());
 app.use('/', express.static(`${__dirname}/../client/dist`));
 app.use('/login', express.static(`${__dirname}/../client/dist`));
 app.use('/signup', express.static(`${__dirname}/../client/dist`));
+app.use('/userpage', express.static(`${__dirname}/../client/dist`));
 
 // anything after signupRedirect requires a login
 app.use(signupRedirect);
