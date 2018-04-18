@@ -1,18 +1,30 @@
-import React, { Component } from 'react';
+import React from 'react';
 import ReactDOM from 'react-dom';
+import NavbarComp from './components/navbar.jsx';
+import { Navbar } from 'react-bootstrap';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import Login from './components/login.jsx';
+import Signup from './components/signup.jsx';
+import Landing from './components/landing.jsx'
+import Locations from './components/locations.jsx';
 
-class App extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-    };
-  }
+// App component renders components based on the URL Route using React Router
+const App = (props) => {
+  return (
+    <div style={{backgroundColor: "#fdfdfd"}}>
+      <NavbarComp />
+      <Switch>
+        <Route exact path='/' component={Landing} />
+        <Route path='/login' component={Login} />
+        <Route path='/signup' component={Signup} />
+        <Route path='/locations' component={Locations} />
+      </Switch>
+    </div>
+  );
+};
 
-  render() {
-    return (
-      <div>did this render?</div>
-    );
-  }
-}
-
-ReactDOM.render(<App />, document.getElementById('app'));
+ReactDOM.render((
+  <BrowserRouter>
+    <App />
+  </BrowserRouter>
+), document.getElementById('app'));

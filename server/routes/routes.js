@@ -1,12 +1,12 @@
 const router = require('express').Router();
-
 const controller = require('../controller/controller.js');
 
-// example of how to use router
-// just pass in the url for the first argument
-// pass in the controller clalback function as 2nd lineup
-// router.post('/user', controller.lineups.post);
+router.post('/signup', controller.post.signup);
 
-// router.get('/user', controller.lineups.get);
+router.post('/login', controller.post.login);
+
+router.get('/logout', controller.get.logout);
+
+router.get('/loggedInYet', controller.get.loggedInYet);
 
 module.exports = router;

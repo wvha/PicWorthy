@@ -1,0 +1,30 @@
+JEST
+  see __tests__/sample-tests.js to see how to write a test.  Any tests in any file in that folder will automatically be ran after running npm test in terminal or with travis ci after pushing to github.
+
+main link for travis CI for node: https://docs.travis-ci.com/user/languages/javascript-with-nodejs/
+***TRAVIS CI NOTES***
+
+https://www.youtube.com/watch?v=ymPOI4gWQFY
+https://www.youtube.com/watch?v=Uft5KBimzyk
+https://www.youtube.com/watch?v=yoS9fEzkzYA
+
+CONTINUOUS INTEGRATION
+  Continuous Integration is the practice of merging small code changes frequently.
+
+CI 
+  When we runa build, Travis CI clnes our Github REpository into a virtual environment and carries out a series of tasks to build and test our code.  If we pass all the tests Travis CI can deploy our code to heroku.
+
+  there is a TravisCI .org for public repositories (free).  The .com is not free.
+
+COMMON WORDS FOR TRAVIS CI IN DOCS
+  JOB - an automated process that clones our repository and compiles code and runs tests  if it returns a 0 we pass if it returns anything but a 0 we failed.
+
+  PHASE -- the steps of a job.  For example sinstall and script and then optional deploy
+
+  BUILD- a group of jobs
+
+  STAGE -- a group of jobs that run in parallel (Not important?)
+
+COMMON BUILD PROBLEMS:
+  The following page is for troubleshooting common issues with the build: https://docs.travis-ci.com/user/common-build-problems/
+
