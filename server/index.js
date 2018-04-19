@@ -8,6 +8,7 @@ const session = require('./middleware/session');
 const passport = require('./middleware/passport');
 const signupRedirect = require('./middleware/signup-redirect.js');
 const router = require('./routes/routes.js');
+const db = require ('../database/database.js');
 
 
 const app = express();
@@ -39,7 +40,7 @@ const PORT = 3000;
 app.post('/upload', function(req, res){
   console.log('uploading...');
   console.log(req.body);
-  pictures.savePicture(req.body, function(err, data) {
+  db.savePicture(req.body, function(err, data) {
     if (err) {
       res.sendStatus(500);
     } else {
@@ -47,6 +48,19 @@ app.post('/upload', function(req, res){
       res.sendStatus(200);
     }
   })
+});
+
+//display existing info from database
+app.get('/upload', function(req, res) {
+  console.log('displaying...');
+  db.selectAllPictures(function(err, data) {
+    if(err) {
+      res.sendStatus(500);
+    } else {
+      console.log(data);
+      res.json(data);
+    }
+  });
 });
 
 app.listen(PORT, () => console.log(`listening to port ${PORT}`));

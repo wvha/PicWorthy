@@ -60,7 +60,7 @@ db.savePicture = function (data, callback) {
 };
 
 db.selectAllPictures = function(callback) {
-  models.Picture.find({}, function(err, pictures) {
+  models.Pictures.find({}, function(err, pictures) {
     if (err) {
       callback(err, null);
     } else {
