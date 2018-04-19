@@ -50,4 +50,23 @@ db.saveUser = (obj) => {
   })
 };
 
+db.savePicture = function (data, callback) {
+  return models.Pictures.create({
+    category: data.category,
+    location: data.location,
+    imageURL: data.imageURL,
+    description: data.description
+  }, callback);
+};
+
+db.selectAllPictures = function(callback) {
+  models.Pictures.find({}, function(err, pictures) {
+    if (err) {
+      callback(err, null);
+    } else {
+      callback(null, pictures);
+    }
+  });
+};
+
 module.exports = db;
