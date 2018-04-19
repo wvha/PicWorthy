@@ -7,6 +7,7 @@ import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
 import Landing from './components/landing.jsx'
 import Locations from './components/locations.jsx';
+import Footer from './components/footer.jsx';
 
 // App component renders components based on the URL Route using React Router
 const App = (props) => {
@@ -19,6 +20,7 @@ const App = (props) => {
         <Route path='/signup' component={Signup} />
         <Route path='/locations' component={Locations} />
       </Switch>
+      <Footer />
     </div>
   );
 };

@@ -4,6 +4,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 const Details = ({info}) => (
   <div>
     {/* {rgba(150, 183, 192, 0.5)} */}
+    <br/>
     <Grid style={{backgroundColor: `rgba(135,206,255, 0.3)`, padding: `20px`, width: `100vw`}}>
       <Row>
         <Col md={6} mdPush={6} style={{paddingRight: `100px`}}>
@@ -25,6 +26,7 @@ const Details = ({info}) => (
         </Col>
       </Row>
     </Grid>
+    <br />
   </div>
 );
 

@@ -62,11 +62,7 @@ export default class Locations extends Component {
           <RowComp showDetails={this.showDetails}/>
         </Row>
         <Row style={rowStyle}>
-          <br/>
           {this.handleClickCard()}
-        </Row>
-        <Row style={rowStyle}>
-          {'Replace with footer component'}
         </Row>
       </Grid>
     );
