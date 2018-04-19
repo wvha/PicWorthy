@@ -16,8 +16,6 @@ const App = (props) => {
       <NavbarComp />
       <Switch>
         <Route exact path='/' component={Landing} />
-        <Route path='/login' component={Login} />
-        <Route path='/signup' component={Signup} />
         <Route path='/locations' component={Locations} />
       </Switch>
       <Footer />
