@@ -40,6 +40,7 @@
     "mongodb-memory-server": "^1.7.3",
     "mongoose": "^5.0.14",
     "morgan": "^1.9.0",
+    "node-googleplaces": "^0.1.2",
     "passport": "^0.4.0",
     "passport-local": "^1.0.0",
     "passport-session": "^1.0.2",
