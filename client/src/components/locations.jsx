@@ -13,13 +13,33 @@ export default class Locations extends Component {
   }
 
   componentDidMount() {
-    navigator.geolocation.getCurrentPosition(({coords}) => {
-      console.log(coords);
+    this.getUserLocation();
+  }
+
+  getUserLocation() {
+    const onSuccess = ({coords}) => {
+      console.log('users coords', coords);
       this.setState({
         position: {lat: coords.latitude, lng: coords.longitude},
         zoom: 9
-      })
-    });
+      });
+    };
+
+    // if we can't get users location we try again without high accuracy
+    const onError = (err) => {
+      navigator.geolocation.getCurrentPosition(
+        onSuccess, 
+        (err2) => console.log('error getting location', err2), 
+        {maximumAge: 3600000, timeout: 5000, enableHighAccuracy: false} 
+      );
+    };
+
+    // but first we try to get it with high accuracy
+    navigator.geolocation.getCurrentPosition(
+      onSuccess, 
+      onError, 
+      {maximumAge: 3600000, timeout: 5000, enableHighAccuracy: true} // maxAge is how old a cached result can be, timeout is how long to try getting position.
+    );
   }
 
   render() {
@@ -27,7 +47,7 @@ export default class Locations extends Component {
       <Grid style={{margin: `0`, width: `100vw`, paddingLeft: `0px`, paddingRight: `0px`}}>
         <Row style={{margin: `20px`}}>
           <WorthyMap 
-            isForUploadPage={ true } position={this.state.position} zoom={this.state.zoom}
+            isForUploadPage={ false } position={this.state.position} zoom={this.state.zoom}
           />
         </Row>
         <div style={{textAlign: `center`, fontFamily: `billabong`, fontSize: `275%`}}>
