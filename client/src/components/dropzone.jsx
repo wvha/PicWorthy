@@ -21,6 +21,7 @@ class Accept extends React.Component {
   onDrop(img) {
     const formData = new FormData();
     formData.append('image', img[0]);
+    const that = this;
 
     axios({
         method: 'post',
@@ -29,7 +30,7 @@ class Accept extends React.Component {
         data: formData
     })
     .then(function(response) {
-        console.log(response.data.data.link);
+      that.props.getLink(response.data.data.link);
 
     })
     .catch(function(err) {
