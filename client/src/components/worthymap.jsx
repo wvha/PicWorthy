@@ -81,6 +81,7 @@ const ClusteredMap = compose(
     <Marker
       key={ i }
       position={{ lat: marker.lat, lng: marker.lng }}
+      onClick={marker.clickHandler}
     />
   ));
 
