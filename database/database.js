@@ -69,4 +69,22 @@ db.selectAllPictures = function(callback) {
   });
 };
 
+// queries user data for posts 
+db.fetchUserPosts = ((username) => { models.Users.findOne({username: username})
+  .populate('photos')
+  .exec((err, photos) => {
+    console.log('populated user photos', photos);
+  })
+});
+
+
+// queries user data for likes 
+db.fetchUserLikes = ((username) => { models.Users.findOne({username:username})
+  .populate('likes').exec((err, photos) => {
+    console.log('populated user likes', photos);
+  })
+});
+
+
+
 module.exports = db;

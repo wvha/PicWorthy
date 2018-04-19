@@ -74,5 +74,25 @@ get.upload = function(req, res) {
   });
 };
 
+get.userLikes = (req, res) => {
+  if (req.user) {
+    let userLikes = db.fetchUserPosts(req.user);
+    console.log(userLikes);
+    res.json(userLikes);
+  } else {
+    console.log('error in controller // get.userlikes');
+  }
+}
+
+get.userPosts = (req, res) => {
+  if (req.user) {
+    let userPosts = db.fetchUserPosts(req.user);
+    console.log(userPosts);
+    res.json(userPosts);
+  } else {
+    console.log('error in controller // get.userPOSTS');
+  }
+}
+
 module.exports.get = get;
 module.exports.post = post;
