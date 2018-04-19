@@ -1,10 +1,10 @@
 const db = require ('../../database/database.js');
 const passport = require('../middleware/passport.js');
 
-module.exports.post = {};
-module.exports.get = {};
+const post = {};
+const get = {};
 
-module.exports.post.signup = (req, res) => {
+post.signup = (req, res) => {
   if (!db.saveUser(req.body)) {
     res.end('Username already exists')
   } else {
@@ -12,7 +12,7 @@ module.exports.post.signup = (req, res) => {
   }
 };
 
-module.exports.post.login = (req, res, next) => {
+post.login = (req, res, next) => {
   passport.authenticate('local', function (err, user, info) {
     if (err || !user) {
       res.status(422).send(info);
@@ -33,14 +33,14 @@ module.exports.post.login = (req, res, next) => {
   })(req, res, next);
 };
 
-module.exports.get.logout = (req, res) => {
+get.logout = (req, res) => {
   req.logout();
   req.session.destroy();
   console.log('session destroyed');
   return res.redirect('/');
 }
 
-module.exports.get.loggedInYet = (req, res) => {
+get.loggedInYet = (req, res) => {
   if (req.user) {
     console.log(req.user);
     res.json(req.user);
@@ -48,3 +48,31 @@ module.exports.get.loggedInYet = (req, res) => {
     console.log('user not logged in');
   }
 }
+
+post.upload = function(req, res){
+  console.log('uploading...');
+  console.log(req.body);
+  db.savePicture(req.body, function(err, data) {
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      console.log('uploaded!');
+      res.sendStatus(200);
+    }
+  })
+};
+
+get.upload = function(req, res) {
+  console.log('displaying...');
+  db.selectAllPictures(function(err, data) {
+    if(err) {
+      res.sendStatus(500);
+    } else {
+      console.log(data);
+      res.json(data);
+    }
+  });
+};
+
+module.exports.get = get;
+module.exports.post = post;
