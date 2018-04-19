@@ -61,7 +61,7 @@ class Row extends Component {
           return <img src={pic} key={i} style={{padding:`10px`}}/>
         })} */}
         {this.state.picsDisplay.map((pic, i) => {
-          return <Card src={pic.src} key={i} location={pic.location}/>
+          return <Card src={pic.src} key={i} location={pic.location} username={pic.username} showDetails={this.props.showDetails}/>
         })}
         <FaChevronRight onClick={this.handleNext} style={chevronStyle}/>
         <br/>
@@ -81,16 +81,16 @@ const chevronStyle = {
 }
 
 const picsDb = [
-  {src: 'http://lorempixel.com/output/cats-h-c-200-400-1.jpg', location: 'Armsterdam'},
-  {src: 'http://lorempixel.com/output/cats-h-g-200-400-7.jpg', location: 'Belgium'},
-  {src: 'http://lorempixel.com/output/cats-h-c-200-400-2.jpg', location: 'China'},
-  {src: 'http://lorempixel.com/output/cats-h-g-200-400-6.jpg', location: 'Denmark'},
-  {src: 'http://lorempixel.com/output/cats-h-c-200-400-3.jpg', location: 'Ethiopia'},
-  {src: 'http://lorempixel.com/output/cats-h-g-200-400-1.jpg', location: 'France'},
-  {src: 'http://lorempixel.com/output/cats-h-c-200-400-4.jpg', location: 'Germany'},
-  {src: 'http://lorempixel.com/output/cats-h-g-200-400-3.jpg', location:'Italy'},
-  {src: 'http://lorempixel.com/output/cats-h-c-200-400-5.jpg', location:'Japan'},
-  {src: 'http://lorempixel.com/output/animals-h-g-200-400-5.jpg', location: 'Korea'},
+  {src: 'http://lorempixel.com/output/cats-h-c-200-400-1.jpg', username: 'anna banana', location: 'Armsterdam'},
+  {src: 'http://lorempixel.com/output/cats-h-g-200-400-7.jpg', username: 'anna banana', location: 'Belgium'},
+  {src: 'http://lorempixel.com/output/cats-h-c-200-400-2.jpg', username: 'anna banana', location: 'China'},
+  {src: 'http://lorempixel.com/output/cats-h-g-200-400-6.jpg', username: 'anna banana', location: 'Denmark'},
+  {src: 'http://lorempixel.com/output/cats-h-c-200-400-3.jpg', username: 'anna banana', location: 'Ethiopia'},
+  {src: 'http://lorempixel.com/output/cats-h-g-200-400-1.jpg', username: 'anna banana', location: 'France'},
+  {src: 'http://lorempixel.com/output/cats-h-c-200-400-4.jpg', username: 'anna banana', location: 'Germany'},
+  {src: 'http://lorempixel.com/output/cats-h-g-200-400-3.jpg', username: 'anna banana', location:'Italy'},
+  {src: 'http://lorempixel.com/output/cats-h-c-200-400-5.jpg', username: 'anna banana', location:'Japan'},
+  {src: 'http://lorempixel.com/output/animals-h-g-200-400-5.jpg', username: 'anna banana', location: 'Korea'},
 ];
 
 

@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 
-const Card = ({src, location}) => (
-  <span style={spanStyle}>
-    <img src={src} style={imgStyle} />
+const Card = (props) => (
+  <span style={spanStyle} onClick={(e)=>{props.showDetails(e, props)}}>
+    <img src={props.src} style={imgStyle} />
     <br/> <br/>
-    <div style={locationStyle}>{location}</div>
+    <div style={locationStyle}>{props.location}</div>
   </span>
 )
 
