@@ -35,4 +35,18 @@ app.use('/', router);
 
 const PORT = 3000;
 
+//handle post request to database
+app.post('/upload', function(req, res){
+  console.log('uploading...');
+  console.log(req.body);
+  pictures.savePicture(req.body, function(err, data) {
+    if (err) {
+      res.sendStatus(500);
+    } else {
+      console.log('uploaded!');
+      res.sendStatus(200);
+    }
+  })
+});
+
 app.listen(PORT, () => console.log(`listening to port ${PORT}`));
