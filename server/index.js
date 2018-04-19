@@ -9,7 +9,6 @@ const passport = require('./middleware/passport');
 const signupRedirect = require('./middleware/signup-redirect.js');
 const router = require('./routes/routes.js');
 
-
 const app = express();
 
 // middleware

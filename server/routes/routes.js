@@ -9,4 +9,8 @@ router.get('/logout', controller.get.logout);
 
 router.get('/loggedInYet', controller.get.loggedInYet);
 
+router.post('/upload', controller.post.upload);
+
+router.get('/upload', controller.get.upload);
+
 module.exports = router;

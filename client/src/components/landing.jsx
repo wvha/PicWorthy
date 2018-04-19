@@ -41,7 +41,7 @@ class Landing extends Component {
           Discover places you never knew existed, right around the corner.
         </p>
       </Jumbotron>
-
+      
     </div>)
   }
 };
