@@ -194,24 +194,24 @@ const testingMarkers = [
   {
     lat: 34.05,
     lng: -118.24,
-    clickHandler: () => {alert('i got clicked and my location is ' + this.lat + ' ' + this.lng)}
+    clickHandler: function(e) {alert('i got clicked and my event is ' + JSON.stringify(e))}
   },
   {
     lat: 34.25,
     lng: -118.24,
-    clickHandler: () => {alert('i got clicked and my location is ' + this.lat + ' ' + this.lng)}
+    clickHandler: function(e) {alert('i got clicked and my event is ' + JSON.stringify(e))}
   },
 
   {
     lat: 34.35,
     lng: -118.24,
-    clickHandler: () => {alert('i got clicked and my location is ' + this.lat + ' ' + this.lng)}
+     clickHandler: function(e) {alert('i got clicked and my event is ' + JSON.stringify(e))}
   },
 
   {
     lat: 34.45,
     lng: -118.24,
-    clickHandler: () => {alert('i got clicked and my location is ' + this.lat + ' ' + this.lng)}
+    clickHandler: function(e) {alert('i got clicked and my event is ' + JSON.stringify(e))}
   }
 
 ]
