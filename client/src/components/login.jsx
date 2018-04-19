@@ -21,7 +21,7 @@ class Login extends Component {
   }
 
   sendLogin(e) {
-    axios.post('/login', this.state)
+    axios.post('/api/login', this.state)
       .then((data) => {
         window.location.replace(`${window.location.origin}/locations`);
       })

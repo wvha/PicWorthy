@@ -13,6 +13,7 @@ post.signup = (req, res) => {
 };
 
 post.login = (req, res, next) => {
+  console.log('attempting login ')
   passport.authenticate('local', function (err, user, info) {
     if (err || !user) {
       res.status(422).send(info);

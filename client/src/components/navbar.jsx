@@ -22,14 +22,14 @@ class NavbarComp extends React.Component {
   }
 
   logout() {
-    axios.get('/logout')
+    axios.get('/api/logout')
       .then((result) => console.log('logout success in axios of navbar', result));
       window.location.reload();
       // this.setState({userData:{}});
   }
 
   componentDidMount() {
-    axios.get('/loggedInYet').then((result) => {
+    axios.get('/api/loggedInYet').then((result) => {
       console.log('comp did mount: ', result.data);
       this.setState({
         userData: result.data,
