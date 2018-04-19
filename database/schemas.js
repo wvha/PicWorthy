@@ -7,5 +7,13 @@ const userSchema = mongoose.Schema({
   password: String
 });
 
+const pictureSchema = mongoose.Schema({
+  category: String,
+  location: String,
+  imageURL: String,
+  description: String
+});
+
 module.exports.userSchema = userSchema;
+module.exports.pictureSchema = pictureSchema;
 
