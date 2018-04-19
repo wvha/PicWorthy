@@ -10,7 +10,11 @@ class NavbarComp extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      userData: {}
+      userData: {
+        firstName: '',
+        lastName: '',
+        username: '',
+      }
     };
   }
 
