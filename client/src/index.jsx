@@ -8,6 +8,7 @@ import Signup from './components/signup.jsx';
 import Landing from './components/landing.jsx'
 import Locations from './components/locations.jsx';
 import Upload from './components/upload.jsx';
+import Footer from './components/footer.jsx';
 
 // App component renders components based on the URL Route using React Router
 const App = (props) => {
@@ -16,11 +17,10 @@ const App = (props) => {
       <NavbarComp />
       <Switch>
         <Route exact path='/' component={Landing} />
-        <Route path='/login' component={Login} />
-        <Route path='/signup' component={Signup} />
         <Route path='/locations' component={Locations} />
         <Route path='/upload' component = {Upload} />
       </Switch>
+      <Footer />
     </div>
   );
 };
