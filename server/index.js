@@ -30,6 +30,7 @@ app.use('/signup', express.static(`${__dirname}/../client/dist`));
 // anything after signupRedirect requires a login
 app.use(signupRedirect);
 app.use('/locations', express.static(`${__dirname}/../client/dist`));
+app.use('/upload', express.static(`${__dirname}/../client/dist`));
 app.use('/', router);
 
 const PORT = 3000;

@@ -5,7 +5,7 @@ import axios from 'axios';
 const fetchAllPics = () => {
   event.preventDefault();
   console.log('displaying!');
-  axios.get(`/upload`)
+  axios.get(`/api/upload`)
     .then(res => {
       console.log(res.data);
   })
