@@ -12,35 +12,6 @@ export default class Locations extends Component {
     };
   }
 
-  componentDidMount() {
-    this.getUserLocation();
-  }
-
-  getUserLocation() {
-    const onSuccess = ({coords}) => {
-      console.log('users coords', coords);
-      this.setState({
-        position: {lat: coords.latitude, lng: coords.longitude},
-        zoom: 9
-      });
-    };
-
-    // if we can't get users location we try again without high accuracy
-    const onError = (err) => {
-      navigator.geolocation.getCurrentPosition(
-        onSuccess, 
-        (err2) => console.log('error getting location', err2), 
-        {maximumAge: 3600000, timeout: 5000, enableHighAccuracy: false} 
-      );
-    };
-
-    // but first we try to get it with high accuracy
-    navigator.geolocation.getCurrentPosition(
-      onSuccess, 
-      onError, 
-      {maximumAge: 3600000, timeout: 5000, enableHighAccuracy: true} // maxAge is how old a cached result can be, timeout is how long to try getting position.
-    );
-  }
 
   render() {
     return (

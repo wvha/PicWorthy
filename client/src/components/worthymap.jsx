@@ -24,8 +24,34 @@ class WorthyMap extends Component {
   }
 
   componentDidMount() {
-    // this.getLocations(); // uncomment after getLocations is hooked up
+    this.getUserLocation();
     this.setState({markers: testingMarkers}) // delete this after getLocations is hooked up;
+  }
+
+  getUserLocation() {
+    const onSuccess = ({coords}) => {
+      console.log('users coords', coords);
+      this.setState({
+        position: {lat: coords.latitude, lng: coords.longitude},
+        zoom: 9
+      });
+    };
+
+    // if we can't get users location we try again without high accuracy
+    const onError = (err) => {
+      navigator.geolocation.getCurrentPosition(
+        onSuccess, 
+        (err2) => console.log('error getting location', err2), 
+        {maximumAge: 3600000, timeout: 5000, enableHighAccuracy: false} 
+      );
+    };
+
+    // but first we try to get it with high accuracy
+    navigator.geolocation.getCurrentPosition(
+      onSuccess, 
+      onError, 
+      {maximumAge: 3600000, timeout: 5000, enableHighAccuracy: true} // maxAge is how old a cached result can be, timeout is how long to try getting position.
+    );
   }
 
   getLocations() {
@@ -60,8 +86,8 @@ class WorthyMap extends Component {
       <ClusteredMap
         markers={ markers } 
         clickMap={ clickMap }
-        defaultZoom={ this.props.zoom }
-        defaultCenter={ this.props.position } 
+        defaultZoom={ this.state.zoom }
+        defaultCenter={ this.state.position } 
       />
     );
   }
