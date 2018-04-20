@@ -12,7 +12,7 @@ class UploadForm extends Component {
 
   render() {
     return (
-      <div style={{paddingTop: `50px`}}>
+      <div style={{paddingTop: `30px`}}>
         {this.checkImgUrl()}
       <br />
       <form onSubmit={this.props.handleSubmit}>
@@ -37,14 +37,14 @@ class UploadForm extends Component {
         </label><br /><br />
         <label>
           Description
-          <input
+          <textarea
             name="description"
             type="text"
             value={this.props.description}
             onChange={this.props.handleInputChange} 
-            style={inputStyle} />
+            style={textareaStyle} />
         </label><br /><br />
-        <div style={{textAlign:`center`}}>
+        <div style={{textAlign:`center`, position: `relative`, top: `75px`}}>
           <input
             name="submit"
             type="submit" 
@@ -57,10 +57,22 @@ class UploadForm extends Component {
   }
 }
 
-
-const inputStyle ={
+const inputStyle = {
   position: `absolute`,
   left: `105px`,
-  width: `calc(100% - 105px)`
+  width: `calc(100% - 105px)`,
+  fontWeight: `normal`,
 }
+
+const textareaStyle = {
+  position: `absolute`,
+  left: `105px`,
+  width: `calc(100% - 105px)`,
+  height: `100px`,
+  fontWeight: `normal`,
+  resize: `none`,
+  contenteditable: `true`,
+  borderColor: `#e2e3e5`
+}
+
 export default UploadForm;
