@@ -3,6 +3,7 @@ import UploadForm from './uploadform.jsx';
 import Worthymap from './worthymap.jsx';
 import DropZone from './dropzone.jsx';
 import { Grid, Row, Col } from 'react-bootstrap';
+import axios from 'axios';
 
 class Upload extends Component {
   constructor(props) {
@@ -50,8 +51,8 @@ class Upload extends Component {
   render() {
     return (
       <Grid>
-        <Row>
-          <Col xs={6} md={4}>
+        <Row style={{height: `calc(100vh - 130px)`, paddingTop:`20px`}}>
+          <Col xs={9} md={4}>
             <Worthymap isForUploadPage={true} />
           </Col>
           <Col xs={6} md={4}>

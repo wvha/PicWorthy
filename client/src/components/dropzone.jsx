@@ -45,19 +45,25 @@ class Accept extends React.Component {
           <Dropzone
             accept="image/jpeg, image/png"
             onDrop={(this.onDrop.bind(this))}
+            style={{width: `100%`, border:`2px dashed grey`, height: `398px`}}
           >
-            <p>Try dropping some files here, or click to select files to upload.</p>
-            <p>Only *.jpeg and *.png images will be accepted</p>
+            <div style={{width: `80%`, margin:`auto`, paddingTop: `50px`, paddingBottom: `50px`, textAlign: `center`}}>
+              <p>Try dropping a file here, or click to select files to upload.</p>
+              <p>Only *.jpeg and *.png images will be accepted</p>
+            </div>
+            <div style={{width:`100px`, margin: `auto`}}>
+              <img width="100px" height="100px" src="http://www.arcdocendi.com/Forms/images/upload.png" />
+            </div>
           </Dropzone>
         </div>
         <aside>
-          <h4>Accepted files</h4>
+          {/* <h4>Accepted files</h4> */}
           <ul>
             {
               this.state.accepted.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
             }
           </ul>
-          <h4>Rejected files</h4>
+          {/* <h4>Rejected files</h4> */}
           <ul>
             {
               this.state.rejected.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
