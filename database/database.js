@@ -55,7 +55,10 @@ db.savePicture = function (data, callback) {
     category: data.category,
     location: data.location,
     imageURL: data.imageURL,
-    description: data.description
+    description: data.description,
+    username: data.username,
+    user_id: data.user_id,
+
   }, callback);
 };
 

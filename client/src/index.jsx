@@ -22,7 +22,7 @@ class App extends React.Component {
         firstName: '',
         lastName: '',
         username: '',
-        _id: '',
+        user_id: '',
       },
       loading: 'initial'
     }
