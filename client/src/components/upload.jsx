@@ -14,6 +14,8 @@ class Upload extends Component {
       location: '',
       imageURL: '',
       description: '',
+      user_id: '',
+      username: '',
       submitted: '',
       loading: false
     };
@@ -47,7 +49,9 @@ class Upload extends Component {
       category: this.state.category,
       location: this.state.location,
       imageURL: this.state.imageURL,
-      description: this.state.description
+      description: this.state.description,
+      user_id: this.props.userData._id,
+      username: this.props.userData.username
     })
       .then(res => {
         console.log(res);

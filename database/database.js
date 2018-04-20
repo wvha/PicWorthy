@@ -55,8 +55,17 @@ db.savePicture = function (data, callback) {
     category: data.category,
     location: data.location,
     imageURL: data.imageURL,
-    description: data.description
+    description: data.description,
+    username: data.username,
+    user_id: data.user_id,
   }, callback);
+};
+
+// will be used as callback for db.savePicture
+db.savePictureToUser = function(data) {
+  console.log(data);
+  return models.Users.update( { _id: data.user_id},
+    { $push: { photos: data._id} });
 };
 
 db.selectAllPictures = function(callback) {
@@ -68,5 +77,25 @@ db.selectAllPictures = function(callback) {
     }
   });
 };
+
+// gets all posts from current user
+db.getUserPosts = (username, callback) => {
+  console.log('username is: ', username)
+  models.Pictures.find({username: username}, function (err, pics) {
+    console.log('this is pics:', pics);
+    callback(err, pics);
+    });
+};
+
+// queries user data for likes // to be fixed
+db.fetchUserLikes = (username) => { models.Users.findOne({username:username})
+  .populate('likes').exec((err, photos) => {
+    console.log('populated user likes', photos);
+  })
+};
+
+
+
+
 
 module.exports = db;
