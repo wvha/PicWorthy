@@ -13,6 +13,7 @@ class Upload extends Component {
       location: '',
       imageURL: '',
       description: '',
+      submitted: '',
     };
     this.getLink = this.getLink.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -45,6 +46,9 @@ class Upload extends Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        this.setState({
+          submitted: 'Successfully uploaded!'
+        })
       })
   }
 
@@ -67,6 +71,8 @@ class Upload extends Component {
               handleInputChange={this.handleInputChange}
               handleSubmit={this.handleSubmit}
             />
+            <br />
+            <div style={{textAlign: `center`, fontWeight: `bold`, fontSize: `large`, color: `#4fab5b`}}>{this.state.submitted}</div>
           </Col>
         </Row>
 

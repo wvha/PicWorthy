@@ -4,7 +4,7 @@ import axios from 'axios';
 class UploadForm extends Component {
   checkImgUrl() {
     if(this.props.imageURL) {
-      return <p style={{fontWeight:`bold`}}>Image succesfully uploaded!</p>
+      return <p style={{fontWeight:`bold`}}>Image attached.</p>
     } else {
       return <p style={{fontWeight:`bold`}}>Please upload an image.</p>
     }
