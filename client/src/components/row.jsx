@@ -2,14 +2,16 @@ import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import FaIconPack, {FaChevronRight, FaChevronLeft} from 'react-icons/lib/fa';
 import Card from './card.jsx';
+import axios from 'axios';
 
 class Row extends Component {
   constructor(props) {
     super(props);
+    console.log('props: ', props);
     this.displayAmount;
     this.startIndex = 0;
     this.state = {
-      picsDisplay: picsDb.slice(0, this.displayAmount)
+      picsDisplay: [], // picSource.slice(0, this.displayAmount), //picsDb
     }
     this.handleNext = this.handleNext.bind(this);
     this.handlePrevious = this.handlePrevious.bind(this);
@@ -26,14 +28,22 @@ class Row extends Component {
 
   componentDidMount() {
     this.updateDisplayAmount();
-    window.addEventListener('resize', this.updateDisplayAmount)
+    window.addEventListener('resize', this.updateDisplayAmount);
+    
+    axios.get('/api/userposts', {username: this.props.data.username})
+    .then(res => {
+      console.log('set state in axios get req');
+      this.setState({picsDisplay: res.data.slice(0, this.displayAmount)});
+      this.setState({picStatic: res.data});
+    });
   }
 
   updateRow() {
     let displayArr = [];
     for (var i = 0; i < this.displayAmount; i++) {
-      displayArr.push(picsDb[(this.startIndex + i) % picsDb.length])
+      displayArr.push(this.state.picStatic[(this.startIndex + i) % this.state.picStatic.length])
     }
+    console.log('set state in update row');
     this.setState({
       picsDisplay: displayArr
     });
@@ -46,7 +56,7 @@ class Row extends Component {
 
   handlePrevious() {
     if (this.startIndex < this.displayAmount) {
-      this.startIndex = this.startIndex - this.displayAmount + picsDb.length;
+      this.startIndex = this.startIndex - this.displayAmount + this.state.picStatic.length;
     } else {
       this.startIndex--;
     }
@@ -54,6 +64,15 @@ class Row extends Component {
   }
 
   render() {
+    // console.log('props in render: ', this.props);
+    // var pics;
+    // if (this.props.pic) {
+    //   pics = this.props.pic.slice(0, this.displayAmount);
+    // } else {
+    //   pics = this.state.picsDisplay;
+    // }
+    console.log('in render', this.state);
+
     return (
       <div style={{textAlign: `center`}}>
         <FaChevronLeft onClick={this.handlePrevious} style={chevronStyle}/>
