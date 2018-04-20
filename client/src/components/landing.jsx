@@ -59,7 +59,7 @@ const imgStyle = {
 }
 
 const jumbotronStyle = {
-  backgroundColor: 'white',
+  backgroundColor: `inherit`,
   width: '80%',
   margin: 'auto',
   padding: '0px',

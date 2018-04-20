@@ -13,7 +13,7 @@ import Footer from './components/footer.jsx';
 // App component renders components based on the URL Route using React Router
 const App = (props) => {
   return (
-    <div style={{backgroundColor: "#fdfdfd"}}>
+    <div style={{backgroundColor: `#fdfdfd`, minHeight: `calc(100vh - 60px)`}}>
       <NavbarComp />
       <Switch>
         <Route exact path='/' component={Landing} />

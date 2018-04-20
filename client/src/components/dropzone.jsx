@@ -14,15 +14,17 @@ class Accept extends React.Component {
     super()
     this.state = {
       accepted: [],
-      rejected: []
+      rejected: [],
+      uploaded: false
     }
+    this.changeImg = this.changeImg.bind(this);
   }
 
   onDrop(img) {
     const formData = new FormData();
     formData.append('image', img[0]);
     const that = this;
-
+    
     axios({
         method: 'post',
         url: 'https://api.imgur.com/3/image',
@@ -31,11 +33,20 @@ class Accept extends React.Component {
     })
     .then(function(response) {
       that.props.getLink(response.data.data.link);
-
+      that.setState({uploaded: true})
     })
     .catch(function(err) {
         console.log(err);
     })
+  }
+
+  changeImg() {
+    if (this.state.uploaded) {
+      return <img width="100px" height="100px" src="http://pluspng.com/img-png/success-png-success-icon-image-23194-400.png" />
+    } else {
+      return <img width="100px" height="100px" src="http://www.arcdocendi.com/Forms/images/upload.png" />
+    }
+    console.log('accepted array', this.state.uploaded)
   }
 
   render() {
@@ -45,19 +56,25 @@ class Accept extends React.Component {
           <Dropzone
             accept="image/jpeg, image/png"
             onDrop={(this.onDrop.bind(this))}
+            style={{width: `100%`, border:`2px dashed grey`, height: `398px`}}
           >
-            <p>Try dropping some files here, or click to select files to upload.</p>
-            <p>Only *.jpeg and *.png images will be accepted</p>
+            <div style={{width: `80%`, margin:`auto`, paddingTop: `50px`, paddingBottom: `50px`, textAlign: `center`}}>
+              <p>Try dropping a file here, or click to select files to upload.</p>
+              <p>Only *.jpeg and *.png images will be accepted</p>
+            </div>
+            <div style={{width:`100px`, margin: `auto`}}>
+              {this.changeImg()}
+            </div>
           </Dropzone>
         </div>
         <aside>
-          <h4>Accepted files</h4>
+          {/* <h4>Accepted files</h4> */}
           <ul>
             {
               this.state.accepted.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
             }
           </ul>
-          <h4>Rejected files</h4>
+          {/* <h4>Rejected files</h4> */}
           <ul>
             {
               this.state.rejected.map(f => <li key={f.name}>{f.name} - {f.size} bytes</li>)
