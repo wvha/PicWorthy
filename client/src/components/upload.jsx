@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import UploadForm from './uploadform.jsx';
 import Worthymap from './worthymap.jsx';
 import DropZone from './dropzone.jsx';
+import { Grid, Row, Col } from 'react-bootstrap';
 
 class Upload extends Component {
   constructor(props) {
@@ -18,7 +19,7 @@ class Upload extends Component {
   }
 
   getLink(imgurLink) {
-    this.setState({imageURL: imgurLink})
+    this.setState({ imageURL: imgurLink })
   }
 
   handleInputChange(event) {
@@ -47,18 +48,29 @@ class Upload extends Component {
   }
 
   render() {
-    return (<div>
-      <Worthymap isForUploadPage={true} />
-      <DropZone getLink={this.getLink}/>
-      <UploadForm 
-        category={this.state.category}
-        location={this.state.location}
-        imageURL={this.state.imageURL}
-        description={this.state.description}
-        handleInputChange={this.handleInputChange}
-        handleSubmit={this.handleSubmit}
-      />
-    </div>)
+    return (
+      <Grid>
+        <Row>
+          <Col xs={6} md={4}>
+            <Worthymap isForUploadPage={true} />
+          </Col>
+          <Col xs={6} md={4}>
+            <DropZone getLink={this.getLink} />
+          </Col>
+          <Col xs={6} md={4}>
+            <UploadForm
+              category={this.state.category}
+              location={this.state.location}
+              imageURL={this.state.imageURL}
+              description={this.state.description}
+              handleInputChange={this.handleInputChange}
+              handleSubmit={this.handleSubmit}
+            />
+          </Col>
+        </Row>
+
+      </Grid>
+    )
   }
 }
 

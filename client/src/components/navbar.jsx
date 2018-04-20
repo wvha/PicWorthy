@@ -55,7 +55,7 @@ class NavbarComp extends React.Component {
         <Nav pullRight>
           <NavItem eventKey={1}><Link to='/locations'><FontAwesome name="home" /></Link></NavItem>
           <NavItem eventKey={2} href="#"><FontAwesome name="heart" /></NavItem>
-          <NavItem eventKey={3} href="#"><FontAwesome name="plus" /></NavItem>
+          <NavItem eventKey={3}><Link to='/upload'><FontAwesome name="plus" /></Link></NavItem>
           <NavItem eventKey={4}>{this.state.userData.firstName}</NavItem>
           <NavItem eventKey={6} onClick={this.logout}><Link to='/'>Logout</Link></NavItem>
         </Nav>
