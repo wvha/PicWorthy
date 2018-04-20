@@ -88,10 +88,9 @@ get.userLikes = (req, res) => {
 }
 
 get.userPosts = (req, res) => {
+  console.log('req.body is ', req.body);
   if (req.user) {
-    let userPosts = db.fetchUserPosts(req.user);
-    console.log(userPosts);
-    res.json(userPosts);
+    db.getUserPosts(req.user.username).then(data => res.json(data));
   } else {
     console.log('error in controller // get.userPOSTS');
   }
