@@ -41,7 +41,7 @@ class App extends React.Component {
     }
 
     return (
-      <div style={{backgroundColor: "#fdfdfd"}}>
+      <div style={{backgroundColor: "#fdfdfd", minHeight: `calc(100vh - 60px)`}}>
         <NavbarComp userData={this.state.userData} />
         <Switch>
           <Route exact path='/' component={Landing} />
