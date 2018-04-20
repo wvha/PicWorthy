@@ -16,7 +16,6 @@ class UploadForm extends Component {
         {this.checkImgUrl()}
       <br />
       <form onSubmit={this.props.handleSubmit}>
-          {/* {this.checkImgUrl()} */}
         <label>
           Category
           <input
