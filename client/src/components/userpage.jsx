@@ -1,6 +1,6 @@
 import React from 'react';
 import Row from './row.jsx';
-
+import axios from 'axios';
 
 class Userpage extends React.Component {
   constructor(props) {
@@ -9,7 +9,11 @@ class Userpage extends React.Component {
   }
 
   componentDidMount() {
-    axios.get('/user')
+    axios.get('/api/userposts', {username: this.props.userData.username}).then(res => {
+      console.log('this is results in userpage.jsx:', res);
+    });
+
+    
   }
 
 // need function to call users pics and set state 
