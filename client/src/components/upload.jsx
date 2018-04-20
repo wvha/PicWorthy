@@ -12,6 +12,8 @@ class Upload extends Component {
       location: '',
       imageURL: '',
       description: '',
+      user_id: '',
+      username: '',
     };
     this.getLink = this.getLink.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -35,12 +37,14 @@ class Upload extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log('submitted!');
+    // console.log('username or no: ', this.props);
     axios.post('/api/upload', {
       category: this.state.category,
       location: this.state.location,
       imageURL: this.state.imageURL,
       description: this.state.description,
-      user_id: this.props._id,
+      user_id: this.props.userData._id,
+      username: this.props.userData.username
     })
       .then(res => {
         console.log(res);
