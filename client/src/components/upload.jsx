@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import UploadForm from './uploadform.jsx';
 import Worthymap from './worthymap.jsx';
 import DropZone from './dropzone.jsx';
+import axios from 'axios';
 
 class Upload extends Component {
   constructor(props) {
@@ -34,11 +35,12 @@ class Upload extends Component {
   handleSubmit(event) {
     event.preventDefault();
     console.log('submitted!');
-    axios.post(`/api/upload`, {
+    axios.post('/api/upload', {
       category: this.state.category,
       location: this.state.location,
       imageURL: this.state.imageURL,
-      description: this.state.description
+      description: this.state.description,
+      user_id: this.props._id,
     })
       .then(res => {
         console.log(res);
