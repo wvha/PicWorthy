@@ -2,6 +2,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
+import { BounceLoader } from 'react-spinners';
 /*
  * We use the imgur API to host our photos on imgur and store the links in our database
  * 
@@ -15,7 +16,8 @@ class Accept extends React.Component {
     this.state = {
       accepted: [],
       rejected: [],
-      uploaded: false
+      uploaded: false,
+      loading: false
     }
     this.changeImg = this.changeImg.bind(this);
   }
@@ -24,7 +26,11 @@ class Accept extends React.Component {
     const formData = new FormData();
     formData.append('image', img[0]);
     const that = this;
-    
+
+    this.setState({
+      loading: true
+    })
+
     axios({
         method: 'post',
         url: 'https://api.imgur.com/3/image',
@@ -33,7 +39,10 @@ class Accept extends React.Component {
     })
     .then(function(response) {
       that.props.getLink(response.data.data.link);
-      that.setState({uploaded: true})
+      that.setState({
+        uploaded: true,
+        loading: false
+      })
     })
     .catch(function(err) {
         console.log(err);
@@ -41,7 +50,9 @@ class Accept extends React.Component {
   }
 
   changeImg() {
-    if (this.state.uploaded) {
+    if (this.state.loading) {
+      return <BounceLoader color={'#87ceff'} loading={this.state.loading} size={100}/>
+    } else if (this.state.uploaded) {
       return <img width="100px" height="100px" src="http://pluspng.com/img-png/success-png-success-icon-image-23194-400.png" />
     } else {
       return <img width="100px" height="100px" src="http://www.arcdocendi.com/Forms/images/upload.png" />

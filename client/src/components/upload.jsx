@@ -50,6 +50,11 @@ class Upload extends Component {
           submitted: 'Successfully uploaded!'
         })
       })
+      .catch((err) => {
+        this.setState({
+          submitted: 'An error occurred. Please try again.'
+        })
+      })
   }
 
   render() {
@@ -72,7 +77,7 @@ class Upload extends Component {
               handleSubmit={this.handleSubmit}
             />
             <br />
-            <div style={{textAlign: `center`, fontWeight: `bold`, fontSize: `large`, color: `#4fab5b`}}>{this.state.submitted}</div>
+            <div style={{textAlign: `center`, fontWeight: `bold`, fontSize: `large`}}>{this.state.submitted}</div>
           </Col>
         </Row>
 
