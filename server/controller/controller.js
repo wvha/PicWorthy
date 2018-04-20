@@ -90,11 +90,14 @@ get.userLikes = (req, res) => {
 get.userPosts = (req, res) => {
   console.log('req.body is ', req.body);
   if (req.user) {
-    db.getUserPosts(req.user.username).then(data => res.json(data));
-  } else {
-    console.log('error in controller // get.userPOSTS');
+    db.getUserPosts(req.user.username, function (err, data) {
+      console.log('err: ', err);
+      console.log('this is data success: ', data);
+      res.json(data);
+    });
   }
 }
+  
 
 module.exports.get = get;
 module.exports.post = post;

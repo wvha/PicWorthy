@@ -78,31 +78,24 @@ db.selectAllPictures = function(callback) {
   });
 };
 
-// queries user data for posts 
-db.fetchUserPosts = ((username) => { models.Users.findOne({username: username})
-  .populate('photos')
-  .exec((err, photos) => {
-    console.log('populated user photos', photos);
-  })
-});
-
-
-// queries user data for likes 
-db.fetchUserLikes = ((username) => { models.Users.findOne({username:username})
-  .populate('likes').exec((err, photos) => {
-    console.log('populated user likes', photos);
-  })
-});
-
-///
-
-db.getUserPosts = ((username) => {
+// gets all posts from current user
+db.getUserPosts = (username, callback) => {
   console.log('username is: ', username)
   models.Pictures.find({username: username}, function (err, pics) {
     console.log('this is pics:', pics);
-    return pics;
+    callback(err, pics);
     });
-});
+};
+
+// queries user data for likes // to be fixed
+db.fetchUserLikes = (username) => { models.Users.findOne({username:username})
+  .populate('likes').exec((err, photos) => {
+    console.log('populated user likes', photos);
+  })
+};
+
+
+
 
 
 module.exports = db;
