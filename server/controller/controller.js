@@ -58,6 +58,7 @@ post.upload = function(req, res){
       res.sendStatus(500);
     } else {
       console.log('uploaded!');
+      // console.log(data);
       res.sendStatus(200);
     }
   })
