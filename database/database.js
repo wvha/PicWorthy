@@ -96,6 +96,13 @@ db.fetchUserLikes = ((username) => { models.Users.findOne({username:username})
 
 ///
 
-db.getUserPosts = ((username) => models.Pictures.find({username: username}));
+db.getUserPosts = ((username) => {
+  console.log('username is: ', username)
+  models.Pictures.find({username: username}, function (err, pics) {
+    console.log('this is pics:', pics);
+    return pics;
+    });
+});
+
 
 module.exports = db;
