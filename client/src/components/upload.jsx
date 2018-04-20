@@ -4,6 +4,7 @@ import Worthymap from './worthymap.jsx';
 import DropZone from './dropzone.jsx';
 import { Grid, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
+import { BeatLoader } from 'react-spinners';
 
 class Upload extends Component {
   constructor(props) {
@@ -13,6 +14,8 @@ class Upload extends Component {
       location: '',
       imageURL: '',
       description: '',
+      submitted: '',
+      loading: false
     };
     this.getLink = this.getLink.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -35,7 +38,11 @@ class Upload extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log('submitted!');
+
+    this.setState({
+      loading: true
+    })
+
     axios.post(`/api/upload`, {
       category: this.state.category,
       location: this.state.location,
@@ -45,6 +52,16 @@ class Upload extends Component {
       .then(res => {
         console.log(res);
         console.log(res.data);
+        this.setState({
+          submitted: 'Successfully uploaded!',
+          loading: false
+        })
+      })
+      .catch((err) => {
+        this.setState({
+          submitted: 'An error occurred. Please try again.',
+          loading: false
+        })
       })
   }
 
@@ -67,6 +84,13 @@ class Upload extends Component {
               handleInputChange={this.handleInputChange}
               handleSubmit={this.handleSubmit}
             />
+            <br />
+            <div style={{width: `100px`, margin: `auto`, position: `relative`, top:`80px`}}>
+              <BeatLoader color={`#919295`} loading={this.state.loading} />
+            </div>
+            <div style={{textAlign: `center`, fontWeight: `bold`, fontSize: `large`, position: `relative`, top:`80px`}}>
+              {this.state.submitted}
+            </div>
           </Col>
         </Row>
 
