@@ -5,8 +5,10 @@ const userSchema = mongoose.Schema({
   lastName: String,
   username: String,
   password: String,
-  photos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pictures' }],
+  photos: [String],
 
+  // implement populate vvv 
+  // photos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pictures' }],
   // likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pictures'}],
 });
 

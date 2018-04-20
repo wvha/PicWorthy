@@ -58,7 +58,8 @@ post.upload = function(req, res){
       res.sendStatus(500);
     } else {
       console.log('uploaded!');
-      // console.log(data);
+      console.log('data from post.upload in controller: ', data);
+      db.savePictureToUser(data);
       res.sendStatus(200);
     }
   })
@@ -70,7 +71,7 @@ get.upload = function(req, res) {
     if(err) {
       res.sendStatus(500);
     } else {
-      console.log(data);
+      console.log('data from get.upload in controller: ', data);
       res.json(data);
     }
   });

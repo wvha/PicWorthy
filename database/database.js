@@ -58,8 +58,14 @@ db.savePicture = function (data, callback) {
     description: data.description,
     username: data.username,
     user_id: data.user_id,
-
   }, callback);
+};
+
+// will be used as callback for db.savePicture
+db.savePictureToUser = function(data) {
+  console.log(data);
+  return models.Users.update( { _id: data.user_id},
+    { $push: { photos: data._id} });
 };
 
 db.selectAllPictures = function(callback) {
@@ -88,6 +94,8 @@ db.fetchUserLikes = ((username) => { models.Users.findOne({username:username})
   })
 });
 
+///
 
+db.getUserPosts = ((username) => models.Pictures.find({username: username}));
 
 module.exports = db;
