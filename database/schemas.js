@@ -6,6 +6,7 @@ const userSchema = mongoose.Schema({
   username: String,
   password: String,
   photos: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pictures' }],
+
   // likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pictures'}],
 });
 
@@ -14,7 +15,9 @@ const pictureSchema = mongoose.Schema({
   location: String,
   imageURL: String,
   description: String,
-  username: {type: mongoose.Schema.Types.ObjectId, ref: 'Users'},
+  username: String,
+  user_id: String,
+
   // likedBy: [ {type: mongoose.Schema.Types.ObjectId, ref: 'Users'}]
 });
 
