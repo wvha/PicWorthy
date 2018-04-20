@@ -4,7 +4,8 @@ const userSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
   username: String,
-  password: String
+  password: String,
+  photos: [{type: String}]
 });
 
 const pictureSchema = mongoose.Schema({

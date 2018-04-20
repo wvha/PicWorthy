@@ -3,6 +3,7 @@ const passport = require('../middleware/passport.js');
 
 const post = {};
 const get = {};
+const patch = {};
 
 post.signup = (req, res) => {
   if (!db.saveUser(req.body)) {
@@ -75,5 +76,11 @@ get.upload = function(req, res) {
   });
 };
 
+patch.favorites = function(req, res) {
+  db.addToFavorites(req.body);
+  res.end();
+}
+
 module.exports.get = get;
 module.exports.post = post;
+module.exports.patch = patch;

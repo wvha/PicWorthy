@@ -69,4 +69,8 @@ db.selectAllPictures = function(callback) {
   });
 };
 
+db.addToFavorites = (data) => {
+  models.Users.findByIdAndUpdate(data.userData._id, {$push: {photos: data.details}}, {'new': true}, () => {}) 
+}
+
 module.exports = db;

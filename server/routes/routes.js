@@ -13,4 +13,6 @@ router.post('/api/upload', controller.post.upload);
 
 router.get('/api/upload', controller.get.upload);
 
+router.patch('/api/favorites', controller.patch.favorites)
+
 module.exports = router;
