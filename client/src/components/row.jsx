@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import FontAwesome from 'react-fontawesome';
 import FaIconPack, {FaChevronRight, FaChevronLeft} from 'react-icons/lib/fa';
 import Card from './card.jsx';
+import axios from 'axios';
 
 class Row extends Component {
   constructor(props) {
@@ -25,6 +26,16 @@ class Row extends Component {
   }
 
   componentDidMount() {
+    console.log(this.props);
+    if (this.props.rowType === 'user') {
+      axios.get('/api/userposts', {username: this.props.data.username})
+        .then(res => {
+          console.log('set state in axios get req');
+          this.setState({picsDisplay: res.data.slice(0, this.displayAmount)});
+          this.setState({picStatic: res.data});
+        });
+    }
+
     this.updateDisplayAmount();
     window.addEventListener('resize', this.updateDisplayAmount)
   }
