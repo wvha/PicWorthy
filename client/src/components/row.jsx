@@ -99,7 +99,7 @@ class Row extends Component {
       <div style={{textAlign: `center`}}>
         {this.renderChevronArrows('left')}
         {this.state.picsDisplay.map((pic, i) => {
-          return <Card src={pic.imageURL} key={i} location={pic.location} username={pic.username} showDetails={this.props.showDetails} picDetails={pic}/>
+          return <Card key={i} showDetails={this.props.showDetails} picDetails={pic}/>
         })}
         {this.renderChevronArrows('right')}
         <br/>

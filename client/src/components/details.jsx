@@ -17,8 +17,6 @@ class Details extends Component {
   }
 
   render() {
-    const { info } = this.props;
-
     return (
       <div>
         <br/>
@@ -26,16 +24,16 @@ class Details extends Component {
           <Row>
             <Col md={6} mdPush={6} style={{paddingRight: `100px`}}>
               <h1 style={{fontFamily: `billabong`}}>
-                {info.location}
+                {this.props.picDetails.location}
               </h1>
               <h4>
-                Submitted by: {info.username}
+                Submitted by: {this.props.picDetails.username}
               </h4>
               <p>
-                {/* random text */}
-                Built purse maids cease her ham new seven among and. Pulled coming wooded tended it answer remain me be. So landlord by we unlocked sensible it. Fat cannot use denied excuse son law. Wisdom happen suffer common the appear ham beauty her had. Or belonging zealously existence as by resources. 
+                {this.props.picDetails.description} 
               </p>
-              {this.displayStar(info)}
+              <br />
+              {this.displayStar(this.props.picDetails)}
               <FaInstagram style={iconStyle} size={30} />
               <FaFacebookSquare style={iconStyle} size={30} /> 
               <FaTwitter style={iconStyle} size={30} />
@@ -43,7 +41,7 @@ class Details extends Component {
             </Col>
             <Col md={6} mdPull={6}>
               <span style={imgSpanStyle}>
-                <img src={info.src} style ={imgStyle}/>
+                <img src={this.props.picDetails.imageURL} style ={imgStyle}/>
               </span>
             </Col>
           </Row>
@@ -65,6 +63,9 @@ const imgSpanStyle= {
 
 const imgStyle = {
   border: `1px solid black`,
+  height: `100%`,
+  width: `100%`,
+  objectFit: `contain`
 }
 
 const iconStyle ={

@@ -22,7 +22,6 @@ export default class Locations extends Component {
   }
 
   showDetails(e, props) {
-    console.log('showdetails props', props)
     if (this.state.lastClickCard === undefined || this.state.lastClickCard.src !== props.src) {
       this.setState({
         detailProps: props,
@@ -45,7 +44,7 @@ export default class Locations extends Component {
   renderClickedCard() {
     if (this.state.detailProps !== undefined) {
       return <Details 
-              info={this.state.detailProps} 
+              picDetails={this.state.detailProps.picDetails} 
               initialStar={this.checkFavorites()} 
               handleStarClick={this.handleStarClick}
               changeStarState={this.changeStarState} />;
