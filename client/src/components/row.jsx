@@ -86,14 +86,22 @@ class Row extends Component {
     this.updateRow();
   }
 
+  renderChevronArrows(direction) {
+    if (this.state.picStatic.length > 5 && direction === 'left') {
+      return <FaChevronLeft onClick={this.handlePrevious} style={chevronStyle}/>
+    } else if (this.state.picStatic.length > 5 && direction === 'right') {
+      return <FaChevronRight onClick={this.handlePrevious} style={chevronStyle}/>
+    }
+  }
+
   render() {
     return (
       <div style={{textAlign: `center`}}>
-        <FaChevronLeft onClick={this.handlePrevious} style={chevronStyle}/>
+        {this.renderChevronArrows('left')}
         {this.state.picsDisplay.map((pic, i) => {
           return <Card src={pic.imageURL} key={i} location={pic.location} username={pic.username} showDetails={this.props.showDetails} picDetails={pic}/>
         })}
-        <FaChevronRight onClick={this.handleNext} style={chevronStyle}/>
+        {this.renderChevronArrows('right')}
         <br/>
         <br/>
       </div>
