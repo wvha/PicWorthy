@@ -20,7 +20,7 @@ class Details extends Component {
     return (
       <div>
         <br/>
-        <Grid style={{background: `linear-gradient(to right, #00b0ff 0%, #00d7ff  100%)`, padding: `20px`, width: `100vw`}}>
+        <Grid style={{background: `linear-gradient(to right, #4cc7ff 0%, #99dfff  100%)`, padding: `20px`, width: `100vw`}}>
           <Row>
             <Col md={6} mdPush={6} style={{paddingRight: `100px`}}>
               <h1 style={{fontFamily: `billabong`}}>
