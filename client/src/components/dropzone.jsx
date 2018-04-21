@@ -67,7 +67,7 @@ class Accept extends React.Component {
           <Dropzone
             accept="image/jpeg, image/png"
             onDrop={(this.onDrop.bind(this))}
-            style={{width: `100%`, border:`2px dashed grey`, height: `398px`}}
+            style={{width: `100%`, border:`2px dashed grey`, height: `400px`}}
           >
             <div style={{width: `80%`, margin:`auto`, paddingTop: `50px`, paddingBottom: `50px`, textAlign: `center`}}>
               <p>Try dropping a file here, or click to select files to upload.</p>

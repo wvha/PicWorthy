@@ -72,7 +72,7 @@ export default class Locations extends Component {
   render() {
     return (
       <Grid style={{margin: `0`, width: `100vw`, paddingLeft: `0px`, paddingRight: `0px`, minHeight: `calc(100vh - 150px)`}}>
-        <Row style={{margin: `20px`}}>
+        <Row style={{margin: `20px`, height:`calc((100vh - 150px)/2)`, minHeight: `400px`}}>
           <WorthyMap 
             isForUploadPage={ false } position={this.state.position} zoom={this.state.zoom}
           />
