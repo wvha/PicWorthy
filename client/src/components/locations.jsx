@@ -52,7 +52,7 @@ export default class Locations extends Component {
   }
 
   handleStarClick(e, details) {
-    axios.patch('/api/favorites', {details: details.picDetails, userData: this.state.userData})
+    axios.patch('/api/favorites', {details: details, userData: this.state.userData})
       .then ((result) => {
         console.log(result.data);
         this.setState({
