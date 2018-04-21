@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 
-const Footer = (props) => (
+const Footer = () => (
   <div style={{textAlign: `center`, height: `60px`}}>
     <hr />
     <span style={{bottom: `20px`, fontSize: `small`}}>
