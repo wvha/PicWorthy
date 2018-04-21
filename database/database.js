@@ -20,7 +20,7 @@ const deleteDB = () => {
   models.Pictures.remove({}, () => console.log('removed Pictures'));
   // models.Users.remove((), () => console.log('removed users'));
 }
-deleteDB();
+// deleteDB();
 
 // database functions
 // we are just attatching them to the db object for convenience
@@ -74,13 +74,13 @@ db.savePicture = function (data) {
 };
 
 // will be used as callback for db.savePicture
-db.savePictureToUser = function(data) {
-  console.log(data);
-  return models.Users.update( { _id: data.user_id},
-    { $push: { photos: data._id} });
-};
+db.savePictureToUser = (data) =>
+  models.Users.update(
+    {_id: data.user_id},
+    {$push: { photos: data._id}}
+  );
 
-const MAX_DISTANCE = 100000;
+const MAX_DISTANCE = 200000;
 
 db.selectAllPictures = function(cb, location) {
 
@@ -114,9 +114,5 @@ db.fetchUserLikes = (username) => { models.Users.findOne({username:username})
     console.log('populated user likes', photos);
   })
 };
-
-
-
-
 
 module.exports = db;
