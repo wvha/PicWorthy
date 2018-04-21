@@ -3,17 +3,16 @@ const passport = require('../middleware/passport.js');
 
 const post = {};
 const get = {};
+const patch = {};
 
 post.signup = (req, res) => {
-  if (!db.saveUser(req.body)) {
-    res.end('Username already exists')
-  } else {
-    res.end('User successfully created')
-  }
+  db.saveUser(req.body)
+    .then((result) => {
+      result === false ? res.sendStatus(422) : res.sendStatus(200);
+    })
 };
 
 post.login = (req, res, next) => {
-  console.log('attempting login ')
   passport.authenticate('local', function (err, user, info) {
     if (err || !user) {
       res.status(422).send(info);
@@ -26,7 +25,6 @@ post.login = (req, res, next) => {
         if (err) {
           res.status(400).send(err);
         } else {
-          console.log(user);
           res.json(user);
         }
       });
@@ -37,17 +35,13 @@ post.login = (req, res, next) => {
 get.logout = (req, res) => {
   req.logout();
   req.session.destroy();
-  console.log('session destroyed');
   return res.redirect('/');
 }
 
 get.loggedInYet = (req, res) => {
   if (req.user) {
-    console.log(req.user);
     res.json(req.user);
-  } else {
-    console.log('user not logged in');
-  }
+  } 
 }
 
 post.upload = (req, res) => 
@@ -56,7 +50,7 @@ post.upload = (req, res) =>
     .then(() => res.end())
     .catch((err) => {
       console.log('error uploading photo', err);
-      res.status(400).send('error uploading photo')
+      res.status(500).send('error uploading photo')
     });
 
 get.upload = function(req, res) {
@@ -68,22 +62,28 @@ get.upload = function(req, res) {
     });
 };
 
+patch.favorites = function(req, res) {
+  db.addToFavorites(req.body)
+    .then(() => {
+      return db.fetchUser(req.body.userData.username);
+    })
+    .then((data) => {
+      res.json(data);
+    })
+}
+
 get.userLikes = (req, res) => {
   if (req.user) {
-    let userLikes = db.fetchUserPosts(req.user);
-    console.log(userLikes);
-    res.json(userLikes);
-  } else {
-    console.log('error in controller // get.userlikes');
-  }
+    db.fetchUserLikes(req.user)
+      .then((result) => {
+        res.json(result);
+      });
+  } 
 }
 
 get.userPosts = (req, res) => {
-  console.log('req.body is ', req.body);
   if (req.user) {
     db.getUserPosts(req.user.username, function (err, data) {
-      console.log('err: ', err);
-      console.log('this is data success: ', data);
       res.json(data);
     });
   }
@@ -92,3 +92,4 @@ get.userPosts = (req, res) => {
 
 module.exports.get = get;
 module.exports.post = post;
+module.exports.patch = patch;

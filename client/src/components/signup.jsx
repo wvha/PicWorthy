@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import PasswordMask from 'react-password-mask'; // go to https://www.npmjs.com/package/react-password-mask for styling
 import { Modal } from 'react-bootstrap';
+import Login from './login.jsx';
 
 class Signup extends Component {
   constructor(props) {
@@ -10,7 +11,8 @@ class Signup extends Component {
       firstName: '',
       lastName: '',
       username: '',
-      password: ''
+      password: '',
+      status: undefined,
     },
     this.updateInfo = this.updateInfo.bind(this);
     this.sendInfo = this.sendInfo.bind(this);
@@ -19,15 +21,32 @@ class Signup extends Component {
   updateInfo(e) {
     this.setState({
       [e.target.name]: e.target.value,
+      status: undefined
     });
   }
 
   sendInfo() { 
-    console.log(this.state);
     axios.post('/api/signup', this.state)
-      .then((result) => {
-        alert(JSON.stringify(result.data));
+      .then((data) => {
+        this.setState({
+          status: true
+        });
       })
+      .catch(() => {
+        this.setState({
+          status: false
+        })
+      })
+  }
+
+  renderStatus() {
+    if (this.state.status !== undefined) {
+      if (this.state.status) {
+        return <span style={{color: `green`}}>Your account was successfully created!</span>
+      } else {
+        return <span style={{color: `red`}}>Username already exists.</span>
+      }
+    }
   }
 
   render() {
@@ -48,8 +67,10 @@ class Signup extends Component {
                           onChange={this.updateInfo}
                           useVendorStyles={false}
                         />
+              {this.renderStatus()}
           </Modal.Body>
           <Modal.Footer>
+              <a style={{float:`left`}} onClick={() => {this.props.handleShowLogin()}}>Already have an account?</a>
               <button onClick={this.sendInfo} style={{borderRadius: `5px`}}> Register </button>
           </Modal.Footer>
         </Modal>

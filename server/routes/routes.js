@@ -13,6 +13,8 @@ router.post('/api/upload', controller.post.upload);
 
 router.get('/api/upload', controller.get.upload);
 
+router.patch('/api/favorites', controller.patch.favorites);
+
 router.get('/api/likes', controller.get.userLikes);
 
 router.get('/api/userposts', controller.get.userPosts);

@@ -9,7 +9,6 @@ import fetchClosestPics from '../helpers/fetchClosestPics.jsx';
 class Row extends Component {
   constructor(props) {
     super(props);
-    console.log('props: ', props);
     this.displayAmount;
     this.startIndex = 0;
     this.state = {
@@ -30,14 +29,40 @@ class Row extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     if (this.props.rowType === 'user') {
+<<<<<<< HEAD
       displayUserPosts();      
     } else if (this.props.rowTYpe === 'locations') {
       displayLocationPosts();
+=======
+      axios.get('/api/userposts', {username: this.props.data.username})
+        .then(res => {
+          this.setState({picsDisplay: res.data.slice(0, this.displayAmount)});
+          this.setState({picStatic: res.data});
+        });
+    } else if (this.props.rowType === 'locations') {
+      axios.get('/api/upload')
+        .then((res) => {
+          if (res.data.length > 0){
+            this.setState({
+              picsDisplay: res.data.slice(0, this.displayAmount),
+              picStatic: res.data
+            })
+          }
+        })
+    } else if (this.props.rowType === 'likes') {
+        axios.get('/api/likes', {userId: this.props.userId})
+          .then((res) => {
+            this.setState({
+              picsDisplay: res.data.photos.slice(0, this.displayAmount),
+              picStatic: res.data.photos
+            })
+        });
+>>>>>>> e4a2f0af5d596e3687cac71e4ee687b6e355c532
     }
     this.updateDisplayAmount();
     window.addEventListener('resize', this.updateDisplayAmount);
+<<<<<<< HEAD
   }
 
   displayLocationPosts() {
@@ -52,6 +77,8 @@ class Row extends Component {
         this.setState({picsDisplay: res.data.slice(0, this.displayAmount)});
         this.setState({picStatic: res.data});
       });
+=======
+>>>>>>> e4a2f0af5d596e3687cac71e4ee687b6e355c532
   }
 
   updateRow() {
@@ -59,7 +86,6 @@ class Row extends Component {
     for (var i = 0; i < this.displayAmount; i++) {
       displayArr.push(this.state.picStatic[(this.startIndex + i) % this.state.picStatic.length]) // picsDb to picStatic
     }
-    console.log('set state in update row');
     this.setState({
       picsDisplay: displayArr
     });
@@ -79,26 +105,22 @@ class Row extends Component {
     this.updateRow();
   }
 
-  render() {
-    // console.log('props in render: ', this.props);
-    // var pics;
-    // if (this.props.pic) {
-    //   pics = this.props.pic.slice(0, this.displayAmount);
-    // } else {
-    //   pics = this.state.picsDisplay;
-    // }
-    console.log('in render', this.state);
+  renderChevronArrows(direction) {
+    if (this.state.picStatic.length > 5 && direction === 'left') {
+      return <FaChevronLeft onClick={this.handlePrevious} style={chevronStyle}/>
+    } else if (this.state.picStatic.length > 5 && direction === 'right') {
+      return <FaChevronRight onClick={this.handlePrevious} style={chevronStyle}/>
+    }
+  }
 
+  render() {
     return (
       <div style={{textAlign: `center`}}>
-        <FaChevronLeft onClick={this.handlePrevious} style={chevronStyle}/>
-        {/* {this.state.picsDisplay.map((pic, i) => {
-          return <img src={pic} key={i} style={{padding:`10px`}}/>
-        })} */}
+        {this.renderChevronArrows('left')}
         {this.state.picsDisplay.map((pic, i) => {
-          return <Card src={pic.imageURL} key={i} location={pic.location} username={pic.username} showDetails={this.props.showDetails}/>
+          return <Card key={i} showDetails={this.props.showDetails} picDetails={pic}/>
         })}
-        <FaChevronRight onClick={this.handleNext} style={chevronStyle}/>
+        {this.renderChevronArrows('right')}
         <br/>
         <br/>
       </div>
