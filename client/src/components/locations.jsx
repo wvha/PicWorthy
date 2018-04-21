@@ -22,7 +22,7 @@ export default class Locations extends Component {
   }
 
   showDetails(e, props) {
-    if (this.state.lastClickCard === undefined || this.state.lastClickCard.src !== props.src) {
+    if (this.state.lastClickCard === undefined || this.state.lastClickCard.picDetails._id !== props.picDetails._id) {
       this.setState({
         detailProps: props,
         lastClickCard: props
@@ -77,7 +77,7 @@ export default class Locations extends Component {
             isForUploadPage={ false } position={this.state.position} zoom={this.state.zoom}
           />
         </Row>
-        <div style={{textAlign: `center`, fontFamily: `billabong`, fontSize: `275%`, color: `#87ceff`}}>
+        <div style={{textAlign: `center`, fontFamily: `billabong`, fontSize: `275%`, color: `#32bfff`}}>
           Around You
         </div>
         <Row style={rowStyle}>

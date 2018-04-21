@@ -12,7 +12,7 @@ class Likes extends React.Component {
     return (
       <div style={{minHeight: `calc(100vh - 150px)`}}>
         <div>
-        <h1 style={{fontFamily: `billabong`, textAlign: `center`, color: `#87ceff`}}>{this.props.userData.firstName}'s Favorites</h1>
+        <h1 style={{fontFamily: `billabong`, textAlign: `center`, color: `#32bfff`}}>{this.props.userData.firstName}'s Favorites</h1>
         <br />
         </div>
         <Row rowType="likes" userId={this.props.userData._id}/>

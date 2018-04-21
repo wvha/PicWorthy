@@ -86,7 +86,7 @@ class NavbarComp extends React.Component {
       <Navbar fluid style={{marginBottom: "0px", backgroundColor: "white", borderBottom: "1px solid #cccccc", borderRadius: "0px"}}>
         <Navbar.Header style={{marginLeft: `10px`}}>
           <Navbar.Brand>
-            <Link to='/' style={{fontFamily: `billabong`, fontSize: `250%`, color: `#1e65df`, textShadow: `2px 1px #cccccc`, paddingTop:`20px`}}>Pic Worthy</Link>
+            <Link to='/' style={{fontFamily: `billabong`, fontSize: `250%`, color: `#00b0ff`, textShadow: `2px 1px #cccccc`, paddingTop:`20px`}}>Pic Worthy</Link>
           </Navbar.Brand>
           <Navbar.Form pullLeft> 
             {/* <FormGroup>
