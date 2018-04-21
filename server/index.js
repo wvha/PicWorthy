@@ -37,4 +37,8 @@ app.use('/', router);
 
 const PORT = process.env.PORT || 3000;
 
-app.listen(PORT, () => console.log(`listening to port ${PORT}`));
+if (require.main === module) {
+  app.listen(PORT, () => console.log(`listening to port ${PORT}`));
+}
+
+module.exports = app;
