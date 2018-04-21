@@ -29,8 +29,12 @@ class WorthyMap extends Component {
   getUserLocation() {
     const onSuccess = ({coords}) => {
       console.log('users coords', coords);
+      
       this.setState({
-        position: {lat: coords.latitude, lng: coords.longitude},
+        position: {
+          lat: coords.latitude, 
+          lng: coords.longitude
+        },
         zoom: 9
       });
     };
@@ -64,6 +68,11 @@ class WorthyMap extends Component {
   // allows a user to click the map to place a pin where there location is while uploading photos
   clickMap(e) {
     console.log(e);
+    this.props.getLocationUpload({
+      lat: e.latLng.lat(),
+      lng: e.latLng.lng()
+    });
+
     this.setState({
       userMarker: [{
         lat: e.latLng.lat(),

@@ -18,15 +18,26 @@ class Upload extends Component {
       username: '',
       submitted: '',
       loading: false,
+      latLng: {lat: null, lng: null},
       uploadStatus: []
     };
     this.getLink = this.getLink.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.getLocationUpload = this.getLocationUpload.bind(this);
   }
 
   getLink(imgurLink) {
     this.setState({ imageURL: imgurLink })
+  }
+
+  getLocationUpload({lat, lng}) {
+    this.setState({
+      latLng: {
+        lat: lat,
+        lng: lng,
+      }
+    })
   }
 
   handleInputChange(event) {
@@ -42,14 +53,17 @@ class Upload extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
-    const { category, location, description, imageURL } = this.state;
+    const { category, location, description, imageURL, latLng} = this.state;
 
     let invalidFields = [];
     if (category === '') {
       invalidFields.push('Please enter a category');
     } 
     if (location === '') {
-      invalidFields.push('Please select a location on the map');
+      invalidFields.push('Please enter a location');
+    }
+    if (latLng.lat === null || latLng.lng === null) {
+      invalidFields.push('Please drop pin on location on the map');
     }
     if (description === '') {
       invalidFields.push('Please enter a description');
@@ -74,7 +88,8 @@ class Upload extends Component {
       imageURL: imageURL,
       description: description,
       user_id: this.props.userData._id,
-      username: this.props.userData.username
+      username: this.props.userData.username,
+      latLng: this.state.latLng
     })
       .then(res => {
         console.log(res);
@@ -87,7 +102,6 @@ class Upload extends Component {
       .then(() => {
         this.setState({
           category: '',
-          location: '',
           description: '',
           imageURL: ''
         })
@@ -105,7 +119,10 @@ class Upload extends Component {
       <Grid>
         <Row style={{height: `calc(100vh - 130px)`, paddingTop:`20px`}}>
           <Col xs={9} md={4}>
-            <Worthymap isForUploadPage={true} />
+            <Worthymap 
+              isForUploadPage={true} 
+              getLocationUpload={this.getLocationUpload}
+            />
           </Col>
           <Col xs={6} md={4}>
             <DropZone getLink={this.getLink} />
