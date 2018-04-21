@@ -11,7 +11,7 @@ const ClusteredMap = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCWb-bdFbk9oBVzcehnMVyaG1QqVCvf8As&v=3.exp&libraries=geometry,drawing,places",
     loadingElement: <div style={{ height: `100%` }} />,
-    containerElement: <div style={{ height: `400px`, width: `100%`, border: `1px solid grey`, borderRadius: `3px`}}/>,
+    containerElement: <div style={{ height: `100%`, width: `100%`, border: `1px solid grey`, borderRadius: `3px`}}/>,
     mapElement: <div style={{ height: `100%` }} />,
   }),
   withHandlers({

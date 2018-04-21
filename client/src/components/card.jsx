@@ -2,9 +2,9 @@ import React, { Component } from 'react';
 
 const Card = (props) => (
   <span style={spanStyle} onClick={(e)=>{props.showDetails(e, props)}}>
-    <img src={props.src} style={imgStyle} />
+    <img src={props.picDetails.imageURL} style={imgStyle} />
     <br/> <br/>
-    <div style={locationStyle}>{props.location}</div>
+    <div style={locationStyle}>{props.picDetails.location}</div>
   </span>
 )
 

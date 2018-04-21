@@ -71,9 +71,9 @@ class Upload extends Component {
 
   render() {
     return (
-      <Grid>
-        <Row style={{height: `calc(100vh - 130px)`, paddingTop:`20px`}}>
-          <Col xs={9} md={4}>
+      <Grid style={{minHeight: `calc(100vh - 130px)`}}>
+        <Row style={{padding: `50px`}}>
+          <Col xs={9} md={4} style={{height: `400px`}}> 
             <Worthymap isForUploadPage={true} />
           </Col>
           <Col xs={6} md={4}>

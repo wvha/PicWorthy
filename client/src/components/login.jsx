@@ -8,7 +8,8 @@ class Login extends Component {
     super(props);
     this.state = {
       username: '',
-      password: ''
+      password: '',
+      failedLogin: ''
     };
     this.updateInfo = this.updateInfo.bind(this);
     this.sendLogin = this.sendLogin.bind(this);
@@ -16,7 +17,8 @@ class Login extends Component {
 
   updateInfo(e) {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      failedLogin: ''
     });
   }
 
@@ -26,7 +28,10 @@ class Login extends Component {
         window.location.replace(`${window.location.origin}/locations`);
       })
       .catch((err) => {
-        throw err;
+        this.setState({
+          failedLogin: 'Incorrect username or password.'
+        })
+        throw err; 
       });
   }
 
@@ -52,8 +57,12 @@ class Login extends Component {
                           onChange={this.updateInfo}
                           useVendorStyles={false}
                         />
+              <span style={{color: "red"}}>
+                {this.state.failedLogin}
+              </span>
           </Modal.Body>
           <Modal.Footer>
+            <a style={{float:`left`}} onClick={() => {this.props.handleShowSignup()}}>Need an account?</a>
             <button onClick={this.sendLogin} style={{borderRadius: `5px`}}> Login </button>
           </Modal.Footer>
         </Modal>
