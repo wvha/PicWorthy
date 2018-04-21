@@ -12,17 +12,6 @@ const UserSchema = mongoose.Schema({
   // likes: [{ type: mongoose.Schema.Types.ObjectId, ref: 'Pictures'}],
 });
 
-const GeoSchema = new mongoose.Schema({
-  type: {
-    default: 'Point',
-    type: String
-  },
-  coordinates: {
-    type: [Number],
-    index: '2dsphere'
-  }
-});
-
 const PictureSchema = new mongoose.Schema({
   category: String,
   location: String,
@@ -30,9 +19,19 @@ const PictureSchema = new mongoose.Schema({
   description: String,
   username: String,
   user_id: String,
-  geometry: GeoSchema
+  loc: {
+    type: {
+      default: 'Point', 
+      type: String
+    },
+    coordinates: {
+      type: [Number],
+      index: '2dsphere'
+    }
+  }
   // likedBy: [ {type: mongoose.Schema.Types.ObjectId, ref: 'Users'}]
 });
+
 
 // are these ever used?
 const Users = mongoose.model('Users', UserSchema);

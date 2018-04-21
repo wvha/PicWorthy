@@ -16,6 +16,12 @@ const db = mongoose.connection;
 db.on('error', () => console.log('error connecting to database!'));
 db.once('open', () => console.log('connection successful!'));
 
+const deleteDB = () => {
+  models.Pictures.remove({}, () => console.log('removed Pictures'));
+  // models.Users.remove((), () => console.log('removed users'));
+}
+deleteDB();
+
 // database functions
 // we are just attatching them to the db object for convenience
 db.fetchUser = (username) =>  models.Users.findOne({username: username});
@@ -50,20 +56,21 @@ db.saveUser = (obj) => {
   })
 };
 
-db.savePicture = function (data, callback) {
+db.savePicture = function (data) {
   console.log('saving picture', data);
-  return models.Pictures.create({
+  const newPic = new models.Pictures({
     category: data.category,
     location: data.location,
     imageURL: data.imageURL,
     description: data.description,
     username: data.username,
     user_id: data.user_id,
-    geometry: {
-      type: 'point',
+    loc: {
+      type: 'Point',
       coordinates: [data.latLng.lat, data.latLng.lng]
     }
-  }, callback);
+  });
+  return newPic.save();
 };
 
 // will be used as callback for db.savePicture
@@ -73,14 +80,23 @@ db.savePictureToUser = function(data) {
     { $push: { photos: data._id} });
 };
 
-db.selectAllPictures = function(callback) {
-  models.Pictures.find({}, function(err, pictures) {
-    if (err) {
-      callback(err, null);
-    } else {
-      callback(null, pictures);
-    }
-  });
+const MAX_DISTANCE = 100000;
+
+db.selectAllPictures = function(cb, location) {
+
+  return models.Pictures.aggregate(
+    [
+      {$geoNear: {
+        near: {
+          type: 'Point',
+          coordinates: [40, -83] //[location.lat, location.lng]
+        },
+        distanceField: 'distance',
+        spherical: true,
+        maxDistance: MAX_DISTANCE
+      }}
+    ]
+  )
 };
 
 // gets all posts from current user

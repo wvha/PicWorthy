@@ -50,31 +50,22 @@ get.loggedInYet = (req, res) => {
   }
 }
 
-post.upload = function(req, res){
-  console.log('uploading...');
-  console.log(req.body);
-  db.savePicture(req.body, function(err, data) {
-    if (err) {
-      res.sendStatus(500);
-    } else {
-      console.log('uploaded!');
-      console.log('data from post.upload in controller: ', data);
-      db.savePictureToUser(data);
-      res.sendStatus(200);
-    }
-  })
-};
+post.upload = (req, res) => 
+  db.savePicture(req.body)
+    .then((data) => db.savePictureToUser(data))
+    .then(() => res.end())
+    .catch((err) => {
+      console.log('error uploading photo', err);
+      res.status(400).send('error uploading photo')
+    });
 
 get.upload = function(req, res) {
   console.log('displaying...');
-  db.selectAllPictures(function(err, data) {
-    if(err) {
-      res.sendStatus(500);
-    } else {
-      console.log('data from get.upload in controller: ', data);
-      res.json(data);
-    }
-  });
+  db.selectAllPictures({lat: 0, lng: 0})
+    .then((pictures) => {
+      console.log('sending pictures', pictures);
+      res.json(pictures);
+    });
 };
 
 get.userLikes = (req, res) => {
