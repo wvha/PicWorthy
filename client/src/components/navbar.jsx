@@ -1,13 +1,10 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import { Navbar, NavItem, MenuItem, Nav, NavDropdown, FormGroup, FormControl, Button } from 'react-bootstrap';
 import FaIconPack, {FaStar, FaHome, FaPlus} from 'react-icons/lib/fa';
 import { Link } from 'react-router-dom';
-import axios from 'axios';
 import Login from './login.jsx';
 import Signup from './signup.jsx';
 
-// import controller from '../server/controller/controller.js';
 
 class NavbarComp extends React.Component {
   logout() {
@@ -29,7 +26,6 @@ class NavbarComp extends React.Component {
             <Button type="submit"><FontAwesome name="search" /></Button> */}
             </Navbar.Form>
         </Navbar.Header>
-
         <Name 
             userData={ this.props.userData }
             logout={ this.logout }
@@ -42,7 +38,6 @@ class NavbarComp extends React.Component {
             handleShowLogin={ this.props.handleShowLogin }
         />
       </Navbar>
-
     );
   }
 }
