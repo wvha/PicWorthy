@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 
 const Card = (props) => (
   <span style={spanStyle} onClick={(e)=>{props.showDetails(e, props)}}>
