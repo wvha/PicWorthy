@@ -30,11 +30,9 @@ class Row extends Component {
 
   componentDidMount() {
     if (this.props.rowType === 'user') {
-<<<<<<< HEAD
       displayUserPosts();      
     } else if (this.props.rowTYpe === 'locations') {
       displayLocationPosts();
-=======
       axios.get('/api/userposts', {username: this.props.data.username})
         .then(res => {
           this.setState({picsDisplay: res.data.slice(0, this.displayAmount)});
@@ -58,11 +56,9 @@ class Row extends Component {
               picStatic: res.data.photos
             })
         });
->>>>>>> e4a2f0af5d596e3687cac71e4ee687b6e355c532
     }
     this.updateDisplayAmount();
     window.addEventListener('resize', this.updateDisplayAmount);
-<<<<<<< HEAD
   }
 
   displayLocationPosts() {
@@ -77,8 +73,6 @@ class Row extends Component {
         this.setState({picsDisplay: res.data.slice(0, this.displayAmount)});
         this.setState({picStatic: res.data});
       });
-=======
->>>>>>> e4a2f0af5d596e3687cac71e4ee687b6e355c532
   }
 
   updateRow() {

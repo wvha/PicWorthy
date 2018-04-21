@@ -24,14 +24,46 @@ class App extends React.Component {
         username: '',
         user_id: '',
       },
-      loading: 'initial'
+      loading: 'initial',
+      showLogin: false,
+      showSignup: false,
+      activeModal: ''
     }
+    this.handleClose = this.handleClose.bind(this);
+    this.handleShow = this.handleShow.bind(this);
+    this.handleShowSignup = this.handleShowSignup.bind(this);
+    this.handleShowLogin = this.handleShowLogin.bind(this);
   }
 
   componentDidMount() {
     this.setState({ loading: 'true' });
     axios.get('/api/loggedInYet').then((result) => {
       this.setState({userData: result.data, loading: 'false'});
+    });
+  }
+  
+  handleClose() {
+    this.setState({ 
+      showLogin: false,
+      showSignup: false
+    });
+  }
+
+  handleShow(e) {
+    this.setState({ [e.target.name]: true });
+  }
+
+  handleShowSignup() {
+    this.setState({ 
+      showSignup : true,
+      showLogin: false
+    });
+  }
+
+  handleShowLogin() {
+    this.setState({ 
+      showSignup : false,
+      showLogin: true
     });
   }
 
@@ -42,7 +74,16 @@ class App extends React.Component {
 
     return (
       <div style={{backgroundColor: "#fdfdfd"}}>
-        <NavbarComp userData={this.state.userData} />
+        <NavbarComp 
+          userData={this.state.userData}
+          showLogin={this.state.showLogin}
+          showSignup={this.state.showSignup}
+          activeModal={this.state.activeModal}
+          handleClose={this.handleClose}
+          handleShow={this.handleShow}
+          handleShowSignup={this.handleShowSignup}
+          handleShowLogin={this.handleShowLogin}
+        />
         <Switch>
           <Route exact path='/' component={Landing} />
           <Route path='/locations' component={Locations} />

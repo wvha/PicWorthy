@@ -15,7 +15,6 @@ const PictureSchema = new mongoose.Schema({
   description: String,
   username: String,
   user_id: String,
-<<<<<<< HEAD
   loc: {
     type: {
       default: 'Point', 
@@ -27,12 +26,9 @@ const PictureSchema = new mongoose.Schema({
     }
   }
   // likedBy: [ {type: mongoose.Schema.Types.ObjectId, ref: 'Users'}]
-=======
->>>>>>> e4a2f0af5d596e3687cac71e4ee687b6e355c532
 });
 
 
-<<<<<<< HEAD
 // are these ever used?
 const Users = mongoose.model('Users', UserSchema);
 const Pictures = mongoose.model('Pictures', PictureSchema);
@@ -55,7 +51,3 @@ module.exports.PictureSchema = PictureSchema;
 //   user: { type: mongoose.Schema.Types.ObjectId, ref: 'Users'},
 //   likedBy: [ {type: mongoose.Schema.Types.ObjectId, ref: 'Users'}]
 // });
-=======
-module.exports.userSchema = userSchema;
-module.exports.pictureSchema = pictureSchema;
->>>>>>> e4a2f0af5d596e3687cac71e4ee687b6e355c532
