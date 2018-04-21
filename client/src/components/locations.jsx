@@ -17,7 +17,6 @@ export default class Locations extends Component {
       userData: {}
     };
     this.showDetails = this.showDetails.bind(this);
-    this.handleClickCard = this.handleClickCard.bind(this);
     this.handleStarClick = this.handleStarClick.bind(this);
     this.checkFavorites = this.checkFavorites.bind(this);
   }
@@ -43,7 +42,7 @@ export default class Locations extends Component {
     return photoArr.indexOf(img) !== -1;
   }
 
-  handleClickCard() {
+  renderClickedCard() {
     if (this.state.detailProps !== undefined) {
       return <Details 
               info={this.state.detailProps} 
@@ -86,7 +85,7 @@ export default class Locations extends Component {
           <RowComp showDetails={this.showDetails} rowType="locations"/>
         </Row>
         <Row style={rowStyle}>
-          {this.handleClickCard()}
+          {this.renderClickedCard()}
         </Row>
       </Grid>
     );
