@@ -1,6 +1,5 @@
-// this helps us scrape fake use photos using the googleplaces api
-const axios = require('axios');
-const _ = require('lodash'); // lodash is like underscore
+import axios from 'axios';
+import _ from 'lodash';
 
 const GOOGLE_API_KEY =  'AIzaSyAbKOk8mgD80PTew_Lum8blZMT5WBP5NzA';
 
@@ -26,5 +25,13 @@ const getPhotos = (lat, lng) => {
     .then((parsedPlaces) => console.log(parsedPlaces));
 };
 
-getPhotos(-34, 151)
+export default getPhotos;
 
+/*
+
+getPhotos takes in a latitude and a longitude and then uses the google places API to scrape photos from nearby that place.
+
+We are using this to make fake data.  ONe could use this to find more photos in addition to the user uploaded ones.
+
+
+*/

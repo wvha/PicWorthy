@@ -10,7 +10,7 @@ mongoose.promise = Promise;
 Promise.promisifyAll(bcrypt);
 
 // set up database
-const DB_URL = 'mongodb://localhost/PicWorthy';
+const DB_URL = process.env.DB_URL || 'mongodb://localhost/PicWorthy';
 mongoose.connect(DB_URL);
 const db = mongoose.connection;
 db.on('error', () => console.log('error connecting to database!'));
@@ -55,8 +55,17 @@ db.savePicture = function (data, callback) {
     category: data.category,
     location: data.location,
     imageURL: data.imageURL,
-    description: data.description
+    description: data.description,
+    username: data.username,
+    user_id: data.user_id,
   }, callback);
+};
+
+// will be used as callback for db.savePicture
+db.savePictureToUser = function(data) {
+  console.log(data);
+  return models.Users.update( { _id: data.user_id},
+    { $push: { photos: data._id} });
 };
 
 db.selectAllPictures = function(callback) {
@@ -72,5 +81,24 @@ db.selectAllPictures = function(callback) {
 db.addToFavorites = (data) => {
   return models.Users.findByIdAndUpdate(data.userData._id, {$addToSet: {photos: data.details.src}}, {'new': true}, () => {}) 
 }
+// gets all posts from current user
+db.getUserPosts = (username, callback) => {
+  console.log('username is: ', username)
+  models.Pictures.find({username: username}, function (err, pics) {
+    console.log('this is pics:', pics);
+    callback(err, pics);
+    });
+};
+
+// queries user data for likes // to be fixed
+db.fetchUserLikes = (username) => { models.Users.findOne({username:username})
+  .populate('likes').exec((err, photos) => {
+    console.log('populated user likes', photos);
+  })
+};
+
+
+
+
 
 module.exports = db;

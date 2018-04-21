@@ -59,6 +59,8 @@ post.upload = function(req, res){
       res.sendStatus(500);
     } else {
       console.log('uploaded!');
+      console.log('data from post.upload in controller: ', data);
+      db.savePictureToUser(data);
       res.sendStatus(200);
     }
   })
@@ -70,7 +72,7 @@ get.upload = function(req, res) {
     if(err) {
       res.sendStatus(500);
     } else {
-      console.log(data);
+      console.log('data from get.upload in controller: ', data);
       res.json(data);
     }
   });
@@ -87,6 +89,28 @@ patch.favorites = function(req, res) {
       res.json(data);
     })
 }
+
+get.userLikes = (req, res) => {
+  if (req.user) {
+    let userLikes = db.fetchUserPosts(req.user);
+    console.log(userLikes);
+    res.json(userLikes);
+  } else {
+    console.log('error in controller // get.userlikes');
+  }
+}
+
+get.userPosts = (req, res) => {
+  console.log('req.body is ', req.body);
+  if (req.user) {
+    db.getUserPosts(req.user.username, function (err, data) {
+      console.log('err: ', err);
+      console.log('this is data success: ', data);
+      res.json(data);
+    });
+  }
+}
+  
 
 module.exports.get = get;
 module.exports.post = post;
