@@ -79,7 +79,7 @@ const DisplayStar = (props) => {
       <FaStarO
         style={ iconStyle } 
         size={ 30 } 
-        onClick={ (e) => props.handleStarClick(e, propsdetails) } 
+        onClick={ (e) => props.handleStarClick(e, props.details) } 
       /> 
     );
   }

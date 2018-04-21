@@ -3,9 +3,8 @@ const bcrypt = require('bcrypt-nodejs');
 
 const schemas = require('./schemas.js');
 const models = require('./models.js');
-const db = require('./database.js');
+const db = require('./mongoose.js');
 
-mongoose.promise = Promise;
 Promise.promisifyAll(bcrypt);
 
 db.fetchUser = (username) =>  models.Users.findOne({username: username});
@@ -64,14 +63,13 @@ db.savePictureToUser = (data) =>
 
 const MAX_DISTANCE = 200000;
 
-db.selectAllPictures = function(cb, location) {
-
+db.selectClosestPictures = function(location) {
   return models.Pictures.aggregate(
     [
       {$geoNear: {
         near: {
           type: 'Point',
-          coordinates: [40, -83] //[location.lat, location.lng]
+          coordinates: [Number(location.lat), Number(location.lng)]
         },
         distanceField: 'distance',
         spherical: true,

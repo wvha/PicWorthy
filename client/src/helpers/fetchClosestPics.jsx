@@ -5,7 +5,7 @@ import axios from 'axios';
 const fetchClosestPics = ({lat, lng}) => {
   //event.preventDefault();
   console.log('displaying!');
-  axios.get(`/api/upload?lat=${lat}&lng=${lng}`)
+  axios.get(`/api/closestPics?lat=${lat}&lng=${lng}`)
     .then(res => {
       console.log(res.data);
   })

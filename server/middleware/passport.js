@@ -2,7 +2,7 @@ const passport = require('passport');
 const LocalStrategy = require('passport-local').Strategy;
 const Promise = require('bluebird');
 const bcrypt = require('bcrypt-nodejs');
-const db = require('../../database/database.js');
+const db = require('../../database/dbFunctions.js');
 
 Promise.promisifyAll(bcrypt);
 

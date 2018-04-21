@@ -11,7 +11,7 @@ router.get('/api/loggedInYet', controller.get.loggedInYet);
 
 router.post('/api/upload', controller.post.upload);
 
-router.get('/api/upload', controller.get.upload);
+router.get('/api/closestPics', controller.get.closestPics);
 
 router.patch('/api/favorites', controller.patch.favorites);
 

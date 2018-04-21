@@ -1,4 +1,4 @@
-const db = require('../../../database/database.js');
+const db = require('../../../database/dbFunctions.js');
 const server = require('../../../server/index.js');
 const axios = require('axios');
 

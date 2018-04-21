@@ -3,7 +3,6 @@ const bodyParser = require('body-parser');
 const cookieParser = require('cookie-parser');
 
 const morgan = require('./middleware/morgan');
-const pictures = require('../database/database.js');
 const session = require('./middleware/session');
 const passport = require('./middleware/passport');
 const loggedOutRedirect = require('./middleware/loggedOutRedirect.js');

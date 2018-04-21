@@ -18,6 +18,7 @@ class App extends React.Component {
 
   constructor(props) {
     super(props);
+    
     this.state = {
       userData: {
         firstName: '',
@@ -27,12 +28,23 @@ class App extends React.Component {
       },
       showLogin: false,
       showSignup: false,
-      activeModal: ''
+      activeModal: '',
+      mapCenter: {
+        lat: 41.9,
+        lng: -87.624
+      },
+      mapZoom: 5,
+      detailProps: undefined,
+      lastCardClicked: undefined,
+      userData: {}
     }
+
     this.navbarHandleClose = this.navbarHandleClose.bind(this);
     this.navbarHandleShow = this.navbarHandleShow.bind(this);
     this.navbarHandleShowSignup = this.navbarHandleShowSignup.bind(this);
     this.navbarHandleShowLogin = this.navbarHandleShowLogin.bind(this);
+
+
   }
 
   componentDidMount() {

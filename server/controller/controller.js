@@ -13,7 +13,6 @@ post.signup = (req, res) => {
 };
 
 post.login = (req, res, next) => {
-  console.log('logging in', req);
   passport.authenticate('local', function (err, user, info) {
     if (err || !user) {
       res.status(422).send(info);
@@ -55,9 +54,8 @@ post.upload = (req, res) =>
       res.status(500).send('error uploading photo')
     });
 
-get.upload = function(req, res) {
-  console.log('displaying...');
-  db.selectAllPictures({lat: 0, lng: 0})
+get.closestPics = function(req, res) {
+  db.selectClosestPictures({lat: req.query.lat, lng: req.query.lng})
     .then((pictures) => {
       console.log('sending pictures', pictures);
       res.json(pictures);
