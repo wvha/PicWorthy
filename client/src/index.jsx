@@ -15,6 +15,7 @@ import Likes from './components/likes.jsx';
 
 // App component renders components based on the URL Route using React Router
 class App extends React.Component {
+
   constructor(props) {
     super(props);
     this.state = {
@@ -24,43 +25,41 @@ class App extends React.Component {
         username: '',
         user_id: '',
       },
-      loading: 'initial',
       showLogin: false,
       showSignup: false,
       activeModal: ''
     }
-    this.handleClose = this.handleClose.bind(this);
-    this.handleShow = this.handleShow.bind(this);
-    this.handleShowSignup = this.handleShowSignup.bind(this);
-    this.handleShowLogin = this.handleShowLogin.bind(this);
+    this.navbarHandleClose = this.navbarHandleClose.bind(this);
+    this.navbarHandleShow = this.navbarHandleShow.bind(this);
+    this.navbarHandleShowSignup = this.navbarHandleShowSignup.bind(this);
+    this.navbarHandleShowLogin = this.navbarHandleShowLogin.bind(this);
   }
 
   componentDidMount() {
-    this.setState({ loading: 'true' });
-    axios.get('/api/loggedInYet').then((result) => {
-      this.setState({userData: result.data, loading: 'false'});
-    });
+    axios.get('/api/loggedInYet')
+      .then((result) => 
+        this.setState({userData: result.data}));
   }
   
-  handleClose() {
+  navbarHandleClose() {
     this.setState({ 
       showLogin: false,
       showSignup: false
     });
   }
 
-  handleShow(e) {
+  navbarHandleShow(e) {
     this.setState({ [e.target.name]: true });
   }
 
-  handleShowSignup() {
+  navbarHandleShowSignup() {
     this.setState({ 
       showSignup : true,
       showLogin: false
     });
   }
 
-  handleShowLogin() {
+  navbarHandleShowLogin() {
     this.setState({ 
       showSignup : false,
       showLogin: true
@@ -68,10 +67,6 @@ class App extends React.Component {
   }
 
   render() {
-    if (this.state.loading === 'true') {
-      console.log('loading');
-    }
-
     return (
       <div style={{backgroundColor: "#fdfdfd"}}>
         <NavbarComp 
@@ -79,17 +74,41 @@ class App extends React.Component {
           showLogin={this.state.showLogin}
           showSignup={this.state.showSignup}
           activeModal={this.state.activeModal}
-          handleClose={this.handleClose}
-          handleShow={this.handleShow}
-          handleShowSignup={this.handleShowSignup}
-          handleShowLogin={this.handleShowLogin}
+          handleClose={this.navbarHandleClose}
+          handleShow={this.navbarHandleShow}
+          handleShowSignup={this.navbarHandleShowSignup}
+          handleShowLogin={this.navbarHandleShowLogin}
         />
         <Switch>
-          <Route exact path='/' component={Landing} />
-          <Route path='/locations' component={Locations} />
-          <Route path='/userpage' render={(props) => <Userpage userData={this.state.userData} />} />
-          <Route path='/upload' render={(props) => <Upload userData={this.state.userData} />} />
-          <Route path='/likes' render={(props) => <Likes userData={this.state.userData} />} />
+          <Route 
+            exact path='/' 
+            component={Landing} 
+          />
+          <Route 
+            path='/locations' 
+            component={Locations} 
+          />
+          <Route 
+            path='/userpage' 
+            render={(props) => 
+              <Userpage 
+              userData={this.state.userData} 
+              />
+            }/>
+          <Route 
+            path='/upload' 
+            render={(props) => 
+              <Upload 
+                userData={this.state.userData} 
+              />
+            }/>
+          <Route 
+            path='/likes' 
+            render={(props) => 
+              <Likes 
+                userData={this.state.userData} 
+              />
+            }/>
         </Switch>
         <Footer />
       </div>

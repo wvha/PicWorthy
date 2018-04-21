@@ -14,28 +14,6 @@ class NavbarComp extends React.Component {
     axios.get('/api/logout')
       .then(() => window.location.reload());
   }
-
-  renderName() {
-    if (this.props.userData.firstName) {
-      return (
-        <Nav pullRight style={{marginRight: `3px`}}>
-          <NavItem eventKey={1}><Link to='/locations'><FaHome size={20} /></Link></NavItem>
-          <NavItem eventKey={2}><Link to ='/likes'><FaStar size={20} /></Link></NavItem>
-          <NavItem eventKey={3}><Link to ='/upload'><FaPlus size={20} /></Link></NavItem>
-          <NavItem eventKey={4}><Link to ='/userpage'>{this.props.userData.firstName}</Link></NavItem>
-          <NavItem eventKey={6} onClick={this.logout}><Link to='/'>Logout</Link></NavItem>
-        </Nav>
-      )
-    } else {
-      return (
-        <Nav pullRight style={{marginRight: `3px`}}>
-          <NavItem eventKey={4} onClick={(e) => {this.props.handleShow(e)}} name="showLogin" >Login</NavItem>
-          <Login show={this.props.showLogin} hide={this.handleClose} handleShowSignup={this.props.handleShowSignup}/>
-          <Signup show={this.props.showSignup} hide={this.props.handleClose} handleShowLogin={this.props.handleShowLogin}/>
-        </Nav>
-      )
-    }
-  }
   
   render() {
     return (
@@ -52,12 +30,86 @@ class NavbarComp extends React.Component {
             </Navbar.Form>
         </Navbar.Header>
 
-        {this.renderName()}
-
+        <Name 
+            userData={ this.props.userData }
+            logout={ this.logout }
+            handleShow={ this.props.handleShow }
+            showLogin={ this.props.showLogin }
+            handleClose={ this.props.handleClose }
+            handleShowSignup={ this.props.handleShowSignup }
+            showSignup={ this.props.showSignup }
+            handleClose={ this.props.handleClose }
+            handleShowLogin={ this.props.handleShowLogin }
+        />
       </Navbar>
 
     );
   }
 }
+
+const Name = (props) => {
+  if (props.userData.firstName) {
+    return (
+      <Nav 
+        pullRight 
+        style={ {marginRight: `3px`} }
+      >
+        <NavItem eventKey={ 1 }>
+          <Link to='/locations'>
+            <FaHome size={ 20 } />
+          </Link>
+        </NavItem>
+        <NavItem eventKey={ 2 }>
+          <Link to ='/likes'>
+            <FaStar size={ 20 } />
+          </Link>
+        </NavItem>
+        <NavItem eventKey={ 3 } >
+          <Link to='/upload'>
+            <FaPlus size={ 20 } />
+          </Link>
+        </NavItem>
+        <NavItem eventKey={ 4 }>
+          <Link to='/userpage'>
+            { props.userData.firstName }
+          </Link>
+        </NavItem>
+        <NavItem 
+          eventKey={ 6 } 
+          onClick={ props.logout }
+        >
+          <Link to='/'>
+            Logout
+          </Link>
+        </NavItem>
+      </Nav>
+    )
+  } else {
+    return (
+      <Nav 
+        pullRight 
+        style={ {marginRight: `3px`}  }
+      >
+        <NavItem 
+          eventKey={ 4 } 
+          onClick={ (e) => {props.handleShow(e)} } 
+          name="showLogin" 
+        >
+          Login
+        </NavItem>
+        <Login 
+          show={ props.showLogin } 
+          hide={ props.handleClose } 
+          handleShowSignup={ props.handleShowSignup }
+        />
+        <Signup 
+          show={ props.showSignup } 
+          hide={ props.handleClose } 
+          handleShowLogin={ props.handleShowLogin }
+        />
+      </Nav>
+    )
+  }
+};
 
 export default NavbarComp;
