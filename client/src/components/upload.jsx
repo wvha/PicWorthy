@@ -17,7 +17,8 @@ class Upload extends Component {
       user_id: '',
       username: '',
       submitted: '',
-      loading: false
+      loading: false,
+      uploadStatus: []
     };
     this.getLink = this.getLink.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -41,15 +42,37 @@ class Upload extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    const { category, location, description, imageURL } = this.state;
+
+    let invalidFields = [];
+    if (category === '') {
+      invalidFields.push('Please enter a category');
+    } 
+    if (location === '') {
+      invalidFields.push('Please select a location on the map');
+    }
+    if (description === '') {
+      invalidFields.push('Please enter a description');
+    }
+    if (imageURL === '') {
+      invalidFields.push('Please upload a image')
+    }
+    if (invalidFields.length > 0) {
+      this.setState({uploadStatus: invalidFields});
+      return;
+    } else {
+      this.setState({uploadStatus: []})
+    }
+
     this.setState({
       loading: true
     })
 
     axios.post(`/api/upload`, {
-      category: this.state.category,
-      location: this.state.location,
-      imageURL: this.state.imageURL,
-      description: this.state.description,
+      category: category,
+      location: location,
+      imageURL: imageURL,
+      description: description,
       user_id: this.props.userData._id,
       username: this.props.userData.username
     })
@@ -59,6 +82,14 @@ class Upload extends Component {
         this.setState({
           submitted: 'Successfully uploaded!',
           loading: false
+        })
+      })
+      .then(() => {
+        this.setState({
+          category: '',
+          location: '',
+          description: '',
+          imageURL: ''
         })
       })
       .catch((err) => {
@@ -87,6 +118,7 @@ class Upload extends Component {
               description={this.state.description}
               handleInputChange={this.handleInputChange}
               handleSubmit={this.handleSubmit}
+              uploadStatus={this.state.uploadStatus}
             />
             <br />
             <div style={{width: `100px`, margin: `auto`, position: `relative`, top:`80px`}}>

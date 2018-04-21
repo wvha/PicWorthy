@@ -9,12 +9,13 @@ class UploadForm extends Component {
       return <p style={{fontWeight:`bold`}}>Please upload an image.</p>
     }
   } 
-
   render() {
+    const uploadStatus = this.props.uploadStatus.map((status) => <div>{status}</div>);
     return (
       <div style={{paddingTop: `30px`}}>
         {this.checkImgUrl()}
       <br />
+      <div style={{color: 'red', fontWeight: 'bold'}}>{uploadStatus}</div>
       <form onSubmit={this.props.handleSubmit}>
         <label>
           Category
