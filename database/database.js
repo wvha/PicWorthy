@@ -91,10 +91,11 @@ db.getUserPosts = (username, callback) => {
 };
 
 // queries user data for likes // to be fixed
-db.fetchUserLikes = (username) => { models.Users.findOne({username:username})
-  .populate('likes').exec((err, photos) => {
-    console.log('populated user likes', photos);
-  })
+db.fetchUserLikes = (userId) => {
+  console.log('userid', userId._id)
+  return models.Users.findOne({_id: userId._id})
+    .populate('photos').exec()
+ 
 };
 
 

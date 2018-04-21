@@ -38,7 +38,6 @@ post.login = (req, res, next) => {
 get.logout = (req, res) => {
   req.logout();
   req.session.destroy();
-  console.log('session destroyed');
   return res.redirect('/');
 }
 
@@ -58,8 +57,6 @@ post.upload = function(req, res){
     if (err) {
       res.sendStatus(500);
     } else {
-      console.log('uploaded!');
-      console.log('data from post.upload in controller: ', data);
       db.savePictureToUser(data);
       res.sendStatus(200);
     }
@@ -72,7 +69,6 @@ get.upload = function(req, res) {
     if(err) {
       res.sendStatus(500);
     } else {
-      console.log('data from get.upload in controller: ', data);
       res.json(data);
     }
   });
@@ -92,9 +88,11 @@ patch.favorites = function(req, res) {
 
 get.userLikes = (req, res) => {
   if (req.user) {
-    let userLikes = db.fetchUserPosts(req.user);
-    console.log(userLikes);
-    res.json(userLikes);
+    db.fetchUserLikes(req.user)
+      .then((result) => {
+        console.log('data from getuserlikes', result);
+        res.json(result);
+      });
   } else {
     console.log('error in controller // get.userlikes');
   }

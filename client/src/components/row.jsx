@@ -46,6 +46,15 @@ class Row extends Component {
             })
           }
         })
+    } else if (this.props.rowType === 'likes') {
+        axios.get('/api/likes', {userId: this.props.userId})
+          .then((res) => {
+            console.log('res from getlike', res)
+            this.setState({
+              picsDisplay: res.data.photos.slice(0, this.displayAmount),
+              picStatic: res.data.photos
+            })
+        });
     }
 
     this.updateDisplayAmount();

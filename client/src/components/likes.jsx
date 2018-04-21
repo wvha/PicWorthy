@@ -12,14 +12,15 @@ class Likes extends React.Component {
 
 // need function to call users likes and set second state
   componentDidMount() {
-    axios.get('/api/likes', {user: this.props.userData.username})
-      .then((result) => {
-        console.log('this.props.userdata.username: ', this.props.userData.username);
-        console.log('success in likes//component did mount: ', result);
-        this.setState({
-          likes: result.data
-        });
-      });
+    // console.log('thisprops in likes', this.props.userData._id)
+    // axios.get('/api/likes', {userId: this.props.userData._id})
+    //   .then((result) => {
+    //     console.log('this.props.userdata.username: ', this.props.userData.username);
+    //     console.log('success in likes//component did mount: ', result);
+    //     this.setState({
+    //       likes: result.data
+    //     });
+    //   });
   }
 
   render() {
@@ -33,7 +34,7 @@ class Likes extends React.Component {
         </div>
       
       <p>User's likes</p>
-      <Row />
+      <Row rowType="likes" userId={this.props.userData._id}/>
 
 
 
