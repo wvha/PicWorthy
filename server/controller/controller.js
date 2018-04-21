@@ -13,6 +13,7 @@ post.signup = (req, res) => {
 };
 
 post.login = (req, res, next) => {
+  console.log('logging in', req);
   passport.authenticate('local', function (err, user, info) {
     if (err || !user) {
       res.status(422).send(info);
@@ -23,6 +24,7 @@ post.login = (req, res, next) => {
 
       req.login(user, function (err) {
         if (err) {
+          console.log('error logging in', err);
           res.status(400).send(err);
         } else {
           res.json(user);
@@ -35,7 +37,7 @@ post.login = (req, res, next) => {
 get.logout = (req, res) => {
   req.logout();
   req.session.destroy();
-  return res.redirect('/');
+  res.redirect('/');
 }
 
 get.loggedInYet = (req, res) => {
