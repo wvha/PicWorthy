@@ -6,39 +6,16 @@ import axios from 'axios';
 class Details extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      starred: false,
-      userData: {
-        firstName: '',
-        lastName: '',
-        username: '',
-      }
-    };
-    this.handleStarClick = this.handleStarClick.bind(this);
-  }
-
-  componentDidMount() {
-    axios.get('/api/loggedInYet').then((result) => {
-      this.setState({
-        userData: result.data,
-      });
-    });
   }
 
   displayStar(details) {
-    return this.state.starred ? 
-            <FaStar style={iconStyle} size={30} onClick={(e) => {this.handleStarClick(e, details)}}/> : 
-            <FaStarO style={iconStyle} size={30} onClick={(e) => {this.handleStarClick(e, details)}}/> ;
+    if (this.props.initialStar) {
+      return <FaStar style={iconStyle} size={30} />
+    } else {
+      return <FaStarO style={iconStyle} size={30} onClick={(e) => {this.props.handleStarClick(e, details)}}/> ;
+    }
   }
 
-  handleStarClick(e, details) {
-    axios.patch('/api/favorites', {details: details, userData: this.state.userData})
-
-    this.setState({
-      starred: true
-    })
-  }
-  
   render() {
     const { info } = this.props;
 

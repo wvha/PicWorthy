@@ -77,8 +77,15 @@ get.upload = function(req, res) {
 };
 
 patch.favorites = function(req, res) {
-  db.addToFavorites(req.body);
-  res.end();
+  db.addToFavorites(req.body)
+    .then(() => {
+      console.log('req body', req.body)
+      return db.fetchUser(req.body.userData.username);
+    })
+    .then((data) => {
+      console.log('data in controller', data)
+      res.json(data);
+    })
 }
 
 module.exports.get = get;

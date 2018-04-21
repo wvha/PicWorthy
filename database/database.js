@@ -70,7 +70,7 @@ db.selectAllPictures = function(callback) {
 };
 
 db.addToFavorites = (data) => {
-  models.Users.findByIdAndUpdate(data.userData._id, {$push: {photos: data.details.src}}, {'new': true}, () => {}) 
+  return models.Users.findByIdAndUpdate(data.userData._id, {$addToSet: {photos: data.details.src}}, {'new': true}, () => {}) 
 }
 
 module.exports = db;

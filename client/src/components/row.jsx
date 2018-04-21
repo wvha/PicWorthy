@@ -61,7 +61,7 @@ class Row extends Component {
           return <img src={pic} key={i} style={{padding:`10px`}}/>
         })} */}
         {this.state.picsDisplay.map((pic, i) => {
-          return <Card src={pic.src} key={i} location={pic.location} username={pic.username} showDetails={this.props.showDetails}/>
+          return <Card src={pic.src} key={i} location={pic.location} username={pic.username} showDetails={this.props.showDetails}/> 
         })}
         <FaChevronRight onClick={this.handleNext} style={chevronStyle}/>
         <br/>

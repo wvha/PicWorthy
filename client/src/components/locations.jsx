@@ -3,6 +3,7 @@ import { Grid, Row } from 'react-bootstrap';
 import WorthyMap from './worthymap.jsx';
 import RowComp from './row.jsx';
 import Details from './details.jsx';
+import axios from 'axios';
 
 export default class Locations extends Component {
   constructor(props) {
@@ -11,12 +12,15 @@ export default class Locations extends Component {
       position: {lat: 41.9, lng: -87.624},
       zoom: 5,
       detailProps: undefined,
-      lastClickCard: undefined
+      lastClickCard: undefined,
+      starred: false,
+      userData: {}
     };
     this.showDetails = this.showDetails.bind(this);
     this.handleClickCard = this.handleClickCard.bind(this);
+    this.handleStarClick = this.handleStarClick.bind(this);
+    this.checkFavorites = this.checkFavorites.bind(this);
   }
-
 
   showDetails(e, props) {
     if (this.state.lastClickCard === undefined || this.state.lastClickCard.src !== props.src) {
@@ -32,10 +36,38 @@ export default class Locations extends Component {
     } 
   }
 
+  checkFavorites() {
+    const photoArr = this.state.userData.photos;
+    const img = this.state.detailProps.src;
+    return photoArr.indexOf(img) !== -1;
+  }
+
   handleClickCard() {
     if (this.state.detailProps !== undefined) {
-      return <Details info={this.state.detailProps}/>
+      return <Details 
+              info={this.state.detailProps} 
+              initialStar={this.checkFavorites()} 
+              handleStarClick={this.handleStarClick}
+              changeStarState={this.changeStarState} />;
     }
+  }
+
+  handleStarClick(e, details) {
+    axios.patch('/api/favorites', {details: details, userData: this.state.userData})
+      .then ((result) => {
+        console.log(result.data);
+        this.setState({
+          userData: result.data
+        })
+      })
+  }
+
+  componentDidMount() {
+    axios.get('/api/loggedInYet').then((result) => {
+      this.setState({
+        userData: result.data
+      })
+    });
   }
 
   render() {
@@ -50,7 +82,7 @@ export default class Locations extends Component {
           Around You
         </div>
         <Row style={rowStyle}>
-          <RowComp showDetails={this.showDetails}/>
+          <RowComp showDetails={this.showDetails} />
         </Row>
         <Row style={rowStyle}>
           {this.handleClickCard()}
