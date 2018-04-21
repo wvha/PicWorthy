@@ -40,6 +40,7 @@
     "lodash": "^4.17.5",
     "mongodb-memory-server": "^1.7.3",
     "mongoose": "^5.0.14",
+    "mongoose-geojson-schema": "^2.1.2",
     "morgan": "^1.9.0",
     "node-googleplaces": "^0.1.2",
     "passport": "^0.4.0",

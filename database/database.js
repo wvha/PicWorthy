@@ -51,6 +51,7 @@ db.saveUser = (obj) => {
 };
 
 db.savePicture = function (data, callback) {
+  console.log('saving picture', data);
   return models.Pictures.create({
     category: data.category,
     location: data.location,
@@ -58,6 +59,10 @@ db.savePicture = function (data, callback) {
     description: data.description,
     username: data.username,
     user_id: data.user_id,
+    geometry: {
+      type: 'point',
+      coordinates: [data.latLng.lat, data.latLng.lng]
+    }
   }, callback);
 };
 
