@@ -8,16 +8,14 @@ class Likes extends React.Component {
   }
 
   render() {
+    console.log('thispropslikes', this.props);
     return (
-      <div>
+      <div style={{minHeight: `calc(100vh - 150px)`}}>
         <div>
-        <h1>Hello this is the likes page.</h1>
-        <h2>username</h2>
-        <h3>location</h3>
+        <h1 style={{fontFamily: `billabong`, textAlign: `center`, color: `#87ceff`}}>{this.props.userData.firstName}'s Favorites</h1>
         <br />
         </div>
-      <p>User's likes</p>
-      <Row rowType="likes" userId={this.props.userData._id}/>
+        <Row rowType="likes" userId={this.props.userData._id}/>
       </div>
     )
   }
