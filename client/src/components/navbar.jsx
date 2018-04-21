@@ -1,7 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { Navbar, NavItem, MenuItem, Nav, NavDropdown, FormGroup, FormControl, Button } from 'react-bootstrap';
-import FontAwesome from 'react-fontawesome';
 import FaIconPack, {FaStar, FaHome, FaPlus} from 'react-icons/lib/fa';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
