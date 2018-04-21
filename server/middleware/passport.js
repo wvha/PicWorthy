@@ -7,7 +7,6 @@ const db = require('../../database/database.js');
 Promise.promisifyAll(bcrypt);
 
 passport.serializeUser(function(user, done) {
-  console.log('user', user)
   done(null, user);
 });
 
@@ -17,7 +16,6 @@ passport.deserializeUser(function(user, done) {
 
 passport.use(new LocalStrategy(
   (username, password, done) => {
-    console.log('username password', username, password);
     db.fetchUser(username)
       .then((user) => {
         if (user) {

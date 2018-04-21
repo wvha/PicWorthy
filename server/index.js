@@ -12,12 +12,9 @@ const reactRoutes = require('./routes/reactRoutes.js');
 
 const app = express();
 
-// middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(morgan); // automatically logs data
-
-// authentication middleware
+app.use(morgan);
 app.use(cookieParser());
 app.use(session);
 app.use(passport.initialize());

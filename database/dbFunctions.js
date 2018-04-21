@@ -1,32 +1,15 @@
-const mongoose = require('mongoose');
 const Promise = require('bluebird');
 const bcrypt = require('bcrypt-nodejs');
 
 const schemas = require('./schemas.js');
 const models = require('./models.js');
+const db = require('./database.js');
 
-// just allows mongoose functions to return promises
 mongoose.promise = Promise;
 Promise.promisifyAll(bcrypt);
 
-// set up database
-const DB_URL = process.env.DB_URL || 'mongodb://localhost/PicWorthy';
-mongoose.connect(DB_URL);
-const db = mongoose.connection;
-db.on('error', () => console.log('error connecting to database!'));
-db.once('open', () => console.log('connection successful!'));
-
-const deleteDB = () => {
-  models.Pictures.remove({}, () => console.log('removed Pictures'));
-  // models.Users.remove((), () => console.log('removed users'));
-}
-// deleteDB();
-
-// database functions
-// we are just attatching them to the db object for convenience
 db.fetchUser = (username) =>  models.Users.findOne({username: username});
 
-// saves a user to the database
 db.saveUser = (obj) => {
   return db.fetchUser(obj.username)
   .then((user) => {
@@ -73,7 +56,6 @@ db.savePicture = function (data) {
   return newPic.save();
 };
 
-// will be used as callback for db.savePicture
 db.savePictureToUser = (data) =>
   models.Users.update(
     {_id: data.user_id},

@@ -1,4 +1,4 @@
-const db = require ('../../database/database.js');
+const db = require ('../../database/dbFunctions.js');
 const passport = require('../middleware/passport.js');
 
 const post = {};
