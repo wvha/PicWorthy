@@ -45,7 +45,7 @@ db.saveUser = (obj) => {
         )
     }) 
     } else {
-      return 'Username already exists';
+      return false;
     }
   })
 };

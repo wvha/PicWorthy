@@ -21,25 +21,21 @@ class NavbarComp extends React.Component {
       },
       showLogin: false,
       showSignup: false,
+      activeModal: ''
     };
     this.handleShow = this.handleShow.bind(this);
     this.handleClose = this.handleClose.bind(this);
+    this.handleShowSignup = this.handleShowSignup.bind(this);
+    this.handleShowLogin= this.handleShowLogin.bind(this);
   }
 
   logout() {
     axios.get('/api/logout')
-      .then((result) => console.log('logout success in axios of navbar', result));
-      window.location.reload();
-      // this.setState({userData:{}});
+      .then(() => window.location.reload());
   }
 
   componentDidMount() {
-    // this.setState({userData: this.props.userData});
-    // console.log('this.props.userData: ', this.props.userData);
-    // console.log('this.props: ', this.props);
-    // this.renderName();
     axios.get('/api/loggedInYet').then((result) => {
-      console.log('comp did mount: ', result.data);
       this.setState({
         userData: result.data,
       });
@@ -57,9 +53,22 @@ class NavbarComp extends React.Component {
     this.setState({ [e.target.name]: true });
   }
 
+  handleShowSignup() {
+    this.setState({ 
+      showSignup : true,
+      showLogin: false
+    });
+  }
+
+  handleShowLogin() {
+    this.setState({ 
+      showSignup : false,
+      showLogin: true
+    });
+  }
+
   renderName() {
     if (this.state.userData.firstName) {
-      console.log(this.state.userData.firstName);
       return (
         <Nav pullRight style={{marginRight: `3px`}}>
           <NavItem eventKey={1}><Link to='/locations'><FaHome size={20} /></Link></NavItem>
@@ -72,10 +81,9 @@ class NavbarComp extends React.Component {
     } else {
       return (
         <Nav pullRight style={{marginRight: `3px`}}>
-          <NavItem eventKey={4} onClick={(e) => {this.handleShow(e)}} name="showLogin">Login</NavItem>
-          <NavItem eventKey={5} onClick={(e) => {this.handleShow(e)}} name="showSignup">Register</NavItem>
-          <Login show={this.state.showLogin} hide={this.handleClose}/>
-          <Signup show={this.state.showSignup} hide={this.handleClose}/>
+          <NavItem eventKey={4} onClick={(e) => {this.handleShow(e)}} name="showLogin" >Login</NavItem>
+          <Login show={this.state.showLogin} hide={this.handleClose} handleShowSignup={this.handleShowSignup}/>
+          <Signup show={this.state.showSignup} hide={this.handleClose} handleShowLogin={this.handleShowLogin}/>
         </Nav>
       )
     }

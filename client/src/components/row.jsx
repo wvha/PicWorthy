@@ -7,7 +7,6 @@ import axios from 'axios';
 class Row extends Component {
   constructor(props) {
     super(props);
-    console.log('props: ', props);
     this.displayAmount;
     this.startIndex = 0;
     this.state = {
@@ -28,11 +27,9 @@ class Row extends Component {
   }
 
   componentDidMount() {
-    console.log(this.props);
     if (this.props.rowType === 'user') {
       axios.get('/api/userposts', {username: this.props.data.username})
         .then(res => {
-          console.log('set state in axios get req');
           this.setState({picsDisplay: res.data.slice(0, this.displayAmount)});
           this.setState({picStatic: res.data});
         });
@@ -49,7 +46,6 @@ class Row extends Component {
     } else if (this.props.rowType === 'likes') {
         axios.get('/api/likes', {userId: this.props.userId})
           .then((res) => {
-            console.log('res from getlike', res)
             this.setState({
               picsDisplay: res.data.photos.slice(0, this.displayAmount),
               picStatic: res.data.photos
@@ -66,7 +62,6 @@ class Row extends Component {
     for (var i = 0; i < this.displayAmount; i++) {
       displayArr.push(this.state.picStatic[(this.startIndex + i) % this.state.picStatic.length]) // picsDb to picStatic
     }
-    console.log('set state in update row');
     this.setState({
       picsDisplay: displayArr
     });
