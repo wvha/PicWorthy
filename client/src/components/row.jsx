@@ -36,20 +36,20 @@ class Row extends Component {
           this.setState({picsDisplay: res.data.slice(0, this.displayAmount)});
           this.setState({picStatic: res.data});
         });
+    } else if (this.props.rowType === 'locations') {
+      axios.get('/api/upload')
+        .then((res) => {
+          if (res.data.length > 0){
+            this.setState({
+              picsDisplay: res.data.slice(0, this.displayAmount),
+              picStatic: res.data
+            })
+          }
+        })
     }
 
     this.updateDisplayAmount();
     window.addEventListener('resize', this.updateDisplayAmount);
-
-    if (this.props.rowType === "user") {
-      console.log('rowtype is user');
-      axios.get('/api/userposts', {username: this.props.data.username})
-      .then(res => {
-        console.log('set state in axios get req');
-        this.setState({picsDisplay: res.data.slice(0, this.displayAmount)});
-        this.setState({picStatic: res.data});
-      });
-    }
   }
 
   updateRow() {
@@ -78,23 +78,11 @@ class Row extends Component {
   }
 
   render() {
-    // console.log('props in render: ', this.props);
-    // var pics;
-    // if (this.props.pic) {
-    //   pics = this.props.pic.slice(0, this.displayAmount);
-    // } else {
-    //   pics = this.state.picsDisplay;
-    // }
-    console.log('in render', this.state);
-
     return (
       <div style={{textAlign: `center`}}>
         <FaChevronLeft onClick={this.handlePrevious} style={chevronStyle}/>
-        {/* {this.state.picsDisplay.map((pic, i) => {
-          return <img src={pic} key={i} style={{padding:`10px`}}/>
-        })} */}
         {this.state.picsDisplay.map((pic, i) => {
-          return <Card src={pic.imageURL} key={i} location={pic.location} username={pic.username} showDetails={this.props.showDetails}/>
+          return <Card src={pic.imageURL} key={i} location={pic.location} username={pic.username} showDetails={this.props.showDetails} picDetails={pic}/>
         })}
         <FaChevronRight onClick={this.handleNext} style={chevronStyle}/>
         <br/>

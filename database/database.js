@@ -79,7 +79,7 @@ db.selectAllPictures = function(callback) {
 };
 
 db.addToFavorites = (data) => {
-  return models.Users.findByIdAndUpdate(data.userData._id, {$addToSet: {photos: data.details.src}}, {'new': true}, () => {}) 
+  return models.Users.findByIdAndUpdate(data.userData._id, {$addToSet: {photos: data.details._id}}, {'new': true}, () => {}) 
 }
 // gets all posts from current user
 db.getUserPosts = (username, callback) => {

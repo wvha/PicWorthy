@@ -5,7 +5,7 @@ const userSchema = mongoose.Schema({
   lastName: String,
   username: String,
   password: String,
-  photos: [{type: String}]
+  photos: [{type: mongoose.Schema.Types.ObjectId, ref: 'Pictures'}]
 });
 
 const pictureSchema = mongoose.Schema({

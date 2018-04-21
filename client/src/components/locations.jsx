@@ -23,6 +23,7 @@ export default class Locations extends Component {
   }
 
   showDetails(e, props) {
+    console.log('showdetails props', props)
     if (this.state.lastClickCard === undefined || this.state.lastClickCard.src !== props.src) {
       this.setState({
         detailProps: props,
@@ -38,7 +39,7 @@ export default class Locations extends Component {
 
   checkFavorites() {
     const photoArr = this.state.userData.photos;
-    const img = this.state.detailProps.src;
+    const img = this.state.detailProps.picDetails._id;
     return photoArr.indexOf(img) !== -1;
   }
 
@@ -53,7 +54,7 @@ export default class Locations extends Component {
   }
 
   handleStarClick(e, details) {
-    axios.patch('/api/favorites', {details: details, userData: this.state.userData})
+    axios.patch('/api/favorites', {details: details.picDetails, userData: this.state.userData})
       .then ((result) => {
         console.log(result.data);
         this.setState({
@@ -82,7 +83,7 @@ export default class Locations extends Component {
           Around You
         </div>
         <Row style={rowStyle}>
-          <RowComp showDetails={this.showDetails} />
+          <RowComp showDetails={this.showDetails} rowType="locations"/>
         </Row>
         <Row style={rowStyle}>
           {this.handleClickCard()}
