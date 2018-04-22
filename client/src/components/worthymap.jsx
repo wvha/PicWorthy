@@ -78,7 +78,7 @@ const WorthyMap = compose(
     <Marker
       key={ i }
       position={{ lat: marker.lat, lng: marker.lng }}
-      onClick={marker.clickHandler}
+      onClick={(e) => marker.clickHandler(e)}
     />
   ));
   const onCenterChanged = props.onCenterChanged ? props.onCenterChanged : () => {};
