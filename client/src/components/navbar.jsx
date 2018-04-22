@@ -1,4 +1,5 @@
 import React from 'react';
+import axios from 'axios';
 import { Navbar, NavItem, MenuItem, Nav, NavDropdown, FormGroup, FormControl, Button } from 'react-bootstrap';
 import FaIconPack, {FaStar, FaHome, FaPlus} from 'react-icons/lib/fa';
 import { Link } from 'react-router-dom';
@@ -20,10 +21,6 @@ class NavbarComp extends React.Component {
             <Link to='/' style={{fontFamily: `billabong`, fontSize: `250%`, color: `#00b0ff`, textShadow: `2px 1px #cccccc`, paddingTop:`20px`}}>Pic Worthy</Link>
           </Navbar.Brand>
           <Navbar.Form pullLeft> 
-            {/* <FormGroup>
-              <FormControl type="text" placeholder="Search" />
-            </FormGroup>
-            <Button type="submit"><FontAwesome name="search" /></Button> */}
             </Navbar.Form>
         </Navbar.Header>
         <Name 

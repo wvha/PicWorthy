@@ -6,7 +6,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { BeatLoader } from 'react-spinners';
 
-class Upload extends Component {
+export default class Upload extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -24,14 +24,14 @@ class Upload extends Component {
     this.getLink = this.getLink.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.getLocationUpload = this.getLocationUpload.bind(this);
+    this.pinLocation = this.pinLocation.bind(this);
   }
 
   getLink(imgurLink) {
     this.setState({ imageURL: imgurLink })
   }
 
-  getLocationUpload({lat, lng}) {
+  pinLocation({lat, lng}) {
     this.setState({
       latLng: {
         lat: lat,
@@ -62,9 +62,9 @@ class Upload extends Component {
     if (location === '') {
       invalidFields.push('Please enter a location');
     }
-    if (latLng.lat === null || latLng.lng === null) {
-      invalidFields.push('Please drop pin on location on the map');
-    }
+    //if (latLng.lat === null || latLng.lng === null) {
+      //invalidFields.push('Please drop pin on location on the map');
+    //}
     if (description === '') {
       invalidFields.push('Please enter a description');
     }
@@ -89,7 +89,7 @@ class Upload extends Component {
       description: description,
       user_id: this.props.userData._id,
       username: this.props.userData.username,
-      latLng: this.state.latLng
+      latLng: {lat: 39, lng: -83}
     })
       .then(res => {
         console.log(res);
@@ -120,8 +120,11 @@ class Upload extends Component {
         <Row style={{padding: `50px`}}>
           <Col xs={9} md={4} style={{height: `400px`}}> 
             <Worthymap 
-              isForUploadPage={true} 
               getLocationUpload={this.getLocationUpload}
+              onMapClick={this.pinLocation}
+              defaultZoom={10}
+              defaultCenter={{lat: 80, lng: 80}}
+              markers={[]}
             />
           </Col>
           <Col xs={6} md={4}>
@@ -152,4 +155,3 @@ class Upload extends Component {
   }
 }
 
-export default Upload;

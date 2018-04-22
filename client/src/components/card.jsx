@@ -1,12 +1,21 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 
 const Card = (props) => (
-  <span style={spanStyle} onClick={(e)=>{props.showDetails(e, props)}}>
-    <img src={props.picDetails.imageURL} style={imgStyle} />
+  <span style={ spanStyle } onClick={ (e)=>{props.showDetails(e, props)} }>
+    <img src={ props.picDetails.imageURL } style={ imgStyle } />
     <br/> <br/>
-    <div style={locationStyle}>{props.picDetails.location}</div>
+    <div style={ locationStyle }>{ props.picDetails.location }</div>
   </span>
 )
+
+Card.PropTypes = {
+  picDetails: PropTypes.shape({
+    location: PropTypes.string,
+    imageURL: PropTypes.string
+  }).isRequired,
+  showDetails: PropTypes.func.isRequired
+}
 
 const spanStyle ={
   display: `inline-block`,

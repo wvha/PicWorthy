@@ -23,7 +23,6 @@ passport.use(new LocalStrategy(
             .then((result) => {
               console.log('line 30 passport.js', result)
               if (result) {
-                console.log('user in local strategy', user);
                 done(null, user)
               } else {
                 done(null, false, {message: 'Password Incorrect'})

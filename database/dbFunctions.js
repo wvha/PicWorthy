@@ -49,7 +49,7 @@ db.savePicture = function (data) {
     user_id: data.user_id,
     loc: {
       type: 'Point',
-      coordinates: [data.latLng.lat, data.latLng.lng]
+      coordinates: [data.latLng.lng, data.latLng.lat]
     }
   });
   return newPic.save();
@@ -61,23 +61,25 @@ db.savePictureToUser = (data) =>
     {$push: { photos: data._id}}
   );
 
-const MAX_DISTANCE = 200000;
+const MAX_DISTANCE = 20000000;
 
-db.selectClosestPictures = function(location) {
-  return models.Pictures.aggregate(
+db.selectClosestPictures = (location) => 
+  models.Pictures.aggregate(
     [
       {$geoNear: {
         near: {
           type: 'Point',
-          coordinates: [Number(location.lat), Number(location.lng)]
+          coordinates: [Number(location.lng), Number(location.lat)]//[lat, lng]
         },
         distanceField: 'distance',
         spherical: true,
+        distanceField: 'distance',
         maxDistance: MAX_DISTANCE
-      }}
+      }},
+      {'$sort': { 'distance': 1}},
+      {'$limit': 30}
     ]
-  )
-};
+  );
 
 db.addToFavorites = (data) => {
   return models.Users.findByIdAndUpdate(data.userData._id, {$addToSet: {photos: data.details._id}}, {'new': true}, () => {}) 

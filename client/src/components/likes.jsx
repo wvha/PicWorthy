@@ -1,5 +1,5 @@
 import React from 'react';
-import Row from './row.jsx';
+import PicRow from './picrow.jsx';
 import axios from 'axios';
 
 class Likes extends React.Component {
@@ -15,7 +15,7 @@ class Likes extends React.Component {
         <h1 style={{fontFamily: `billabong`, textAlign: `center`, color: `#32bfff`}}>{this.props.userData.firstName}'s Favorites</h1>
         <br />
         </div>
-        <Row rowType="likes" userId={this.props.userData._id}/>
+        <PicRow rowType="likes" userId={this.props.userData._id}/>
       </div>
     )
   }

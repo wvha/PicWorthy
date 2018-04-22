@@ -1,9 +1,102 @@
 import React, { Component } from 'react';
 import { Grid, Row } from 'react-bootstrap';
-import WorthyMap from './worthymap.jsx';
-import RowComp from './row.jsx';
-import Details from './details.jsx';
 import axios from 'axios';
+import _ from 'lodash';
+
+import WorthyMap from './worthymap.jsx';
+import PicRow from './picrow.jsx';
+import Details from './details.jsx';
+import fetchClosestPics from '../helpers/fetchClosestPics.jsx';
+
+
+export default class Locations extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      pics: [],
+      markers: [],
+      userMarker: [],
+      zoom: 4,
+      position: {lat: 37.09, lng: -95.71},
+    };
+
+    this.updatePictures = _.throttle(this.updatePictures.bind(this), 1000);
+  }
+
+  componentDidMount() {
+    this.getUserLocation();
+  }
+
+  getUserLocation() {
+    const onSuccess = ({coords}) => {
+      console.log('users coords', coords);
+      
+      this.setState({
+        position: {
+          lat: coords.latitude, 
+          lng: coords.longitude
+        },
+        zoom: 10
+      });
+    };
+
+    const onError = (err) => {
+      navigator.geolocation.getCurrentPosition(
+        onSuccess, 
+        (err2) => console.log('error getting location', err2), 
+        {maximumAge: 3600000, timeout: 5000, enableHighAccuracy: false} 
+      );
+    };
+
+    navigator.geolocation.getCurrentPosition(
+      onSuccess, 
+      onError, 
+      {maximumAge: 3600000, timeout: 5000, enableHighAccuracy: true} 
+    );
+  }
+
+  updatePictures(lat, lng) {
+    fetchClosestPics(lat, lng)
+      .then(({data}) => this.setState({pics: data}))
+  }
+
+  render() {
+    return (
+      <Grid style={{margin: `0`, width: `100vw`, paddingLeft: `0px`, paddingRight: `0px`, minHeight: `calc(100vh - 150px)`}}>
+        <Row style={{margin: `20px`, height:`calc((100vh - 150px)/2)`, minHeight: `400px`}}>
+        <WorthyMap
+          markers={ this.state.markers } 
+          defaultZoom={ this.state.zoom }
+          defaultCenter={ this.state.position } 
+          onCenterChanged={ this.updatePictures }
+        />
+        </Row>
+        <div style={{textAlign: `center`, fontFamily: `billabong`, fontSize: `275%`, color: `#32bfff`}}>
+          Around You
+        </div>
+        <Row style={rowStyle}>
+          <PicRow 
+            showDetails={ () => {} } 
+            rowType="locations"
+            pics={ this.state.pics }
+            />
+        </Row>
+        <Row style={rowStyle}>
+          {'renderclickedcard'}
+        </Row>
+      </Grid>
+    );
+  }
+}
+
+const rowStyle = {
+  marginLeft: `0px`, 
+  marginRight: `0px`
+}
+
+
+/*
+
 
 export default class Locations extends Component {
   constructor(props) {
@@ -61,14 +154,6 @@ export default class Locations extends Component {
       })
   }
 
-  componentDidMount() {
-    axios.get('/api/loggedInYet').then((result) => {
-      this.setState({
-        userData: result.data
-      })
-    });
-  }
-
   render() {
     return (
       <Grid style={{margin: `0`, width: `100vw`, paddingLeft: `0px`, paddingRight: `0px`, minHeight: `calc(100vh - 150px)`}}>
@@ -95,3 +180,4 @@ const rowStyle = {
   marginLeft: `0px`, 
   marginRight: `0px`
 }
+*/
