@@ -1,6 +1,6 @@
 
 export const rotatePics = function(direction) {
-  const pics = [...this.state.pics];
+  let pics = [...this.state.pics];
   if (direction === 'right') {
     pics.unshift(pics.pop());
   } else {

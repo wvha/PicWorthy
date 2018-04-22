@@ -1,42 +1,37 @@
-import React, { Component } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import FontAwesome from 'react-fontawesome';
 import FaIconPack, {FaChevronRight, FaChevronLeft} from 'react-icons/lib/fa';
 import Card from './card.jsx';
 
 
-export default class PicRow extends Component {
-
-  render() {
-    return (
-      <div style={{textAlign: `center`}}>
-        <FaChevronLeft
-          onClick={() => this.props.rotatePics('left')} 
-          style={chevronStyle}
-        />
-        <RowPics 
-          pics={ this.props.pics }
-          showDetails={ this.props.showDetails }
-        />
-        <FaChevronRight
-          onClick={() => this.props.rotatePics('right')} 
-          style={chevronStyle}
-        />
-        <br/>
-        <br/>
-      </div>
-    )
-  }
-}
-
-const RowPics = (props) => 
-  props.pics.map((pic, i) => 
+const PicRow = (props) => {
+    
+  const cards = props.pics.map((pic, i) => (
     <Card 
       key={i} 
       showDetails={props.showDetails} 
       picDetails={pic}
     />
-  );
+  ));
+
+  return (
+    <div style={{textAlign: `center`}}>
+      <FaChevronLeft
+        onClick={() => props.rotatePics('left')} 
+        style={chevronStyle}
+      />
+      { cards }
+      <FaChevronRight
+        onClick={() => props.rotatePics('right')} 
+        style={chevronStyle}
+      />
+      <br/>
+      <br/>
+    </div>
+  )
+
+}
 
 
 const chevronStyle = {
@@ -60,3 +55,5 @@ const picsDb = [
   {imageURL: 'http://lorempixel.com/output/cats-h-c-200-400-5.jpg', username: 'anna banana', location:'Japan'},
   {imageURL: 'http://lorempixel.com/output/animals-h-g-200-400-5.jpg', username: 'anna banana', location: 'Korea'},
 ];
+
+export default PicRow;

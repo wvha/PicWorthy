@@ -8,7 +8,6 @@ import { MarkerClusterer }  from 'react-google-maps/lib/components/addons/Marker
 import { SearchBox } from "react-google-maps/lib/components/places/SearchBox";
 
 
-// https://tomchentw.github.io/react-google-maps/#markerclusterer
 const WorthyMap = compose(
   withProps({
     googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyCWb-bdFbk9oBVzcehnMVyaG1QqVCvf8As&v=3.exp&libraries=geometry,drawing,places",
@@ -110,7 +109,7 @@ const WorthyMap = compose(
         controlPosition={google.maps.ControlPosition.TOP_LEFT}
         onPlacesChanged={props.onPlacesChanged}
       >
-        <input
+       <input
           type="text"
           placeholder="Search"
           style={{

@@ -9,7 +9,7 @@ const Card = (props) => (
   </span>
 )
 
-Card.PropTypes = {
+Card.propTypes = {
   picDetails: PropTypes.shape({
     location: PropTypes.string,
     imageURL: PropTypes.string

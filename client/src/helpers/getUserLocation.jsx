@@ -1,4 +1,4 @@
-const getUserLocation = () => {
+const getUserLocation = function() {
   const onSuccess = ({coords}) => {
     this.setState({
       position: {
