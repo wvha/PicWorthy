@@ -21,11 +21,11 @@ export default class Locations extends Component {
     this.checkFavorites = this.checkFavorites.bind(this);
   }
 
-  showDetails(e, props) {
-    if (this.state.lastClickCard === undefined || this.state.lastClickCard.picDetails._id !== props.picDetails._id) {
+  showDetails(e, info) {
+    if (this.state.lastClickCard === undefined || this.state.lastClickCard.picDetails._id !== info.picDetails._id) {
       this.setState({
-        detailProps: props,
-        lastClickCard: props
+        detailProps: info,
+        lastClickCard: info
       })
     } else {
       this.setState({
@@ -45,14 +45,13 @@ export default class Locations extends Component {
     if (this.state.detailProps !== undefined) {
       return <Details 
               picDetails={this.state.detailProps.picDetails} 
-              initialStar={this.checkFavorites()} 
-              handleStarClick={this.handleStarClick}
-              changeStarState={this.changeStarState} />;
+              starFilled={this.checkFavorites()} 
+              handleStarClick={this.handleStarClick} />;
     }
   }
 
   handleStarClick(e, details) {
-    axios.patch('/api/favorites', {details: details.picDetails, userData: this.state.userData})
+    axios.patch('/api/favorites', {details: details, userData: this.state.userData})
       .then ((result) => {
         console.log(result.data);
         this.setState({

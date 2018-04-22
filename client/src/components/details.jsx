@@ -9,10 +9,12 @@ class Details extends Component {
   }
 
   displayStar(details) {
-    if (this.props.initialStar) {
-      return <FaStar style={iconStyle} size={30} />
+    if (this.props.starFilled) {
+      return <FaStar style={iconStyle} size={30} />;
+    } else if (this.props.starFilled === null) {
+      return;
     } else {
-      return <FaStarO style={iconStyle} size={30} onClick={(e) => {this.props.handleStarClick(e, details)}}/> ;
+      return <FaStarO style={iconStyle} size={30} onClick={(e) => {this.props.handleStarClick(e, details)}}/>;
     }
   }
 
