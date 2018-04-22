@@ -3,83 +3,102 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import FaIconPack, {FaStarO, FaStar, FaFacebookSquare, FaTwitter, FaYelp, FaInstagram} from 'react-icons/lib/fa';
 import axios from 'axios';
 
-const Details = (props) => (
-  <div>
-    <br/>
-    <Grid style={ {
-      background: `linear-gradient(to right, #4cc7ff 0%, #99dfff  100%)`, 
-      padding: `20px`, 
-      width: `100vw`
-    } }>
-      <Row>
-        <Col 
-          md={ 6 } 
-          mdPush={ 6 } 
-          style={ {paddingRight: `100px`} }
-        >
-          <h1 style={ {fontFamily: `billabong`} }>
-            { props.picDetails.location }
-          </h1>
-          <h4>
-            Submitted by: { props.picDetails.username }
-          </h4>
-          <p>
-            { props.picDetails.description } 
-          </p>
-          <br />
-          <DisplayStar
-            details={ props.picDetails }
-            initialStar={ props.initialStar }
-            handleStarClick={ props.handleStarClick }
-          />
-          <FaInstagram 
-            style={ iconStyle}  
-            size={ 30 } 
-          />
-          <FaFacebookSquare 
-            style={ iconStyle } 
-            size={ 30 } 
-          /> 
-          <FaTwitter 
-            style={ iconStyle } 
-            size={ 30 } 
-          />
-          <FaYelp 
-            style={ iconStyle } 
-            size={ 30 } 
-          />
-        </Col>
-        <Col 
-          md={ 6 } 
-          mdPull={ 6 }
-        >
-          <span style={ imgSpanStyle }>
-            <img 
-              src={ props.picDetails.imageURL } 
-              style ={ imgStyle }
-            />
-          </span>
-        </Col>
-      </Row>
-    </Grid>
-    <br />
-  </div>
-);
+const Details = ({ detailedPicURL, pics, showHideDetails }) => {
 
-const DisplayStar = (props) => {
-  if (props.initialStar) {
+  let pic = getPic(detailedPicURL, pics);
+  
+  if (pic === 'NOT_FOUND') {
+    return <div />;
+  }
+
+  return (
+    <div>
+      <br/>
+      <Grid style={ {
+        background: `linear-gradient(to right, #4cc7ff 0%, #99dfff  100%)`, 
+        padding: `20px`, 
+        width: `100vw`
+      } }>
+        <Row>
+          <Col 
+            md={ 6 } 
+            mdPush={ 6 } 
+            style={ {paddingRight: `100px`} }
+          >
+            <h1 style={ {fontFamily: `billabong`} }>
+              {pic.location }
+            </h1>
+            <h4>
+              Submitted by: { pic.username }
+            </h4>
+            <p>
+              { pic.description } 
+            </p>
+            <br />
+            <DisplayStar
+              pic={ pic }
+            />
+            {/*
+            <FaInstagram 
+              style={ iconStyle}  
+              size={ 30 } 
+            />
+            <FaFacebookSquare 
+              style={ iconStyle } 
+              size={ 30 } 
+            /> 
+            <FaTwitter 
+              style={ iconStyle } 
+              size={ 30 } 
+            />
+            <FaYelp 
+              style={ iconStyle } 
+              size={ 30 } 
+            />
+            */}
+          </Col>
+          <Col 
+            md={ 6 } 
+            mdPull={ 6 }
+          >
+            <span style={ imgSpanStyle }>
+              <img 
+                src={ pic.imageURL } 
+                style ={ imgStyle }
+              />
+            </span>
+          </Col>
+        </Row>
+      </Grid>
+      <br />
+    </div>
+  )
+};
+
+const getPic = (url, pics) => {
+  for (pic of pics) {
+    if (pic.imageURL === url) {
+      return pic;
+    }
+  }
+  return 'NOT_FOUND';
+}
+
+const DisplayStar = ({ pic, handleStarClick }) => {
+  if (pic.starred) {
     return (
       <FaStar 
         style={ iconStyle } 
-        size={ 30 } 
+        size={ 40 } 
+        onClick={ (e) => handleStarClick(e, pic) }
       />
     )
   } else {
     return (
       <FaStarO
         style={ iconStyle } 
-        size={ 30 } 
-        onClick={ (e) => props.handleStarClick(e, props.details) } 
+        size={ 40 } 
+        onClick={ (e) => handleStarClick(e, details) } 
       /> 
     );
   }

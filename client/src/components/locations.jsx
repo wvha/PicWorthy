@@ -20,12 +20,14 @@ export default class Locations extends Component {
       markers: [],
       zoom: 4,
       position: {lat: 37.09, lng: -95.71},
+      detailedPicURL: 'NONE'
     };
 
     this.updatePictures = _.throttle(this.updatePictures.bind(this), 1000);
     this.rotatePics = rotatePics.bind(this);
     this.updateDisplayAmount = updateDisplayAmount.bind(this);
     this.getUserLocation = getUserLocation.bind(this);
+    this.showHideDetails = showHideDetails.bind(this);
   }
 
   componentDidMount() {
@@ -57,18 +59,30 @@ export default class Locations extends Component {
         </div>
         <Row style={rowStyle}>
           <PicRow 
-            showDetails={ () => {} } 
+            showHideDetails={ this.showHideDetails } 
             rowType="locations"
             pics={ pics }
             rotatePics={ this.rotatePics }
-            />
+          />
         </Row>
         <Row style={rowStyle}>
-          {'renderclickedcard'}
+          <Details 
+            detailedPicUrl={ this.state.detailedPicURL }
+            pics={ pics }
+            showHideDetails={ this.showHideDetails }
+          />
         </Row>
       </Grid>
     );
   }
+}
+
+const showHideDetails = (pic) => {
+  detailedPicURL = this.state.detailedPicURL === pic.imageURL 
+    ? pic.imageURL
+    : 'NONE';
+
+  this.setState({detailedPicURL});
 }
 
 const rowStyle = {

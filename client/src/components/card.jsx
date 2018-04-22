@@ -1,11 +1,11 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Card = (props) => (
-  <span style={ spanStyle } onClick={ (e)=>{props.showDetails(e, props)} }>
-    <img src={ props.picDetails.imageURL } style={ imgStyle } />
+const Card = ({ picDetails, showHideDetails }) => (
+  <span style={ spanStyle } onClick={ () => showHideDetails(picDetails.imageURL) }>
+    <a href='#'><img src={ picDetails.imageURL } style={ imgStyle } /></a>
     <br/> <br/>
-    <div style={ locationStyle }>{ props.picDetails.location }</div>
+    <div style={ locationStyle }>{ picDetails.location }</div>
   </span>
 )
 
