@@ -1,6 +1,7 @@
 
-export const rotatePics = function(direction) {
-  
+export const rotatePics = function(e, direction) {
+  e.preventDefault();
+
   let pics = [...this.state.pics];
   
   if (direction === 'RIGHT') {

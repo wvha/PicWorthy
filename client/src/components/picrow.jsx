@@ -5,27 +5,28 @@ import FaIconPack, {FaChevronRight, FaChevronLeft} from 'react-icons/lib/fa';
 import Card from './card.jsx';
 
 
-const PicRow = ({ pics, rotatePics,showHideDetails }) => {
+const PicRow = ({ pics, rotatePics,showHideDetails, detailedPicURL }) => {
     
   const cards = pics.map((pic, i) => (
     <Card 
       key={i} 
       showHideDetails={ showHideDetails } 
       picDetails={pic}
+      selected={ pic.imageURL === detailedPicURL }
     />
   ));
 
   return (
     <div style={{textAlign: `center`}}>
-      <FaChevronLeft
-        onClick={() => rotatePics('LEFT')} 
+      <a href='#'><FaChevronLeft
+        onClick={(e) => rotatePics(e, 'LEFT')} 
         style={chevronStyle}
-      />
+      /></a>
       { cards }
-      <FaChevronRight
-        onClick={() => rotatePics('RIGHT')} 
+      <a href='#'><FaChevronRight
+        onClick={(e) => rotatePics(e, 'RIGHT')} 
         style={chevronStyle}
-      />
+      /></a>
       <br/>
       <br/>
     </div>

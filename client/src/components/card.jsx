@@ -1,12 +1,21 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Card = ({ picDetails, showHideDetails }) => (
-  <span style={ spanStyle } onClick={ () => showHideDetails(picDetails.imageURL) }>
-    <a href='#'><img src={ picDetails.imageURL } style={ imgStyle } /></a>
-    <br/> <br/>
-    <div style={ locationStyle }>{ picDetails.location }</div>
-  </span>
+const Card = ({ picDetails, showHideDetails, selected }) => (
+  <a href='#'>
+    <span 
+      style={ selected ? cardStyleSelected : cardStyle } 
+      onClick={ (e) => showHideDetails(e, picDetails.imageURL) }
+    >
+        <img 
+          src={ picDetails.imageURL } 
+          style={ imgStyle } 
+        />
+      
+      <br/> <br/>
+      <div style={ locationStyle }>{ picDetails.location }</div>
+    </span>
+  </a>
 )
 
 Card.propTypes = {
@@ -17,7 +26,7 @@ Card.propTypes = {
   showDetails: PropTypes.func.isRequired
 }
 
-const spanStyle ={
+const cardStyle ={
   display: `inline-block`,
   padding: `15px 15px 70px 15px`,
   height: `350px`,
@@ -28,6 +37,13 @@ const spanStyle ={
   boxShadow: `5px 5px 3px grey`,
   backgroundColor: `white`
 }
+
+const cardStyleSelected = Object.assign(
+  {},
+  cardStyle, 
+  {background: `linear-gradient(to right, #4cc7ff 0%, #99dfff  100%)`}
+);
+
 
 const imgStyle = {
   border: `1px solid #555`,

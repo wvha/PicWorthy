@@ -20,7 +20,7 @@ export default class Locations extends Component {
       markers: [],
       zoom: 4,
       position: {lat: 37.09, lng: -95.71},
-      detailedPicURL: 'NONE'
+      detailedPicURL: 'NONE',
     };
 
     this.updatePictures = _.throttle(this.updatePictures.bind(this), 1000);
@@ -63,6 +63,7 @@ export default class Locations extends Component {
             rowType="locations"
             pics={ pics }
             rotatePics={ this.rotatePics }
+            detailedPicURL={ this.state.detailedPicURL }
           />
         </Row>
         <Row style={rowStyle}>
@@ -77,13 +78,24 @@ export default class Locations extends Component {
   }
 }
 
-const showHideDetails = function(imageURL) {
-  console.log(imageURL);
-  const detailedPicURL = this.state.detailedPicURL !== imageURL 
-    ? imageURL
-    : 'NONE';
+const showHideDetails = function(e, imageURL) {
+  e.preventDefault();
+  
+  if (this.state.detailedPicURL === imageURL) {
+    const detailedPicURL = 'NONE';
+    
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
 
-  this.setState({detailedPicURL});
+    setTimeout(() => this.setState({detailedPicURL}), 322);
+
+  } else {
+    const detailedPicURL = imageURL;
+    
+    this.setState({detailedPicURL});
+  }
 }
 
 const rowStyle = {
