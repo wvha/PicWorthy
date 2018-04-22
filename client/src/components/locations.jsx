@@ -14,6 +14,7 @@ export default class Locations extends Component {
     super(props);
     this.state = {
       pics: [],
+      displayAmount: 0,
       markers: [],
       userMarker: [],
       zoom: 4,
@@ -21,10 +22,14 @@ export default class Locations extends Component {
     };
 
     this.updatePictures = _.throttle(this.updatePictures.bind(this), 1000);
+    this.rotatePics = this.rotatePics.bind(this);
+    this.updateDisplayAmount = this.updateDisplayAmount.bind(this);
   }
 
   componentDidMount() {
     this.getUserLocation();
+    this.updateDisplayAmount();
+    window.addEventListener('resize', this.updateDisplayAmount);
   }
 
   getUserLocation() {
@@ -60,7 +65,24 @@ export default class Locations extends Component {
       .then(({data}) => this.setState({pics: data}))
   }
 
+  rotatePics(direction) {
+    const pics = [...this.state.pics];
+    if (direction === 'right') {
+      pics.unshift(pics.pop());
+    } else {
+      pics.push(pics.shift());
+    }
+    this.setState({pics});
+  }
+
+  updateDisplayAmount() {
+    const displayAmount = Math.floor((window.innerWidth - 90)/250);
+    this.setState({displayAmount});
+  }
+
   render() {
+    const pics = this.state.pics.slice(0, this.state.displayAmount);
+
     return (
       <Grid style={{margin: `0`, width: `100vw`, paddingLeft: `0px`, paddingRight: `0px`, minHeight: `calc(100vh - 150px)`}}>
         <Row style={{margin: `20px`, height:`calc((100vh - 150px)/2)`, minHeight: `400px`}}>
@@ -78,7 +100,8 @@ export default class Locations extends Component {
           <PicRow 
             showDetails={ () => {} } 
             rowType="locations"
-            pics={ this.state.pics }
+            pics={ pics }
+            rotatePics={ this.rotatePics }
             />
         </Row>
         <Row style={rowStyle}>
