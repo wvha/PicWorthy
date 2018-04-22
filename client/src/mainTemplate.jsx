@@ -2,10 +2,8 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import NavbarComp from './components/navbar.jsx';
 import { Navbar } from 'react-bootstrap';
-import { BrowserRouter, Route, DefaultRoute, Switch} from 'react-router-dom';
+import { BrowserRouter, Route, Switch} from 'react-router-dom';
 import axios from 'axios';
-
-import MainTemplate from './mainTemplate.jsx';
 import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
 import Landing from './components/landing.jsx'
@@ -16,7 +14,7 @@ import Footer from './components/footer.jsx';
 import Likes from './components/likes.jsx';
 
 // App component renders components based on the URL Route using React Router
-class App extends React.Component {
+export default class MainTemplate extends React.Component {
 
   constructor(props) {
     super(props);
@@ -82,30 +80,47 @@ class App extends React.Component {
 
   render() {
     return (
-      <Switch>
-        <Route 
-            exact path='/' 
-            render={() =>
-              <Landing
-                userData={this.state.userData}
-                showLogin={this.state.showLogin}
-                showSignup={this.state.showSignup}
-                activeModal={this.state.activeModal}
-                handleClose={this.navbarHandleClose}
-                handleShow={this.navbarHandleShow}
-                handleShowSignup={this.navbarHandleShowSignup}
-                handleShowLogin={this.navbarHandleShowLogin}
-              />
-            } 
+      <div style={{backgroundColor: "#fdfdfd"}}>
+        <NavbarComp 
+          userData={this.state.userData}
+          showLogin={this.state.showLogin}
+          showSignup={this.state.showSignup}
+          activeModal={this.state.activeModal}
+          handleClose={this.navbarHandleClose}
+          handleShow={this.navbarHandleShow}
+          handleShowSignup={this.navbarHandleShowSignup}
+          handleShowLogin={this.navbarHandleShowLogin}
         />
-        <Route component={ MainTemplate }/>
-      </Switch>
+        <Switch>
+          <Route 
+            path='/locations' 
+            component={Locations} 
+          />
+          <Route 
+            path='/userpage' 
+            render={(props) => 
+              <Userpage 
+              userData={this.state.userData} 
+              />
+            }/>
+          <Route 
+            path='/upload' 
+            render={(props) => 
+              <Upload 
+                userData={this.state.userData} 
+              />
+            }/>
+          <Route 
+            path='/likes' 
+            render={(props) => 
+              <Likes 
+                userData={this.state.userData} 
+              />
+            }/>
+        </Switch>
+        <Footer />
+      </div>
     );
   }
 };
 
-ReactDOM.render((
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-), document.getElementById('app'));

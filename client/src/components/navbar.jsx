@@ -15,10 +15,10 @@ export default class NavbarComp extends React.Component {
   
   render() {
     return (
-      <Navbar fluid style={{marginBottom: "0px", backgroundColor: "white", borderBottom: "1px solid #cccccc", borderRadius: "0px"}}>
+      <Navbar fluid style={ {marginBottom: "0px", borderBottom: "1px solid #cccccc", borderRadius: "0px", backgroundColor: "transparent", background: "transparent", borderColor: "transparent"} }>
         <Navbar.Header style={{marginLeft: `10px`}}>
           <Navbar.Brand>
-            <Link to='/' style={{fontFamily: `billabong`, fontSize: `250%`, color: `#00b0ff`, textShadow: `2px 1px #cccccc`, paddingTop:`20px`}}>Pic Worthy</Link>
+            <Link to='/' className="nav-link" style={{fontFamily: `billabong`, fontSize: `250%`, color: `#00b0ff`, textShadow: `2px 1px #cccccc`, paddingTop:`20px`}}>Pic Worthy</Link>
           </Navbar.Brand>
           <Navbar.Form pullLeft> 
             </Navbar.Form>
@@ -71,7 +71,7 @@ const Name = (props) => {
           onClick={ props.logout }
         >
           <Link to='/'>
-            Logout
+            LOGOUT
           </Link>
         </NavItem>
       </Nav>
@@ -86,18 +86,26 @@ const Name = (props) => {
           eventKey={ 4 } 
           onClick={ (e) => {props.handleShow(e)} } 
           name="showLogin" 
+        ><span
+          style={{
+            color: "#00b0ff"
+          }}
         >
-          Login
+          LOGIN
+        </span>
+          
         </NavItem>
         <Login 
           show={ props.showLogin } 
           hide={ props.handleClose } 
           handleShowSignup={ props.handleShowSignup }
+          className="nav-link"
         />
         <Signup 
           show={ props.showSignup } 
           hide={ props.handleClose } 
           handleShowLogin={ props.handleShowLogin }
+          className="nav-link"
         />
       </Nav>
     )
