@@ -2,7 +2,7 @@ import React from 'react';
 import PicRow from './picrow.jsx';
 import axios from 'axios';
 
-class Likes extends React.Component {
+export default class Likes extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -20,5 +20,3 @@ class Likes extends React.Component {
     )
   }
 }
-
-export default Likes;

@@ -1,14 +1,15 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
-class UploadForm extends Component {
+export default class UploadForm extends Component {
   checkImgUrl() {
     if(this.props.imageURL) {
       return <p style={{fontWeight:`bold`}}>Image attached.</p>
     } else {
       return <p style={{fontWeight:`bold`}}>Please upload an image.</p>
     }
-  } 
+  }
+  
   render() {
     const uploadStatus = this.props.uploadStatus.map((status) => <div>{status}</div>);
     return (
@@ -74,5 +75,3 @@ const textareaStyle = {
   contenteditable: `true`,
   borderColor: `#e2e3e5`
 }
-
-export default UploadForm;

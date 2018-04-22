@@ -7,7 +7,7 @@ import Login from './login.jsx';
 import Signup from './signup.jsx';
 
 
-class NavbarComp extends React.Component {
+export default class NavbarComp extends React.Component {
   logout() {
     axios.get('/api/logout')
       .then(() => window.location.reload());
@@ -103,5 +103,3 @@ const Name = (props) => {
     )
   }
 };
-
-export default NavbarComp;

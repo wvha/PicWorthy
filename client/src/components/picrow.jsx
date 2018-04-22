@@ -5,7 +5,7 @@ import FaIconPack, {FaChevronRight, FaChevronLeft} from 'react-icons/lib/fa';
 import Card from './card.jsx';
 
 
-class PicRow extends Component {
+export default class PicRow extends Component {
 
   render() {
     return (
@@ -60,6 +60,3 @@ const picsDb = [
   {imageURL: 'http://lorempixel.com/output/cats-h-c-200-400-5.jpg', username: 'anna banana', location:'Japan'},
   {imageURL: 'http://lorempixel.com/output/animals-h-g-200-400-5.jpg', username: 'anna banana', location: 'Korea'},
 ];
-
-
-export default PicRow;

@@ -8,6 +8,7 @@ import PicRow from './picrow.jsx';
 import Details from './details.jsx';
 import fetchClosestPics from '../helpers/fetchClosestPics.jsx';
 import getUserLocation from '../helpers/getUserLocation.jsx';
+import { updateDisplayAmount, rotatePics } from '../helpers/picture.jsx';
 
 
 export default class Locations extends Component {
@@ -22,8 +23,8 @@ export default class Locations extends Component {
     };
 
     this.updatePictures = _.throttle(this.updatePictures.bind(this), 1000);
-    this.rotatePics = this.rotatePics.bind(this);
-    this.updateDisplayAmount = this.updateDisplayAmount.bind(this);
+    this.rotatePics = rotatePics.bind(this);
+    this.updateDisplayAmount = updateDisplayAmount.bind(this);
     this.getUserLocation = getUserLocation.bind(this);
   }
 
@@ -36,21 +37,6 @@ export default class Locations extends Component {
   updatePictures(lat, lng) {
     fetchClosestPics(lat, lng)
       .then(({data}) => this.setState({pics: data}))
-  }
-
-  rotatePics(direction) {
-    const pics = [...this.state.pics];
-    if (direction === 'right') {
-      pics.unshift(pics.pop());
-    } else {
-      pics.push(pics.shift());
-    }
-    this.setState({pics});
-  }
-
-  updateDisplayAmount() {
-    const displayAmount = Math.floor((window.innerWidth - 90)/250);
-    this.setState({displayAmount});
   }
 
   render() {

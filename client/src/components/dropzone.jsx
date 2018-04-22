@@ -3,14 +3,9 @@ import ReactDOM from 'react-dom';
 import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import { BounceLoader } from 'react-spinners';
-/*
- * We use the imgur API to host our photos on imgur and store the links in our database
- * 
- */
 
-var reader = new FileReader();
 
-class Accept extends React.Component {
+export default class Accept extends React.Component {
   constructor() {
     super()
     this.state = {
@@ -96,7 +91,3 @@ class Accept extends React.Component {
     );
   }
 }
-
-
-
-export default Accept;

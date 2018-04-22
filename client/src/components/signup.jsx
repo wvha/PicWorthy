@@ -4,7 +4,7 @@ import PasswordMask from 'react-password-mask'; // go to https://www.npmjs.com/p
 import { Modal } from 'react-bootstrap';
 import Login from './login.jsx';
 
-class Signup extends Component {
+export default class Signup extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -77,5 +77,3 @@ class Signup extends Component {
     </div>)
   }
 };
-
-export default Signup;

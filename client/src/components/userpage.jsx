@@ -2,7 +2,7 @@ import React from 'react';
 import PicRow from './picrow.jsx';
 import axios from 'axios';
 
-class Userpage extends React.Component {
+export default class Userpage extends React.Component {
   constructor(props) {
     super(props);
   }
@@ -18,5 +18,3 @@ class Userpage extends React.Component {
     )
   }
 }
-
-export default Userpage;
