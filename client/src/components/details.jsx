@@ -3,10 +3,10 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import FaIconPack, {FaStarO, FaStar, FaFacebookSquare, FaTwitter, FaYelp, FaInstagram} from 'react-icons/lib/fa';
 import axios from 'axios';
 
-const Details = ({ detailedPicURL, pics, showHideDetails }) => {
+const Details = ({ detailedPicUrl, pics, showHideDetails }) => {
 
   let pic = getPic(detailedPicURL, pics);
-  
+
   if (pic === 'NOT_FOUND') {
     return <div />;
   }
@@ -76,7 +76,8 @@ const Details = ({ detailedPicURL, pics, showHideDetails }) => {
 };
 
 const getPic = (url, pics) => {
-  for (pic of pics) {
+  for (const pic of pics) {
+    console.log(pic, url);
     if (pic.imageURL === url) {
       return pic;
     }

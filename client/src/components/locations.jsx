@@ -67,7 +67,7 @@ export default class Locations extends Component {
         </Row>
         <Row style={rowStyle}>
           <Details 
-            detailedPicUrl={ this.state.detailedPicURL }
+            detailedPicURL={ this.state.detailedPicURL }
             pics={ pics }
             showHideDetails={ this.showHideDetails }
           />
@@ -77,9 +77,10 @@ export default class Locations extends Component {
   }
 }
 
-const showHideDetails = (pic) => {
-  detailedPicURL = this.state.detailedPicURL === pic.imageURL 
-    ? pic.imageURL
+const showHideDetails = function(imageURL) {
+  console.log(imageURL);
+  const detailedPicURL = this.state.detailedPicURL !== imageURL 
+    ? imageURL
     : 'NONE';
 
   this.setState({detailedPicURL});
