@@ -100,7 +100,7 @@ const showHideDetails = function(e, imageURL) {
   if (e.preventDefault !== undefined) {
     e.preventDefault();
   }
-  
+
   if (this.state.detailedPicURL === imageURL) {
     const detailedPicURL = 'NONE';
     
@@ -113,8 +113,16 @@ const showHideDetails = function(e, imageURL) {
 
   } else {
     const detailedPicURL = imageURL;
-    
-    this.setState({detailedPicURL});
+    const coordinates = this.state.pics.filter(pic => pic.imageURL === imageURL)[0].loc.coordinates;
+    const position = {
+      lat: coordinates[1],
+      lng: coordinates[0]
+    }
+    this.setState({
+      detailedPicURL,
+      position,
+      zoom: 10
+    });
   }
 }
 

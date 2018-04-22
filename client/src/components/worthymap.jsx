@@ -77,7 +77,7 @@ const WorthyMap = compose(
   const allMarkers = props.markers.map((marker, i) => (
     <Marker
       key={ i }
-      position={{ lat: marker.lat, lng: marker.lng }}
+      position={{ lat: marker.lat, lng: marker.lng }} 
       onClick={(e) => marker.clickHandler(e)}
     />
   ));
@@ -92,9 +92,11 @@ const WorthyMap = compose(
         props.onBoundsChanged(...args); 
         onCenterChanged(props.refCenter.lat(), props.refCenter.lng());
       } }
-      onClick={ props.clickMap }
+      onClick={ props.onMapClick }
       onCenterChanged={ () => onCenterChanged(props.refCenter.lat(), props.refCenter.lng()) }
     >
+      {zoom < 12 
+      ? 
       <MarkerClusterer
         onClick={props.onMarkerClustererClick}
         averageCenter
@@ -103,6 +105,9 @@ const WorthyMap = compose(
       >
         { allMarkers }
       </MarkerClusterer>
+      :
+      { allMarkers }
+      }
       <SearchBox
         ref={props.onSearchBoxMounted}
         bounds={props.bounds}

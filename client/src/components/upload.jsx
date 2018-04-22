@@ -31,11 +31,12 @@ export default class Upload extends Component {
     this.setState({ imageURL: imgurLink })
   }
 
-  pinLocation({lat, lng}) {
+  pinLocation({ latLng }) {
+    
     this.setState({
       latLng: {
-        lat: lat,
-        lng: lng,
+        lat: latLng.lat(),
+        lng: latLng.lng(),
       }
     })
   }
@@ -83,13 +84,13 @@ export default class Upload extends Component {
     })
 
     axios.post(`/api/upload`, {
-      category: category,
-      location: location,
-      imageURL: imageURL,
-      description: description,
+      category,
+      location,
+      imageURL,
+      description,
       user_id: this.props.userData._id,
       username: this.props.userData.username,
-      latLng: {lat: 39, lng: -83}
+      latLng
     })
       .then(res => {
         console.log(res);
@@ -97,14 +98,22 @@ export default class Upload extends Component {
         this.setState({
           submitted: 'Successfully uploaded!',
           loading: false
-        })
+        });
       })
       .then(() => {
         this.setState({
           category: '',
           description: '',
-          imageURL: ''
-        })
+          imageURL: '',
+          location: '',
+          latLng: {
+            lat: null,
+            lng: null
+          }
+        });
+      })
+      .then(() => {
+        setTimeout(() => this.setState({submitted: ''}), 2000);
       })
       .catch((err) => {
         this.setState({
@@ -115,6 +124,12 @@ export default class Upload extends Component {
   }
 
   render() {
+    const { lat, lng } = this.state.latLng;
+    const marker = [lat, lng].includes(null) 
+      ? [] 
+      : [{lat, lng}]
+    
+    
     return (
       <Grid style={{minHeight: `calc(100vh - 130px)`}}>
         <Row style={{padding: `50px`}}>
@@ -123,8 +138,8 @@ export default class Upload extends Component {
               getLocationUpload={this.getLocationUpload}
               onMapClick={this.pinLocation}
               defaultZoom={10}
-              defaultCenter={{lat: 80, lng: 80}}
-              markers={[]}
+              defaultCenter={{lat: 37.77, lng: -122.41}}
+              markers={ marker }
             />
           </Col>
           <Col xs={6} md={4}>
