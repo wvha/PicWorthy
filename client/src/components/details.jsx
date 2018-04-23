@@ -8,31 +8,25 @@ export default class Details extends Component {
   scrollToBottom() {
     this.scrollEnd.scrollIntoView({behavior: 'smooth'});
   }
-
-  scrollToTop() {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-  }
   
   componentDidUpdate(prevProps) {
     if (prevProps.detailedPicURL === 'NONE') {
       this.scrollToBottom();
-    } if (this.props.detailedPicURL === 'NONE') {
-      this.scrollToTop();
     }
   }
 
   render() {
     
-    const { detailedPicURL, pics, showHideDetails } = this.props 
+    const { detailedPicURL, pics, userFavorites, showHideDetails, handleStarClick } = this.props 
 
     let pic = getPic(detailedPicURL, pics);
 
     if (pic === 'NOT_FOUND') {
       return <div ref={ (el) => this.scrollEnd = el  }/>;
     }
+
+    const isStarred = checkFavorites(userFavorites.map((p) => p.imageURL), pic.imageURL)
+    console.log('isStarred', isStarred, userFavorites, pic.imageURL);
 
     return (
       <div>
@@ -60,6 +54,8 @@ export default class Details extends Component {
               <br />
               <DisplayStar
                 pic={ pic }
+                handleStarClick={ handleStarClick }
+                isStarred={ isStarred }
               />
               {/*
               <FaInstagram 
@@ -111,13 +107,12 @@ const getPic = (url, pics) => {
   return 'NOT_FOUND';
 }
 
-const DisplayStar = ({ pic, handleStarClick }) => {
-  if (pic.starred) {
+const DisplayStar = ({ pic, handleStarClick, isStarred }) => {
+  if (isStarred) {
     return (
       <FaStar 
         style={ iconStyle } 
-        size={ 40 } 
-        onClick={ (e) => handleStarClick(e, pic) }
+        size={ 40 }
       />
     )
   } else {
@@ -125,11 +120,13 @@ const DisplayStar = ({ pic, handleStarClick }) => {
       <FaStarO
         style={ iconStyle } 
         size={ 40 } 
-        onClick={ (e) => handleStarClick(e, details) } 
+        onClick={ (e) => handleStarClick(e, pic) } 
       /> 
     );
   }
 }
+
+const checkFavorites = (userFavorites, img) => userFavorites.includes(img);
 
 const imgSpanStyle= {
   display: `inline-block`,

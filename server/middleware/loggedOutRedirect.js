@@ -2,7 +2,7 @@ const noLoginRequired = [
   '/',
   '/api/signup',
   '/api/login',
-  '/api/loggedInYet',
+  '/api/user',
   '/api/logout',
   '/bundles.js',
   '/fonts/Billabong.ttf'

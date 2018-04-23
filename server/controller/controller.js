@@ -3,7 +3,6 @@ const passport = require('../middleware/passport.js');
 
 const post = {};
 const get = {};
-const patch = {};
 
 post.signup = (req, res) => {
   db.saveUser(req.body)
@@ -39,15 +38,16 @@ get.logout = (req, res) => {
   res.redirect('/');
 }
 
-get.loggedInYet = (req, res) => {
+get.user = (req, res) => {
   if (req.user) {
+    console.log(req.user)
     res.json(req.user);
   } 
 }
 
 post.upload = (req, res) => 
   db.savePicture(req.body)
-    .then((data) => db.savePictureToUser(data))
+    .then((data) => db.savePictureToUser(req.body))
     .then(() => res.end())
     .catch((err) => {
       console.log('error uploading photo', err);
@@ -62,34 +62,18 @@ get.closestPics = function(req, res) {
     });
 };
 
-patch.favorites = function(req, res) {
+post.favorites = function(req, res) {
+  console.log('favorites', req.body);
   db.addToFavorites(req.body)
     .then(() => {
-      return db.fetchUser(req.body.userData.username);
+      return db.fetchUser(req.body.username);
     })
     .then((data) => {
       res.json(data);
     })
 }
 
-get.userLikes = (req, res) => {
-  if (req.user) {
-    db.fetchUserLikes(req.user)
-      .then((result) => {
-        res.json(result);
-      });
-  } 
-}
-
-get.userPosts = (req, res) => {
-  if (req.user) {
-    db.getUserPosts(req.user.username, function (err, data) {
-      res.json(data);
-    });
-  }
-}
   
 
 module.exports.get = get;
 module.exports.post = post;
-module.exports.patch = patch;

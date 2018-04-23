@@ -58,7 +58,7 @@ db.savePicture = function (data) {
 db.savePictureToUser = (data) =>
   models.Users.update(
     {_id: data.user_id},
-    {$push: { photos: data._id}}
+    {$push: { photos: data}}
   );
 
 const MAX_DISTANCE = 20000000;
@@ -81,24 +81,10 @@ db.selectClosestPictures = (location) =>
     ]
   );
 
-db.addToFavorites = (data) => {
-  return models.Users.findByIdAndUpdate(data.userData._id, {$addToSet: {photos: data.details._id}}, {'new': true}, () => {}) 
-}
-// gets all posts from current user
-db.getUserPosts = (username, callback) => {
-  console.log('username is: ', username)
-  models.Pictures.find({username: username}, function (err, pics) {
-    console.log('this is pics:', pics);
-    callback(err, pics);
-    });
-};
-
-// queries user data for likes // to be fixed
-db.fetchUserLikes = (userId) => {
-  console.log('userid', userId._id)
-  return models.Users.findOne({_id: userId._id})
-    .populate('photos').exec()
- 
-};
+db.addToFavorites = (data) => 
+  models.Users.update(
+    {_id: data.user_id},
+    {$push: { likes: data}}
+  );
 
 module.exports = db;

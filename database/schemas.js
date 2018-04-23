@@ -5,7 +5,8 @@ const UserSchema = mongoose.Schema({
   lastName: String,
   username: String,
   password: String,
-  photos: [{type: mongoose.Schema.Types.ObjectId, ref: 'Pictures'}]
+  photos: [{}],
+  likes: [{}]
 });
 
 const PictureSchema = new mongoose.Schema({

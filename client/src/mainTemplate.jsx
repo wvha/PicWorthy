@@ -20,6 +20,8 @@ export default class MainTemplate extends React.Component {
     super(props);
     
     this.state = {
+      userPromise: axios.get('/api/user'),
+      userLikesPromise: axios.get('/api/likes'),
       userData: {
         firstName: '',
         lastName: '',
@@ -35,8 +37,7 @@ export default class MainTemplate extends React.Component {
       },
       mapZoom: 5,
       detailProps: undefined,
-      lastCardClicked: undefined,
-      userData: {}
+      lastCardClicked: undefined
     }
 
     this.navbarHandleClose = this.navbarHandleClose.bind(this);
@@ -44,11 +45,7 @@ export default class MainTemplate extends React.Component {
     this.navbarHandleShowSignup = this.navbarHandleShowSignup.bind(this);
     this.navbarHandleShowLogin = this.navbarHandleShowLogin.bind(this);
 
-
-  }
-
-  componentDidMount() {
-    axios.get('/api/loggedInYet')
+    axios.get('/api/user')
       .then((result) => 
         this.setState({userData: result.data}));
   }
@@ -79,10 +76,15 @@ export default class MainTemplate extends React.Component {
   }
 
   render() {
+    const userPromise = this.state.userPromise;
+    const userLikesPromise = this.state.userLikesPromise;
+    const userData = this.state.userData;
+
     return (
+    
       <div style={{backgroundColor: "#fdfdfd"}}>
         <NavbarComp 
-          userData={this.state.userData}
+          userData={userData}
           showLogin={this.state.showLogin}
           showSignup={this.state.showSignup}
           activeModal={this.state.activeModal}
@@ -94,27 +96,36 @@ export default class MainTemplate extends React.Component {
         <Switch>
           <Route 
             path='/locations' 
-            component={Locations} 
+            render={(props) => {
+              console.log('rout props', props)
+              return (
+                <Locations 
+                  userData={ userPromise }
+                  userLikes={ userLikesPromise }
+                />
+              )
+            }
+            } 
           />
           <Route 
             path='/userpage' 
             render={(props) => 
               <Userpage 
-              userData={this.state.userData} 
+              userData={ userData } 
               />
             }/>
           <Route 
             path='/upload' 
             render={(props) => 
               <Upload 
-                userData={this.state.userData} 
+                userData={ userData }  
               />
             }/>
           <Route 
             path='/likes' 
             render={(props) => 
               <Likes 
-                userData={this.state.userData} 
+                userData={ userData } 
               />
             }/>
         </Switch>

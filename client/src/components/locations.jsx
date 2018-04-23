@@ -12,8 +12,8 @@ import { updateDisplayAmount, rotatePics } from '../helpers/picture.jsx';
 
 
 export default class Locations extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
     this.state = {
       pics: [],
       displayAmount: 0,
@@ -21,13 +21,17 @@ export default class Locations extends Component {
       zoom: 4,
       position: {lat: 37.09, lng: -95.71},
       detailedPicURL: 'NONE',
+      userData: props.userData
     };
+    props.userData.then((result) => this.setState({userData: result.data}));
+    props.userLikes.then((result) => this.setState({userLikes: result.data}));
 
     this.updatePictures = _.throttle(this.updatePictures.bind(this), 1000);
     this.rotatePics = rotatePics.bind(this);
     this.updateDisplayAmount = updateDisplayAmount.bind(this);
     this.getUserLocation = getUserLocation.bind(this);
     this.showHideDetails = showHideDetails.bind(this);
+    this.handleStarClick = this.handleStarClick.bind(this);
   }
 
   componentDidMount() {
@@ -52,16 +56,28 @@ export default class Locations extends Component {
           markers: markers
         })
       })
-  
   }
 
-  createMarkers(ics) {
+  handleStarClick(e, { category, location, imageURL, description, loc}) {
 
+    axios.post('/api/favorites', {
+      category,
+      location,
+      imageURL,
+      description,
+      user_id: this.state.userData._id,
+      username: this.state.userData.username,
+      latLng: {
+        lat: loc.coordinates[1],
+        lng: loc.coordinates[0]
+      }
+    })
+      .then((result) => console.log('result', result))
   }
 
   render() {
     const pics = this.state.pics.slice(0, this.state.displayAmount);
-
+    console.log(this.state.userData)
     return (
       <Grid style={{margin: `0`, width: `100vw`, paddingLeft: `0px`, paddingRight: `0px`, minHeight: `calc(100vh - 150px)`}}>
         <Row style={{margin: `20px`, height:`calc((100vh - 150px)/2)`, minHeight: `400px`}}>
@@ -89,6 +105,8 @@ export default class Locations extends Component {
             detailedPicURL={ this.state.detailedPicURL }
             pics={ this.state.pics }
             showHideDetails={ this.showHideDetails }
+            handleStarClick={ this.handleStarClick }
+            userFavorites={ this.state.userData.likes }
           />
         </Row>
       </Grid>

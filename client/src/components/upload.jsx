@@ -21,6 +21,7 @@ export default class Upload extends Component {
       latLng: {lat: null, lng: null},
       uploadStatus: []
     };
+
     this.getLink = this.getLink.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
@@ -79,6 +80,7 @@ export default class Upload extends Component {
       this.setState({uploadStatus: []})
     }
 
+    
     this.setState({
       loading: true
     })
@@ -164,7 +166,6 @@ export default class Upload extends Component {
             </div>
           </Col>
         </Row>
-
       </Grid>
     )
   }
