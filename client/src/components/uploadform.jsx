@@ -6,7 +6,7 @@ export default class UploadForm extends Component {
     if(this.props.imageURL) {
       return <p style={{fontWeight:`bold`}}>Image attached.</p>
     } else {
-      return <p style={{fontWeight:`bold`}}>Please upload an image.</p>
+      return <p style={{fontWeight:`bold`}}>First, find your place on the map.<br></br> Next, upload an image of your place.</p>
     }
   }
   
@@ -23,15 +23,17 @@ export default class UploadForm extends Component {
           <input
             name="category"
             type="text"
+            placeholder="Enter the type of place"
             value={this.props.category}
             onChange={this.props.handleInputChange}
             style={inputStyle} />
         </label><br /><br />
         <label>
-          Location
+          Place
           <input
             name="location"
             type="text"
+            placeholder="Enter the place's name"
             value={this.props.location}
             onChange={this.props.handleInputChange}
             style={inputStyle} />
@@ -41,6 +43,7 @@ export default class UploadForm extends Component {
           <textarea
             name="description"
             type="text"
+            placeholder="Describe what's special about this place"
             value={this.props.description}
             onChange={this.props.handleInputChange} 
             style={textareaStyle} />
