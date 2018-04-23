@@ -113,8 +113,6 @@ export default class Upload extends Component {
       latLng
     })
       .then(res => {
-        console.log(res);
-        console.log(res.data);
         this.setState({
           submitted: 'Successfully uploaded!',
           loading: false
