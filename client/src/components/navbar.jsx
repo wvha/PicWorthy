@@ -71,7 +71,7 @@ const Name = (props) => {
           onClick={ props.logout }
         >
           <Link to='/'>
-            LOGOUT
+            Logout
           </Link>
         </NavItem>
       </Nav>

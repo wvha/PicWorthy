@@ -21,12 +21,13 @@ export default class MainTemplate extends React.Component {
     
     this.state = {
       userPromise: axios.get('/api/user'),
-      userLikesPromise: axios.get('/api/likes'),
       userData: {
         firstName: '',
         lastName: '',
         username: '',
         user_id: '',
+        likes: [],
+        photos: []
       },
       showLogin: false,
       showSignup: false,
@@ -77,7 +78,6 @@ export default class MainTemplate extends React.Component {
 
   render() {
     const userPromise = this.state.userPromise;
-    const userLikesPromise = this.state.userLikesPromise;
     const userData = this.state.userData;
 
     return (
@@ -100,8 +100,8 @@ export default class MainTemplate extends React.Component {
               console.log('rout props', props)
               return (
                 <Locations 
-                  userData={ userPromise }
-                  userLikes={ userLikesPromise }
+                  userPromise={ userPromise }
+                  userData={ userData }
                 />
               )
             }
@@ -112,13 +112,15 @@ export default class MainTemplate extends React.Component {
             render={(props) => 
               <Userpage 
               userData={ userData } 
+              userPromise={ userPromise }
               />
             }/>
           <Route 
             path='/upload' 
             render={(props) => 
               <Upload 
-                userData={ userData }  
+                userData={ userData }
+                userPromise={ userPromise }
               />
             }/>
           <Route 
@@ -126,6 +128,7 @@ export default class MainTemplate extends React.Component {
             render={(props) => 
               <Likes 
                 userData={ userData } 
+                userPromise={ userPromise }
               />
             }/>
         </Switch>

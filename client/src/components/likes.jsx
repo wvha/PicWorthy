@@ -13,7 +13,9 @@ import { updateDisplayAmount } from '../helpers/picture.jsx';
 
 export default class Likes extends Component {
   constructor(props) {
+    console.log(props)
     super(props);
+
     this.state = {
       pics: [],
       displayAmount: 0,
@@ -24,8 +26,10 @@ export default class Likes extends Component {
       userData: props.userData,
       userLikes: props.userLikes
     };
-    // props.userData.then((result) => this.setState({userData: result.data}));
-    // props.userLikes.then((result) => this.setState({userLikes: result.data}));
+    
+    if (props.userData.user_id === '') {
+      props.userPromise.then((result) => this.setState({userData: result.data}));
+    }
 
     this.updatePictures = _.throttle(this.updatePictures.bind(this), 1000);
     this.rotatePics = rotatePics.bind(this);
