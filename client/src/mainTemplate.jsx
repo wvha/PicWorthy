@@ -8,10 +8,10 @@ import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
 import Landing from './components/landing.jsx'
 import Locations from './components/locations.jsx';
-import Userpage from './components/userpage.jsx';
+// import Userpage from './components/userpage.jsx';
 import Upload from './components/upload.jsx';
 import Footer from './components/footer.jsx';
-import Likes from './components/likes.jsx';
+// import Likes from './components/likes.jsx';
 
 // App component renders components based on the URL Route using React Router
 export default class MainTemplate extends React.Component {
@@ -95,32 +95,35 @@ export default class MainTemplate extends React.Component {
         />
         <Switch>
           <Route 
-            path='/locations' 
+            path='/upload' 
+            render={(props) => 
+              <Upload 
+                userData={ userData }
+                userPromise={ userPromise }
+              />
+            }/>
+          <Route 
+            // locations userpage and likes
+            path='/' 
             render={(props) => {
               console.log('rout props', props)
               return (
                 <Locations 
                   userPromise={ userPromise }
                   userData={ userData }
+                  pathname={ props.location.pathname }
                 />
               )
             }
             } 
           />
+          {/*
           <Route 
             path='/userpage' 
             render={(props) => 
               <Userpage 
               userData={ userData } 
               userPromise={ userPromise }
-              />
-            }/>
-          <Route 
-            path='/upload' 
-            render={(props) => 
-              <Upload 
-                userData={ userData }
-                userPromise={ userPromise }
               />
             }/>
           <Route 
@@ -131,6 +134,7 @@ export default class MainTemplate extends React.Component {
                 userPromise={ userPromise }
               />
             }/>
+            */}
         </Switch>
         <Footer />
       </div>

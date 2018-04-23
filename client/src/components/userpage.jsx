@@ -1,3 +1,5 @@
+// CAN BE DELETED
+
 import React, { Component } from 'react';
 import { Grid, Row } from 'react-bootstrap';
 import axios from 'axios';
@@ -8,150 +10,177 @@ import PicRow from './picrow.jsx';
 import Details from './details.jsx';
 import fetchClosestPics from '../helpers/fetchClosestPics.jsx';
 import getUserLocation from '../helpers/getUserLocation.jsx';
-import { updateDisplayAmount } from '../helpers/picture.jsx';
+// import { updateDisplayAmount } from '../helpers/picture.jsx';
 
+const userpageRender = function() {
+  const pics = this.state.userData.photos.slice(0, this.state.displayAmount);
 
-export default class Locations extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {
-      pics: [],
-      displayAmount: 0,
-      markers: [],
-      zoom: 4,
-      position: {lat: 37.09, lng: -95.71},
-      detailedPicURL: 'NONE',
-      userData: props.userData
-    };
-    if (props.userData.user_id === '') {
-      props.userPromise.then((result) => this.setState({userData: result.data}));
-    }
-
-    this.updatePictures = _.throttle(this.updatePictures.bind(this), 1000);
-    this.rotatePics = rotatePics.bind(this);
-    this.updateDisplayAmount = updateDisplayAmount.bind(this);
-    this.getUserLocation = getUserLocation.bind(this);
-    this.showHideDetails = showHideDetails.bind(this);
-    this.handleStarClick = this.handleStarClick.bind(this);
-  }
-
-  componentDidMount() {
-    this.getUserLocation();
-    this.updateDisplayAmount();
-    window.addEventListener('resize', this.updateDisplayAmount);
-  }
-
-  updatePictures(lat, lng) {
-    fetchClosestPics(lat, lng)
-      .then(({data}) => {
-        const clickHandler = this.showHideDetails;
-        console.log(data);
-        const markers = data.map((pic) => ({
-            lat: pic.loc.coordinates[1],
-            lng: pic.loc.coordinates[0],
-            clickHandler: (e) => clickHandler(e, pic.imageURL)
-          })
-        );
-        this.setState({
-          pics: data,
-          markers: markers
-        })
-      })
-  }
-
-  handleStarClick(e, { category, location, imageURL, description, loc}) {
-
-    axios.post('/api/favorites', {
-      category,
-      location,
-      imageURL,
-      description,
-      user_id: this.state.userData._id,
-      username: this.state.userData.username,
-      latLng: {
-        lat: loc.coordinates[1],
-        lng: loc.coordinates[0]
-      }
-    })
-      .then(({data}) => this.setState({userData: data}))
-  }
-
-  render() {
-    const pics = this.state.userData.photos.slice(0, this.state.displayAmount);
-
-    return (
-      <div style={{minHeight: `calc(100vh - 150px)`}}>
-        <h1 style={{fontFamily: `billabong`, textAlign: `center`, color: `#32bfff`}}>Hello {this.props.userData.firstName}</h1>
-        <h2 style={{fontFamily: `billabong`, textAlign: `center`, color: `#919295`}}>Your Places</h2>
-        <PicRow 
-          showHideDetails={ this.showHideDetails } 
-          rowType="locations"
-          pics={ pics }
-          rotatePics={ this.rotatePics }
-          detailedPicURL={ this.state.detailedPicURL }
-        />
-        <br />
-        <Details 
-          detailedPicURL={ this.state.detailedPicURL }
-          pics={ this.state.userData.photos }
-          showHideDetails={ this.showHideDetails }
-          handleStarClick={ this.handleStarClick }
-          userFavorites={ this.state.userData.likes }
-        />
-      </div>
-    )
-    //                   LOCATIONS RENDER                   //
-    /*
-    const pics = this.state.pics.slice(0, this.state.displayAmount);
-    console.log(this.state.userData)
-    return (
-      <Grid style={{margin: `0`, width: `100vw`, paddingLeft: `0px`, paddingRight: `0px`, minHeight: `calc(100vh - 150px)`}}>
-        <Row style={{margin: `20px`, height:`calc((100vh - 150px)/2)`, minHeight: `400px`}}>
-        <WorthyMap
-          markers={ this.state.markers } 
-          defaultZoom={ this.state.zoom }
-          defaultCenter={ this.state.position } 
-          onCenterChanged={ this.updatePictures }
-        />
-        </Row>
-        <div style={{textAlign: `center`, fontFamily: `billabong`, fontSize: `275%`, color: `#32bfff`}}>
-          Around You
-        </div>
-        <Row style={rowStyle}>
-          <PicRow 
-            showHideDetails={ this.showHideDetails } 
-            rowType="locations"
-            pics={ pics }
-            rotatePics={ this.rotatePics }
-            detailedPicURL={ this.state.detailedPicURL }
-          />
-        </Row>
-        <Row style={rowStyle}>
-          <Details 
-            detailedPicURL={ this.state.detailedPicURL }
-            pics={ this.state.pics }
-            showHideDetails={ this.showHideDetails }
-            handleStarClick={ this.handleStarClick }
-            userFavorites={ this.state.userData.likes }
-          />
-        </Row>
-      </Grid>
-    );
-    */
-    //                    OLD USERPAGE RENDER              //
-    /*
-    return (
-      <div style={{minHeight: `calc(100vh - 150px)`}}>
-        <h1 style={{fontFamily: `billabong`, textAlign: `center`, color: `#32bfff`}}>Hello {this.props.userData.firstName}</h1>
-        <h2 style={{fontFamily: `billabong`, textAlign: `center`, color: `#919295`}}>Your Places</h2>
-        <Row rowType={"user"} data={this.props.userData} showDetails={this.showDetails} />
-        <br />
-        {this.renderClickedCard()}
-      </div>
-    )
-    */
-  }
+  return (
+    <div style={{minHeight: `calc(100vh - 150px)`}}>
+      <h1 style={{fontFamily: `billabong`, textAlign: `center`, color: `#32bfff`}}>Hello {this.props.userData.firstName}</h1>
+      <h2 style={{fontFamily: `billabong`, textAlign: `center`, color: `#919295`}}>Your Places</h2>
+      <PicRow 
+        showHideDetails={ this.showHideDetails } 
+        rowType="locations"
+        pics={ pics }
+        rotatePics={ this.rotatePics }
+        detailedPicURL={ this.state.detailedPicURL }
+      />
+      <br />
+      <Details 
+        detailedPicURL={ this.state.detailedPicURL }
+        pics={ this.state.userData.photos }
+        showHideDetails={ this.showHideDetails }
+        handleStarClick={ this.handleStarClick }
+        userFavorites={ this.state.userData.likes }
+      />
+    </div>
+  )
 }
+
+export default userpageRender;
+
+// export default class Locations extends Component {
+//   constructor(props) {
+//     super(props);
+//     this.state = {
+//       pics: [],
+//       displayAmount: 0,
+//       markers: [],
+//       zoom: 4,
+//       position: {lat: 37.09, lng: -95.71},
+//       detailedPicURL: 'NONE',
+//       userData: props.userData
+//     };
+//     if (props.userData.user_id === '') {
+//       props.userPromise.then((result) => this.setState({userData: result.data}));
+//     }
+
+//     this.updatePictures = _.throttle(this.updatePictures.bind(this), 1000);
+//     this.rotatePics = rotatePics.bind(this);
+//     this.updateDisplayAmount = updateDisplayAmount.bind(this);
+//     this.getUserLocation = getUserLocation.bind(this);
+//     this.showHideDetails = showHideDetails.bind(this);
+//     this.handleStarClick = this.handleStarClick.bind(this);
+//   }
+
+//   componentDidMount() {
+//     this.getUserLocation();
+//     this.updateDisplayAmount();
+//     window.addEventListener('resize', this.updateDisplayAmount);
+//   }
+
+//   updatePictures(lat, lng) {
+//     fetchClosestPics(lat, lng)
+//       .then(({data}) => {
+//         const clickHandler = this.showHideDetails;
+//         console.log(data);
+//         const markers = data.map((pic) => ({
+//             lat: pic.loc.coordinates[1],
+//             lng: pic.loc.coordinates[0],
+//             clickHandler: (e) => clickHandler(e, pic.imageURL)
+//           })
+//         );
+//         this.setState({
+//           pics: data,
+//           markers: markers
+//         })
+//       })
+//   }
+
+//   handleStarClick(e, { category, location, imageURL, description, loc}) {
+
+//     axios.post('/api/favorites', {
+//       category,
+//       location,
+//       imageURL,
+//       description,
+//       user_id: this.state.userData._id,
+//       username: this.state.userData.username,
+//       latLng: {
+//         lat: loc.coordinates[1],
+//         lng: loc.coordinates[0]
+//       }
+//     })
+//       .then(({data}) => this.setState({userData: data}))
+//   }
+
+//   render() {
+//     const pics = this.state.userData.photos.slice(0, this.state.displayAmount);
+
+//     return (
+//       <div style={{minHeight: `calc(100vh - 150px)`}}>
+//         <h1 style={{fontFamily: `billabong`, textAlign: `center`, color: `#32bfff`}}>Hello {this.props.userData.firstName}</h1>
+//         <h2 style={{fontFamily: `billabong`, textAlign: `center`, color: `#919295`}}>Your Places</h2>
+//         <PicRow 
+//           showHideDetails={ this.showHideDetails } 
+//           rowType="locations"
+//           pics={ pics }
+//           rotatePics={ this.rotatePics }
+//           detailedPicURL={ this.state.detailedPicURL }
+//         />
+//         <br />
+//         <Details 
+//           detailedPicURL={ this.state.detailedPicURL }
+//           pics={ this.state.userData.photos }
+//           showHideDetails={ this.showHideDetails }
+//           handleStarClick={ this.handleStarClick }
+//           userFavorites={ this.state.userData.likes }
+//         />
+//       </div>
+//     )
+//     //                   LOCATIONS RENDER                   //
+//     /*
+//     const pics = this.state.pics.slice(0, this.state.displayAmount);
+//     console.log(this.state.userData)
+//     return (
+//       <Grid style={{margin: `0`, width: `100vw`, paddingLeft: `0px`, paddingRight: `0px`, minHeight: `calc(100vh - 150px)`}}>
+//         <Row style={{margin: `20px`, height:`calc((100vh - 150px)/2)`, minHeight: `400px`}}>
+//         <WorthyMap
+//           markers={ this.state.markers } 
+//           defaultZoom={ this.state.zoom }
+//           defaultCenter={ this.state.position } 
+//           onCenterChanged={ this.updatePictures }
+//         />
+//         </Row>
+//         <div style={{textAlign: `center`, fontFamily: `billabong`, fontSize: `275%`, color: `#32bfff`}}>
+//           Around You
+//         </div>
+//         <Row style={rowStyle}>
+//           <PicRow 
+//             showHideDetails={ this.showHideDetails } 
+//             rowType="locations"
+//             pics={ pics }
+//             rotatePics={ this.rotatePics }
+//             detailedPicURL={ this.state.detailedPicURL }
+//           />
+//         </Row>
+//         <Row style={rowStyle}>
+//           <Details 
+//             detailedPicURL={ this.state.detailedPicURL }
+//             pics={ this.state.pics }
+//             showHideDetails={ this.showHideDetails }
+//             handleStarClick={ this.handleStarClick }
+//             userFavorites={ this.state.userData.likes }
+//           />
+//         </Row>
+//       </Grid>
+//     );
+//     */
+//     //                    OLD USERPAGE RENDER              //
+//     /*
+//     return (
+//       <div style={{minHeight: `calc(100vh - 150px)`}}>
+//         <h1 style={{fontFamily: `billabong`, textAlign: `center`, color: `#32bfff`}}>Hello {this.props.userData.firstName}</h1>
+//         <h2 style={{fontFamily: `billabong`, textAlign: `center`, color: `#919295`}}>Your Places</h2>
+//         <Row rowType={"user"} data={this.props.userData} showDetails={this.showDetails} />
+//         <br />
+//         {this.renderClickedCard()}
+//       </div>
+//     )
+//     */
+//   }
+// }
 
 const showHideDetails = function(e, imageURL) {
   if (e.preventDefault !== undefined) {
