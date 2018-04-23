@@ -8,7 +8,7 @@ import PicRow from './picrow.jsx';
 import Details from './details.jsx';
 import fetchClosestPics from '../helpers/fetchClosestPics.jsx';
 import getUserLocation from '../helpers/getUserLocation.jsx';
-import { updateDisplayAmount, rotatePics } from '../helpers/picture.jsx';
+import { updateDisplayAmount } from '../helpers/picture.jsx';
 
 
 export default class Likes extends Component {
@@ -191,5 +191,21 @@ const showHideDetails = function(e, imageURL) {
 const rowStyle = {
   marginLeft: `0px`, 
   marginRight: `0px`
+}
+
+const rotatePics = function(e, direction) {
+  e.preventDefault();
+
+  let userData = Object.assign({}, this.state.userData);
+  let pics = [...userData.likes];
+  
+  if (direction === 'LEFT') {
+    pics.unshift(pics.pop());
+
+  } else if (direction === 'RIGHT') {
+    pics.push(pics.shift());
+  }
+  userData = Object.assign({}, userData, {likes: pics});
+  this.setState({userData});
 }
 

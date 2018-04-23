@@ -2,7 +2,8 @@ const reactRoutes = [
   '/',
   '/locations',
   '/upload',
-  '/userpage'
+  '/userpage',
+  '/likes',
 ];
 
 

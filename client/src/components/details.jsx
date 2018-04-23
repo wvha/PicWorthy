@@ -6,7 +6,8 @@ import axios from 'axios';
 export default class Details extends Component {
 
   scrollToBottom() {
-    this.scrollEnd.scrollIntoView({behavior: 'smooth'});
+    // not sure if I like this scroll down
+    // this.scrollEnd.scrollIntoView({behavior: 'smooth'});
   }
   
   componentDidUpdate(prevProps) {
