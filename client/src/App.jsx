@@ -1,8 +1,7 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
+import React, { Component } from 'react';
 import NavbarComp from './components/navbar.jsx';
 import { Navbar } from 'react-bootstrap';
-import { BrowserRouter, Route, Switch} from 'react-router-dom';
+import { Route, Switch} from 'react-router-dom';
 import axios from 'axios';
 import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
@@ -13,8 +12,8 @@ import Upload from './components/upload.jsx';
 import Footer from './components/footer.jsx';
 // import Likes from './components/likes.jsx';
 
-// App component renders components based on the URL Route using React Router
-export default class MainTemplate extends React.Component {
+
+export default class App extends Component {
 
   constructor(props) {
     super(props);
@@ -94,6 +93,10 @@ export default class MainTemplate extends React.Component {
           handleShowLogin={this.navbarHandleShowLogin}
         />
         <Switch>
+          <Route
+            exact path='/'
+            component={ Landing }
+          />
           <Route 
             path='/upload' 
             render={(props) => 
@@ -101,7 +104,8 @@ export default class MainTemplate extends React.Component {
                 userData={ userData }
                 userPromise={ userPromise }
               />
-            }/>
+            }
+          />
           <Route 
             // locations userpage and likes
             path='/' 
@@ -115,6 +119,12 @@ export default class MainTemplate extends React.Component {
                 />
               )
             }
+            } 
+          />
+          <Route
+            path='/superAwesomeLanding'
+            render={() =>
+              <SuperAwesomeLanding />
             } 
           />
           {/*
