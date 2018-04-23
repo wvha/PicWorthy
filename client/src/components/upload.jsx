@@ -64,9 +64,9 @@ export default class Upload extends Component {
     if (location === '') {
       invalidFields.push('Please enter a location');
     }
-    //if (latLng.lat === null || latLng.lng === null) {
-      //invalidFields.push('Please drop pin on location on the map');
-    //}
+    if (latLng.lat === null || latLng.lng === null) {
+      invalidFields.push('Please drop pin on location on the map');
+    }
     if (description === '') {
       invalidFields.push('Please enter a description');
     }
