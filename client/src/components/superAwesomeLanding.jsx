@@ -4,7 +4,7 @@ import { Navbar } from 'react-bootstrap';
 import { BrowserRouter, Route, DefaultRoute, Switch} from 'react-router-dom';
 import axios from 'axios';
 
-import MainTemplate from './mainTemplate.jsx';
+//import MainTemplate from './mainTemplate.jsx';
 import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
 import Landing from './components/landing.jsx'
@@ -97,7 +97,7 @@ export default class superAwesomeLanding extends React.Component {
               />
             } 
         />
-        <Route component={ MainTemplate }/>
+        {/*<Route component={ MainTemplate }/>*/}
       </Switch>
     );
   }

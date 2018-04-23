@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import NavbarComp from './components/navbar.jsx';
 import { Navbar } from 'react-bootstrap';
-import { Route, Switch} from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
@@ -82,6 +82,7 @@ export default class App extends Component {
     return (
     
       <div style={{backgroundColor: "#fdfdfd"}}>
+
         <NavbarComp 
           userData={userData}
           showLogin={this.state.showLogin}
@@ -92,6 +93,7 @@ export default class App extends Component {
           handleShowSignup={this.navbarHandleShowSignup}
           handleShowLogin={this.navbarHandleShowLogin}
         />
+            
         <Switch>
           <Route
             exact path='/'
@@ -119,13 +121,7 @@ export default class App extends Component {
                 />
               )
             }
-            } 
-          />
-          <Route
-            path='/superAwesomeLanding'
-            render={() =>
-              <SuperAwesomeLanding />
-            } 
+          } 
           />
           {/*
           <Route 

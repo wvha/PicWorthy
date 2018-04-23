@@ -4,6 +4,7 @@ const reactRoutes = [
   '/upload',
   '/userpage',
   '/likes',
+  '/superAwesomeLandingPage'
 ];
 
 
