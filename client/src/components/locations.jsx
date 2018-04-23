@@ -67,6 +67,8 @@ export default class Locations extends Component {
       detailedPicURL: 'NONE',
       userData: props.userData
     };
+
+    
     if (props.userData.user_id === '') {
       props.userPromise.then((result) => this.setState({userData: result.data}));
     }
@@ -83,6 +85,7 @@ export default class Locations extends Component {
   }
 
   componentDidMount() {
+    this.refreshUser();
     this.getUserLocation();
     this.updateDisplayAmount();
     window.addEventListener('resize', this.updateDisplayAmount);
@@ -103,6 +106,12 @@ export default class Locations extends Component {
           markers: markers
         })
       })
+  }
+
+  refreshUser() {
+    console.log('refresh user')
+    axios.get('/api/user')
+      .then((result) => this.setState({userData: result.data}));
   }
 
   handleStarClick(e, { category, location, imageURL, description, loc}) {
@@ -147,13 +156,15 @@ export default class Locations extends Component {
       <div style={{minHeight: `calc(100vh - 150px)`}}>
         <h1 style={{fontFamily: `billabong`, textAlign: `center`, color: `#32bfff`}}>Hello {this.props.userData.firstName}</h1>
         <h2 style={{fontFamily: `billabong`, textAlign: `center`, color: `#919295`}}>Your Places</h2>
-        <PicRow 
-          showHideDetails={ this.showHideDetails } 
-          rowType="locations"
-          pics={ pics }
-          rotatePics={ this.rotatePics }
-          detailedPicURL={ this.state.detailedPicURL }
-        />
+        { pics.length === 0 ? <div /> :
+          <PicRow 
+            showHideDetails={ this.showHideDetails } 
+            rowType="locations"
+            pics={ pics }
+            rotatePics={ this.rotatePics }
+            detailedPicURL={ this.state.detailedPicURL }
+          />
+        }
         <br />
         <Details 
           detailedPicURL={ this.state.detailedPicURL }
@@ -175,13 +186,15 @@ export default class Locations extends Component {
         <h1 style={{fontFamily: `billabong`, textAlign: `center`, color: `#32bfff`}}>{this.props.userData.firstName}'s Favorites</h1>
         <br />
         </div>
-        <PicRow 
-          showHideDetails={ this.showHideDetails } 
-          rowType="locations"
-          pics={ pics }
-          rotatePics={ this.rotatePics }
-          detailedPicURL={ this.state.detailedPicURL }
-        />
+        { pics.length === 0 ? <div /> :
+          <PicRow 
+            showHideDetails={ this.showHideDetails } 
+            rowType="locations"
+            pics={ pics }
+            rotatePics={ this.rotatePics }
+            detailedPicURL={ this.state.detailedPicURL }
+          />
+        }
         <br/>
         <Details 
           detailedPicURL={ this.state.detailedPicURL }
@@ -211,13 +224,15 @@ export default class Locations extends Component {
           Around You
         </div>
         <Row style={rowStyle}>
-          <PicRow 
-            showHideDetails={ this.showHideDetails } 
-            rowType="locations"
-            pics={ pics }
-            rotatePics={ this.rotatePics }
-            detailedPicURL={ this.state.detailedPicURL }
-          />
+          { pics.length === 0 ? <div /> :
+            <PicRow 
+              showHideDetails={ this.showHideDetails } 
+              rowType="locations"
+              pics={ pics }
+              rotatePics={ this.rotatePics }
+              detailedPicURL={ this.state.detailedPicURL }
+            />
+          }
         </Row>
         <Row style={rowStyle}>
           <Details 

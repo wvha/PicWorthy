@@ -40,9 +40,8 @@ get.logout = (req, res) => {
 
 get.user = (req, res) => {
   if (req.user) {
-    console.log(req.user)
-    res.json(req.user);
-  } 
+    db.fetchUser(req.user.username).then(user => res.json(user));
+  }
 }
 
 post.upload = (req, res) => 
