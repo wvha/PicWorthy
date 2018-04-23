@@ -9,6 +9,53 @@ import Details from './details.jsx';
 import fetchClosestPics from '../helpers/fetchClosestPics.jsx';
 import getUserLocation from '../helpers/getUserLocation.jsx';
 
+
+const showHideDetails = function(e, imageURL) {
+  if (e.preventDefault !== undefined) {
+    e.preventDefault();
+  }
+
+  if (this.state.detailedPicURL === imageURL) {
+    const detailedPicURL = 'NONE';
+    
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    })
+
+    setTimeout(() => this.setState({detailedPicURL}), 322);
+
+  } else {
+    if (/^\/locations/.test(this.props.pathname)) {
+      const detailedPicURL = imageURL;
+      const coordinates = this.state.pics.filter(pic => pic.imageURL === imageURL)[0].loc.coordinates;
+      const position = {
+        lat: coordinates[1],
+        lng: coordinates[0]
+      }
+      this.setState({
+        detailedPicURL,
+        position,
+        zoom: 10
+      });
+    } else{
+      const detailedPicURL = imageURL;
+      this.setState({
+        detailedPicURL,
+      });
+    }
+    
+  }
+}
+
+
+
+const rowStyle = {
+  marginLeft: `0px`, 
+  marginRight: `0px`
+}
+
+
 const rotatePicsLocation = function(e, direction) {
   e.preventDefault();
 
@@ -150,6 +197,7 @@ export default class Locations extends Component {
   }
 
   userpageRender() {
+    
     const pics = this.state.userData.photos.slice(0, this.state.displayAmount);
   
     return (
@@ -265,41 +313,5 @@ export default class Locations extends Component {
 }
 
 
-const showHideDetails = function(e, imageURL) {
-  if (e.preventDefault !== undefined) {
-    e.preventDefault();
-  }
-
-  if (this.state.detailedPicURL === imageURL) {
-    const detailedPicURL = 'NONE';
-    
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    })
-
-    setTimeout(() => this.setState({detailedPicURL}), 322);
-
-  } else {
-    const detailedPicURL = imageURL;
-    const coordinates = this.state.pics.filter(pic => pic.imageURL === imageURL)[0].loc.coordinates;
-    const position = {
-      lat: coordinates[1],
-      lng: coordinates[0]
-    }
-    this.setState({
-      detailedPicURL,
-      position,
-      zoom: 10
-    });
-  }
-}
-
-
-
-const rowStyle = {
-  marginLeft: `0px`, 
-  marginRight: `0px`
-}
 
 
