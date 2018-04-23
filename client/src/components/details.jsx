@@ -10,7 +10,7 @@ export default class Details extends Component {
   }
   
   componentDidUpdate(prevProps) {
-    if (prevProps.detailedPicURL === 'NONE') {
+    if (prevProps.detailedPicURL === 'NONE' && this.props.detailedPicURL !== 'NONE') {
       this.scrollToBottom();
     }
   }
@@ -22,7 +22,7 @@ export default class Details extends Component {
     let pic = getPic(detailedPicURL, pics);
 
     if (pic === 'NOT_FOUND') {
-      return <div ref={ (el) => this.scrollEnd = el  }/>;
+      return <div />;
     }
 
     const isStarred = checkFavorites(userFavorites.map((p) => p.imageURL), pic.imageURL)

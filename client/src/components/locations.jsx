@@ -72,7 +72,7 @@ export default class Locations extends Component {
         lng: loc.coordinates[0]
       }
     })
-      .then((result) => console.log('result', result))
+      .then(({data}) => this.setState({userData: data}))
   }
 
   render() {
@@ -148,3 +148,5 @@ const rowStyle = {
   marginLeft: `0px`, 
   marginRight: `0px`
 }
+
+
