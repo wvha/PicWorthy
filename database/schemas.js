@@ -1,24 +1,32 @@
 const mongoose = require('mongoose');
 
-const userSchema = mongoose.Schema({
+const UserSchema = mongoose.Schema({
   firstName: String,
   lastName: String,
   username: String,
   password: String,
-  photos: [{type: mongoose.Schema.Types.ObjectId, ref: 'Pictures'}]
+  photos: [{}],
+  likes: [{}]
 });
 
-const pictureSchema = mongoose.Schema({
+const PictureSchema = new mongoose.Schema({
   category: String,
   location: String,
   imageURL: String,
   description: String,
   username: String,
   user_id: String,
+  loc: {
+    type: {
+      default: 'Point', 
+      type: String
+    },
+    coordinates: {
+      type: [Number],
+      index: '2dsphere'
+    }
+  }
 });
 
-const Users = mongoose.model('Users', userSchema);
-const Pictures = mongoose.model('Pictures', pictureSchema);
-
-module.exports.userSchema = userSchema;
-module.exports.pictureSchema = pictureSchema;
+module.exports.UserSchema = UserSchema;
+module.exports.PictureSchema = PictureSchema;

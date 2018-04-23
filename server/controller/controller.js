@@ -1,9 +1,8 @@
-const db = require ('../../database/database.js');
+const db = require ('../../database/dbFunctions.js');
 const passport = require('../middleware/passport.js');
 
 const post = {};
 const get = {};
-const patch = {};
 
 post.signup = (req, res) => {
   db.saveUser(req.body)
@@ -23,6 +22,7 @@ post.login = (req, res, next) => {
 
       req.login(user, function (err) {
         if (err) {
+          console.log('error logging in', err);
           res.status(400).send(err);
         } else {
           res.json(user);
@@ -35,64 +35,44 @@ post.login = (req, res, next) => {
 get.logout = (req, res) => {
   req.logout();
   req.session.destroy();
-  return res.redirect('/');
+  res.redirect('/');
 }
 
-get.loggedInYet = (req, res) => {
+get.user = (req, res) => {
   if (req.user) {
-    res.json(req.user);
-  } 
+    db.fetchUser(req.user.username).then(user => res.json(user));
+  }
 }
 
-post.upload = function(req, res){
-  db.savePicture(req.body, function(err, data) {
-    if (err) {
-      res.sendStatus(500);
-    } else {
-      db.savePictureToUser(data);
-      res.sendStatus(200);
-    }
-  })
+post.upload = (req, res) => 
+  db.savePicture(req.body)
+    .then((data) => db.savePictureToUser(req.body))
+    .then(() => res.end())
+    .catch((err) => {
+      console.log('error uploading photo', err);
+      res.status(500).send('error uploading photo')
+    });
+
+get.closestPics = function(req, res) {
+  db.selectClosestPictures({lat: req.query.lat, lng: req.query.lng})
+    .then((pictures) => {
+      console.log('sending pictures', pictures);
+      res.json(pictures);
+    });
 };
 
-get.upload = function(req, res) {
-  db.selectAllPictures(function(err, data) {
-    if(err) {
-      res.sendStatus(500);
-    } else {
-      res.json(data);
-    }
-  });
-};
-
-patch.favorites = function(req, res) {
+post.favorites = function(req, res) {
+  console.log('favorites', req.body);
   db.addToFavorites(req.body)
     .then(() => {
-      return db.fetchUser(req.body.userData.username);
+      return db.fetchUser(req.body.username);
     })
     .then((data) => {
       res.json(data);
     })
 }
 
-get.userLikes = (req, res) => {
-  if (req.user) {
-    db.fetchUserLikes(req.user)
-      .then((result) => {
-        res.json(result);
-      });
-  } 
-}
-
-get.userPosts = (req, res) => {
-  if (req.user) {
-    db.getUserPosts(req.user.username, function (err, data) {
-      res.json(data);
-    });
-  }
-}
   
 
 module.exports.get = get;
 module.exports.post = post;
-module.exports.patch = patch;

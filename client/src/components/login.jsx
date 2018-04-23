@@ -3,7 +3,7 @@ import axios from 'axios';
 import PasswordMask from 'react-password-mask'; // go to https://www.npmjs.com/package/react-password-mask for styling
 import { Modal } from 'react-bootstrap';
 
-class Login extends Component {
+export default class Login extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -75,5 +75,3 @@ const containerStyles ={
   display: "inline",
   backgroundColor: "black"
 }
-
-export default Login;

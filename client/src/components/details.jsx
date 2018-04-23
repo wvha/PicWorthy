@@ -3,56 +3,131 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import FaIconPack, {FaStarO, FaStar, FaFacebookSquare, FaTwitter, FaYelp, FaInstagram} from 'react-icons/lib/fa';
 import axios from 'axios';
 
-class Details extends Component {
-  constructor(props) {
-    super(props);
-  }
+export default class Details extends Component {
 
-  displayStar(details) {
-    if (this.props.starFilled) {
-      return <FaStar style={iconStyle} size={30} />;
-    } else if (this.props.starFilled === null) {
-      return;
-    } else {
-      return <FaStarO style={iconStyle} size={30} onClick={(e) => {this.props.handleStarClick(e, details)}}/>;
+  scrollToBottom() {
+    // not sure if I like this scroll down
+    // this.scrollEnd.scrollIntoView({behavior: 'smooth'});
+  }
+  
+  componentDidUpdate(prevProps) {
+    if (prevProps.detailedPicURL === 'NONE' && this.props.detailedPicURL !== 'NONE') {
+      this.scrollToBottom();
     }
   }
 
   render() {
+    
+    const { detailedPicURL, pics, userFavorites, showHideDetails, handleStarClick } = this.props 
+
+    let pic = getPic(detailedPicURL, pics);
+
+    if (pic === 'NOT_FOUND') {
+      return <div />;
+    }
+
+    const isStarred = checkFavorites(userFavorites.map((p) => p.imageURL), pic.imageURL)
+    console.log('isStarred', isStarred, userFavorites, pic.imageURL);
+
     return (
       <div>
         <br/>
-        <Grid style={{background: `linear-gradient(to right, #4cc7ff 0%, #99dfff  100%)`, padding: `20px`, width: `100vw`}}>
+        <Grid style={ {
+          background: `linear-gradient(to right, #4cc7ff 0%, #99dfff  100%)`, 
+          padding: `20px`, 
+          width: `100vw`
+        } }>
           <Row>
-            <Col md={6} mdPush={6} style={{paddingRight: `100px`}}>
-              <h1 style={{fontFamily: `billabong`}}>
-                {this.props.picDetails.location}
+            <Col 
+              md={ 6 } 
+              mdPush={ 6 } 
+              style={ {paddingRight: `100px`} }
+            >
+              <h1 style={ {fontFamily: `billabong`} }>
+                {pic.location }
               </h1>
               <h4>
-                Submitted by: {this.props.picDetails.username}
+                Submitted by: { pic.username }
               </h4>
               <p>
-                {this.props.picDetails.description} 
+                { pic.description } 
               </p>
               <br />
-              {this.displayStar(this.props.picDetails)}
-              <FaInstagram style={iconStyle} size={30} />
-              <FaFacebookSquare style={iconStyle} size={30} /> 
-              <FaTwitter style={iconStyle} size={30} />
-              <FaYelp style={iconStyle} size={30} />
+              <DisplayStar
+                pic={ pic }
+                handleStarClick={ handleStarClick }
+                isStarred={ isStarred }
+              />
+              {/*
+              <FaInstagram 
+                style={ iconStyle}  
+                size={ 30 } 
+              />
+              <FaFacebookSquare 
+                style={ iconStyle } 
+                size={ 30 } 
+              /> 
+              <FaTwitter 
+                style={ iconStyle } 
+                size={ 30 } 
+              />
+              <FaYelp 
+                style={ iconStyle } 
+                size={ 30 } 
+              />
+              */}
             </Col>
-            <Col md={6} mdPull={6}>
-              <span style={imgSpanStyle}>
-                <img src={this.props.picDetails.imageURL} style ={imgStyle}/>
+            <Col 
+              md={ 6 } 
+              mdPull={ 6 }
+            >
+              <span style={ imgSpanStyle }>
+                <img 
+                  src={ pic.imageURL } 
+                  style ={ imgStyle }
+                />
               </span>
             </Col>
           </Row>
         </Grid>
         <br />
+        <div 
+          ref={ (el) => this.scrollEnd = el  }
+        />
       </div>
     )
   }
+};
+
+const getPic = (url, pics) => {
+  for (const pic of pics) {
+    if (pic.imageURL === url) {
+      return pic;
+    }
+  }
+  return 'NOT_FOUND';
 }
+
+const DisplayStar = ({ pic, handleStarClick, isStarred }) => {
+  if (isStarred) {
+    return (
+      <FaStar 
+        style={ iconStyle } 
+        size={ 40 }
+      />
+    )
+  } else {
+    return (
+      <FaStarO
+        style={ iconStyle } 
+        size={ 40 } 
+        onClick={ (e) => handleStarClick(e, pic) } 
+      /> 
+    );
+  }
+}
+
+const checkFavorites = (userFavorites, img) => userFavorites.includes(img);
 
 const imgSpanStyle= {
   display: `inline-block`,
@@ -73,5 +148,3 @@ const imgStyle = {
 const iconStyle ={
   paddingRight: `10px`
 }
-
-export default Details;

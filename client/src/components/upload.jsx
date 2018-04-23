@@ -6,7 +6,7 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { BeatLoader } from 'react-spinners';
 
-class Upload extends Component {
+export default class Upload extends Component {
   constructor(props) {
     super(props)
     this.state = {
@@ -17,15 +17,29 @@ class Upload extends Component {
       user_id: '',
       username: '',
       submitted: '',
-      loading: false
+      loading: false,
+      latLng: {lat: null, lng: null},
+      uploadStatus: []
     };
+
     this.getLink = this.getLink.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
+    this.pinLocation = this.pinLocation.bind(this);
   }
 
   getLink(imgurLink) {
     this.setState({ imageURL: imgurLink })
+  }
+
+  pinLocation({ latLng }) {
+    
+    this.setState({
+      latLng: {
+        lat: latLng.lat(),
+        lng: latLng.lng(),
+      }
+    })
   }
 
   handleInputChange(event) {
@@ -41,17 +55,44 @@ class Upload extends Component {
   handleSubmit(event) {
     event.preventDefault();
 
+    const { category, location, description, imageURL, latLng} = this.state;
+
+    let invalidFields = [];
+    if (category === '') {
+      invalidFields.push('Please enter a category');
+    } 
+    if (location === '') {
+      invalidFields.push('Please enter a location');
+    }
+    if (latLng.lat === null || latLng.lng === null) {
+      invalidFields.push('Please drop pin on location on the map');
+    }
+    if (description === '') {
+      invalidFields.push('Please enter a description');
+    }
+    if (imageURL === '') {
+      invalidFields.push('Please upload a image')
+    }
+    if (invalidFields.length > 0) {
+      this.setState({uploadStatus: invalidFields});
+      return;
+    } else {
+      this.setState({uploadStatus: []})
+    }
+
+    
     this.setState({
       loading: true
     })
 
     axios.post(`/api/upload`, {
-      category: this.state.category,
-      location: this.state.location,
-      imageURL: this.state.imageURL,
-      description: this.state.description,
+      category,
+      location,
+      imageURL,
+      description,
       user_id: this.props.userData._id,
-      username: this.props.userData.username
+      username: this.props.userData.username,
+      latLng
     })
       .then(res => {
         console.log(res);
@@ -59,7 +100,22 @@ class Upload extends Component {
         this.setState({
           submitted: 'Successfully uploaded!',
           loading: false
-        })
+        });
+      })
+      .then(() => {
+        this.setState({
+          category: '',
+          description: '',
+          imageURL: '',
+          location: '',
+          latLng: {
+            lat: null,
+            lng: null
+          }
+        });
+      })
+      .then(() => {
+        setTimeout(() => this.setState({submitted: ''}), 2000);
       })
       .catch((err) => {
         this.setState({
@@ -70,11 +126,23 @@ class Upload extends Component {
   }
 
   render() {
+    const { lat, lng } = this.state.latLng;
+    const marker = [lat, lng].includes(null) 
+      ? [] 
+      : [{lat, lng}]
+    
+    
     return (
       <Grid style={{minHeight: `calc(100vh - 130px)`}}>
         <Row style={{padding: `50px`}}>
           <Col xs={9} md={4} style={{height: `400px`}}> 
-            <Worthymap isForUploadPage={true} />
+            <Worthymap 
+              getLocationUpload={this.getLocationUpload}
+              onMapClick={this.pinLocation}
+              defaultZoom={10}
+              defaultCenter={{lat: 37.77, lng: -122.41}}
+              markers={ marker }
+            />
           </Col>
           <Col xs={6} md={4}>
             <DropZone getLink={this.getLink} />
@@ -87,6 +155,7 @@ class Upload extends Component {
               description={this.state.description}
               handleInputChange={this.handleInputChange}
               handleSubmit={this.handleSubmit}
+              uploadStatus={this.state.uploadStatus}
             />
             <br />
             <div style={{width: `100px`, margin: `auto`, position: `relative`, top:`80px`}}>
@@ -97,10 +166,8 @@ class Upload extends Component {
             </div>
           </Col>
         </Row>
-
       </Grid>
     )
   }
 }
 
-export default Upload;
