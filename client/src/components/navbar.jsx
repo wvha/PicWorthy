@@ -93,14 +93,8 @@ const Name = (props) => {
           eventKey={ 4 } 
           onClick={ (e) => {props.handleShow(e)} } 
           name="showLogin" 
-        ><span
-          style={{
-            color: "#00b0ff"
-          }}
         >
           LOGIN
-        </span>
-          
         </NavItem>
         <Login 
           show={ props.showLogin } 

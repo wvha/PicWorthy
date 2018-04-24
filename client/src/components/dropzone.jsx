@@ -4,6 +4,14 @@ import Dropzone from 'react-dropzone';
 import axios from 'axios';
 import { BounceLoader } from 'react-spinners';
 
+/*
+This component helps to upload images by providing a 
+'dropzone' area that you can click on or drop items into.
+Specifically, it's used inside the upload.jsx file.
+It uses formData to handle file uploading to the form.
+Additionally, it's possible to upload an array of images, 
+but in this case we only append the 0th element of the array (the first item).
+*/
 
 export default class Accept extends React.Component {
   constructor() {
