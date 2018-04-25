@@ -1,10 +1,15 @@
+/*
+ * this was a cool looking landing page that had sick animations and stuff
+ * go back in teh git commits if you want to see it back to before the landing page
+ * got reverted.  It got abandoned because of running out of time.
+ */
+
+
 import React from 'react';
 import NavbarComp from './components/navbar.jsx';
 import { Navbar } from 'react-bootstrap';
 import { BrowserRouter, Route, DefaultRoute, Switch} from 'react-router-dom';
 import axios from 'axios';
-
-//import MainTemplate from './mainTemplate.jsx';
 import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
 import Landing from './components/landing.jsx'
@@ -14,7 +19,7 @@ import Upload from './components/upload.jsx';
 import Footer from './components/footer.jsx';
 import Likes from './components/likes.jsx';
 
-// App component renders components based on the URL Route using React Router
+
 export default class superAwesomeLanding extends React.Component {
 
   constructor(props) {
@@ -27,6 +32,7 @@ export default class superAwesomeLanding extends React.Component {
         username: '',
         user_id: '',
       },
+      
       showLogin: false,
       showSignup: false,
       activeModal: '',
@@ -34,6 +40,7 @@ export default class superAwesomeLanding extends React.Component {
         lat: 41.9,
         lng: -87.624
       },
+      
       mapZoom: 5,
       detailProps: undefined,
       lastCardClicked: undefined,
@@ -97,16 +104,7 @@ export default class superAwesomeLanding extends React.Component {
               />
             } 
         />
-        {/*<Route component={ MainTemplate }/>*/}
       </Switch>
     );
   }
 };
-
-/*
-ReactDOM.render((
-  <BrowserRouter>
-    <App />
-  </BrowserRouter>
-), document.getElementById('app'));
-*/

@@ -1,6 +1,17 @@
 import axios from 'axios';
 import _ from 'lodash';
 
+/*
+ * This file uses the google places API to fetch pictures near specific locations
+ * the functions work but we ran out of time before we could integrate it into our app
+ * we also planned on using it to make a script that creates a bunch of fake users
+ * so our site was super populated.
+ * 
+ * getPhotos takes in a lat and lng and returns urls to images near that location on the google
+ * places api
+ * 
+ */
+
 const GOOGLE_API_KEY =  'AIzaSyAbKOk8mgD80PTew_Lum8blZMT5WBP5NzA';
 
 const photoEndpoint = (photoReference) => `https://maps.googleapis.com/maps/api/place/photo?maxwidth=1600&photoreference=${photoReference}&key=${GOOGLE_API_KEY}`;
@@ -26,12 +37,3 @@ const getPhotos = (lat, lng) => {
 };
 
 export default getPhotos;
-
-/*
-
-getPhotos takes in a latitude and a longitude and then uses the google places API to scrape photos from nearby that place.
-
-We are using this to make fake data.  ONe could use this to find more photos in addition to the user uploaded ones.
-
-
-*/

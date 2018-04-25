@@ -17,7 +17,9 @@ import { BeatLoader } from 'react-spinners';
 
 export default class Upload extends Component {
   constructor(props) {
+    
     super(props)
+    
     this.state = {
       category: '',
       location: '',
@@ -76,6 +78,7 @@ export default class Upload extends Component {
     const { category, location, description, imageURL, latLng} = this.state;
 
     let invalidFields = [];
+    
     if (category === '') {
       invalidFields.push('Please enter a category');
     } 
@@ -112,12 +115,14 @@ export default class Upload extends Component {
       username: this.props.userData.username,
       latLng
     })
+    
       .then(res => {
         this.setState({
           submitted: 'Successfully uploaded!',
           loading: false
         });
       })
+    
       .then(() => {
         this.setState({
           category: '',
@@ -130,9 +135,11 @@ export default class Upload extends Component {
           }
         });
       })
+      
       .then(() => {
         setTimeout(() => this.setState({submitted: ''}), 2000);
       })
+      
       .catch((err) => {
         this.setState({
           submitted: 'An error occurred. Please try again.',
@@ -155,6 +162,7 @@ export default class Upload extends Component {
     
     return (
       <Grid style={{minHeight: `calc(100vh - 130px)`}}>
+        
         <Row style={{padding: `50px`}}>
           <Col xs={9} md={4} style={{height: `400px`}}> 
             <Worthymap 
@@ -165,9 +173,11 @@ export default class Upload extends Component {
               markers={ marker }
             />
           </Col>
+          
           <Col xs={6} md={4}>
             <DropZone getLink={this.getLink} />
           </Col>
+          
           <Col xs={6} md={4}>
             <UploadForm
               category={this.state.category}
@@ -179,9 +189,11 @@ export default class Upload extends Component {
               uploadStatus={this.state.uploadStatus}
             />
             <br />
+            
             <div style={{width: `100px`, margin: `auto`, position: `relative`, top:`80px`}}>
               <BeatLoader color={`#919295`} loading={this.state.loading} />
             </div>
+            
             <div style={{textAlign: `center`, fontWeight: `bold`, fontSize: `large`, position: `relative`, top:`80px`}}>
               {this.state.submitted}
             </div>

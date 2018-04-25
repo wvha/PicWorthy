@@ -1,12 +1,13 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import PasswordMask from 'react-password-mask'; // go to https://www.npmjs.com/package/react-password-mask for styling
+import PasswordMask from 'react-password-mask'; 
 import { Modal } from 'react-bootstrap';
 import Login from './login.jsx';
 
 export default class Signup extends Component {
   constructor(props) {
     super(props);
+    
     this.state = {
       firstName: '',
       lastName: '',
@@ -14,6 +15,7 @@ export default class Signup extends Component {
       password: '',
       status: undefined,
     },
+    
     this.updateInfo = this.updateInfo.bind(this);
     this.sendInfo = this.sendInfo.bind(this);
   }
@@ -32,6 +34,7 @@ export default class Signup extends Component {
           status: true
         });
       })
+      
       .catch(() => {
         this.setState({
           status: false
@@ -43,6 +46,7 @@ export default class Signup extends Component {
     if (this.state.status !== undefined) {
       if (this.state.status) {
         return <span style={{color: `green`}}>Your account was successfully created!</span>
+      
       } else {
         return <span style={{color: `red`}}>Username already exists.</span>
       }
@@ -50,11 +54,14 @@ export default class Signup extends Component {
   }
 
   render() {
-    return (<div>
+    return (
+    <div>
        <Modal show={this.props.show} onHide={() => {this.props.hide()}} bsSize="small">
+          
           <Modal.Header closeButton>
             <Modal.Title>Create an account</Modal.Title>
           </Modal.Header>
+          
           <Modal.Body>
               First Name: <br/><input type="text" name="firstName" placeholder="Enter first name" onChange = {this.updateInfo}/><br/><br/>
               Last Name: <br/><input type="text" name="lastName" placeholder="Enter last name" onChange = {this.updateInfo} /><br/><br/>
@@ -69,6 +76,7 @@ export default class Signup extends Component {
                         />
               {this.renderStatus()}
           </Modal.Body>
+          
           <Modal.Footer>
               <a style={{float:`left`}} onClick={() => {this.props.handleShowLogin()}}>Already have an account?</a>
               <button onClick={this.sendInfo} style={{borderRadius: `5px`, padding: `5px`}}> Register </button>

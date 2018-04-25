@@ -1,30 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-const Card = ({ picDetails, showHideDetails, selected }) => (
-  <a href='#'>
-    <span 
-      style={ selected ? cardStyleSelected : cardStyle } 
-      onClick={ (e) => showHideDetails(e, picDetails.imageURL) }
-    >
-        <img 
-          src={ picDetails.imageURL } 
-          style={ imgStyle } 
-        />
-      
-      <br/> <br/>
-      <div style={ locationStyle }>{ picDetails.location }</div>
-    </span>
-  </a>
-)
 
-Card.propTypes = {
-  picDetails: PropTypes.shape({
-    location: PropTypes.string,
-    imageURL: PropTypes.string
-  }).isRequired,
-  showDetails: PropTypes.func.isRequired
-}
 
 const cardStyle ={
   display: `inline-block`,
@@ -57,6 +34,36 @@ const locationStyle = {
   fontFamily: `billabong, Comic Sans MS, Arial, sans-serif`,
   fontWeight: `bold`,
   fontSize: `xx-large`
+}
+
+const Card = ({ picDetails, showHideDetails, selected }) => (
+  <a href='#'>
+    <span 
+      style={ selected ? cardStyleSelected : cardStyle } 
+      onClick={ (e) => showHideDetails(e, picDetails.imageURL) }
+    >
+        <img 
+          src={ picDetails.imageURL } 
+          style={ imgStyle } 
+        />
+      
+      <br/> <br/>
+      <div style={ locationStyle }>{ picDetails.location }</div>
+    </span>
+  </a>
+)
+
+/*
+ * We did a bad job at updating and consistently using propTypes
+ */
+
+Card.propTypes = {
+  picDetails: PropTypes.shape({
+    location: PropTypes.string,
+    imageURL: PropTypes.string
+  }).isRequired,
+  showDetails: PropTypes.func.isRequired,
+  selected: PropTypes.func.isRequired
 }
 
 export default Card;

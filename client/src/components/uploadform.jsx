@@ -5,19 +5,25 @@ export default class UploadForm extends Component {
   checkImgUrl() {
     if(this.props.imageURL) {
       return <p style={{fontWeight:`bold`}}>Image attached.</p>
+    
     } else {
       return <p style={{fontWeight:`bold`}}>First, find your place on the map.<br></br> Next, upload an image of your place.</p>
     }
   }
   
   render() {
+    
     const uploadStatus = this.props.uploadStatus.map((status) => <div>{status}</div>);
+
     return (
       <div style={{paddingTop: `30px`}}>
         {this.checkImgUrl()}
+      
       <br />
+      
       <div style={{color: 'red', fontWeight: 'bold'}}>{uploadStatus}</div>
       <form onSubmit={this.props.handleSubmit}>
+        
         <label>
           Category
           <input
@@ -28,6 +34,7 @@ export default class UploadForm extends Component {
             onChange={this.props.handleInputChange}
             style={inputStyle} />
         </label><br /><br />
+        
         <label>
           Place
           <input
@@ -38,6 +45,7 @@ export default class UploadForm extends Component {
             onChange={this.props.handleInputChange}
             style={inputStyle} />
         </label><br /><br />
+        
         <label>
           Description
           <textarea
@@ -48,6 +56,7 @@ export default class UploadForm extends Component {
             onChange={this.props.handleInputChange} 
             style={textareaStyle} />
         </label><br /><br />
+        
         <div style={{textAlign:`center`, position: `relative`, top: `75px`}}>
           <input
             name="submit"

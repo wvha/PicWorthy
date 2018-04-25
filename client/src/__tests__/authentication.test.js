@@ -5,6 +5,10 @@ const axios = require('axios');
 const PORT = process.env.PORT || 4446;
 const URL = `http://127.0.0.1:${PORT}`;
 
+/*
+ * LOL tests
+ */
+
 beforeAll(() => server.listen(`Test Server is listening on ${PORT}`));
 
 afterAll(() => {

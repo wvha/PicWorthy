@@ -11,12 +11,16 @@ db.fetchUser = (username) =>  models.Users.findOne({username: username});
 
 db.saveUser = (obj) => {
   return db.fetchUser(obj.username)
+  
   .then((user) => {
+    
     if (user === null) {
       const saltRounds = 10;
       return bcrypt.genSaltAsync(saltRounds)
+      
       .then ((salt) => {
         return bcrypt.hashAsync(obj.password, salt, null)
+        
         .then ((hash) => {
           obj.password = hash;
           return models.Users.create({
@@ -28,18 +32,20 @@ db.saveUser = (obj) => {
             console.log(err);
           });
         })
+
         .catch((err) => 
           console.log(err)
         )
     }) 
-    } else {
+    
+  } else {
       return false;
     }
   })
 };
 
 db.savePicture = function (data) {
-  console.log('saving picture', data);
+
   const newPic = new models.Pictures({
     category: data.category,
     location: data.location,
@@ -52,6 +58,7 @@ db.savePicture = function (data) {
       coordinates: [data.latLng.lng, data.latLng.lat]
     }
   });
+
   return newPic.save();
 };
 
@@ -71,9 +78,8 @@ db.selectClosestPictures = (location) =>
           type: 'Point',
           coordinates: [Number(location.lng), Number(location.lat)]//[lat, lng]
         },
-        distanceField: 'distance',
+
         spherical: true,
-        distanceField: 'distance',
         maxDistance: MAX_DISTANCE
       }},
       {'$sort': { 'distance': 1}},
