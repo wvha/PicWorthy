@@ -1,0 +1,1598 @@
+[33mcommit 367950065e908b42b9e2065f2fe4618ceb230a4e[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Mon Apr 23 11:09:53 2018 -0700
+
+    fix bug with going from upload page to user page
+
+[33mcommit c5a500b5cc3e7b4e502bc832092be5e3f1c76d96[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Mon Apr 23 08:44:48 2018 -0700
+
+    ready for pull request
+
+[33mcommit 16fb0843eb44fb7d2131ad85b4253bdb5dd42470[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Mon Apr 23 08:27:52 2018 -0700
+
+    revert back to basic landing page
+
+[33mcommit 7becb00aced20c162ce47bf8ded329cadd2ea496[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Mon Apr 23 08:07:31 2018 -0700
+
+    uncomment validation for dropping pin
+
+[33mcommit 621b3946dc4c27592baeb5b54e0ae826c86a2fe5[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Mon Apr 23 08:06:48 2018 -0700
+
+    fix bug with reloading user
+
+[33mcommit 9f7206f0a85a429ab4b00b6cb77dda43cdcc56a2[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Mon Apr 23 07:31:31 2018 -0700
+
+    refactor user and likes into locations
+
+[33mcommit 79b35bdf6dce267fb515c7e78fa90c9d285ddc31[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Mon Apr 23 06:23:53 2018 -0700
+
+    fix bug with react router on reload
+
+[33mcommit c7d293baa0eeb2ee5313208285d08a4284cbb3b1[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Mon Apr 23 06:08:51 2018 -0700
+
+    add rotate pics to likes and userpage and add likes to reactRouter
+
+[33mcommit 8d466fcc46400ec2c3b9d3dc02e599a85b94acbc[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Mon Apr 23 05:38:02 2018 -0700
+
+    likes page
+
+[33mcommit 81c336efab734969e36d2f2bc8696a32eb531f4c[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Mon Apr 23 05:16:35 2018 -0700
+
+    complete locations.jsx
+
+[33mcommit 4dc103121310291a1a234ee8ab3a872595e6599c[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sun Apr 22 22:49:10 2018 -0700
+
+    ready to do pull request
+
+[33mcommit 5f45fed639692cae8c070ebbe8fe327c966e483b[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sun Apr 22 15:12:05 2018 -0700
+
+    make pics rotate the correct direction
+
+[33mcommit ed819de950802e8cdc4227b12f1b0411aa39b5b9[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sun Apr 22 14:29:01 2018 -0700
+
+    make map move to location on clicks
+
+[33mcommit 3b8bd7799ab743e804a89efebaa78177a40c01b2[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sun Apr 22 13:33:40 2018 -0700
+
+    add clickable pins to map
+
+[33mcommit f83188344a598275da966db3209697bbcf512552[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sun Apr 22 13:02:11 2018 -0700
+
+    make a fire landing page
+
+[33mcommit b2c11f56b31071dfa8f39787e4225982a6804795[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sun Apr 22 10:43:52 2018 -0700
+
+    make details component work completely and style clicked on cards
+
+[33mcommit 904fdbd496594de86cd5f33024ecb5b12f46cca3[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sun Apr 22 08:27:19 2018 -0700
+
+    debug pic showing
+
+[33mcommit 431fac06a4f6a0eb5e00f8c720695eef3c089869[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sun Apr 22 08:15:44 2018 -0700
+
+    add link to card, add pass props down to details (untested)
+
+[33mcommit df00d0d5ca40c963ca1a4d44004f6c3872a1f770[m
+Merge: d7c6b5e 62960fd
+Author: William Cory <willcory10@gmail.com>
+Date:   Sun Apr 22 07:15:25 2018 -0700
+
+    fix merge conflict
+
+[33mcommit d7c6b5e149f93c6a7ad5dc71fe92a397e0f32117[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sun Apr 22 07:11:13 2018 -0700
+
+    preparing for another merge
+
+[33mcommit 7f9a9292d2073fe2f6aff7b38cdbd27f5dd3c182[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 22:01:07 2018 -0700
+
+    export default classes
+
+[33mcommit fbd7ff75b4db0d822fcb1fc9ae76a9fa3c4ecdc8[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 21:47:02 2018 -0700
+
+    move getuserlocation to helpers
+
+[33mcommit dfe83d919c7e4ee3b43aa53edd70b9859aab3f80[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 21:32:09 2018 -0700
+
+    refactor update displayamount
+
+[33mcommit 62960fd9745df6a1c6f9afb42f6404da10d51994[m
+Merge: e4a2f0a 1cd26cd
+Author: William Cory <willcory10@gmail.com>
+Date:   Sun Apr 22 00:21:06 2018 -0400
+
+    Merge pull request #81 from ceyuen/favorites
+    
+    Added details component to likes and user pages
+
+[33mcommit 7b5dc94ca762b47ea00f8195ffb2455b92dd79a0[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 21:12:02 2018 -0700
+
+    get location page halfway working and refactored
+
+[33mcommit 3d54c04a1186ddb16df0cbb4ea1c12ef03adab72[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 16:44:51 2018 -0700
+
+    add billabong to allowed urls
+
+[33mcommit f1a94509b55c938f61014d27b9d81af11b0dd597[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 16:36:54 2018 -0700
+
+    create api to get closest pics
+
+[33mcommit b9d0cfe990978b655e6d46fd2eadd7d0f2526dc5[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 16:10:28 2018 -0700
+
+    refactor database
+
+[33mcommit b739d0cbb5be3d845452ea3ee488678abf73feec[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 15:52:47 2018 -0700
+
+    refactor server routing
+
+[33mcommit 1cd26cd15755583ae99481a55267adaceb88a27f[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Sat Apr 21 14:11:13 2018 -0700
+
+    Added details component to likes and userpage
+
+[33mcommit 5bee771f1566d51fbf17d012261ffab839ad16d2[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 13:35:30 2018 -0700
+
+    refactor details (broken)
+
+[33mcommit f85c43bc66c9ae2bb3864b53c2a24ea3a9cbe779[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 13:15:14 2018 -0700
+
+    refactor footer and landing
+
+[33mcommit 5cfc4d292aed5495ece409985f0a61941679798a[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 13:14:12 2018 -0700
+
+    refactor landing
+
+[33mcommit 1c35f9cdfe9c3f66ccb69241b8433e31051c9ea8[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 13:07:12 2018 -0700
+
+    complete refactor of navbar
+
+[33mcommit e41bcac81eb99d7d74687c503c43385258ec394d[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 12:40:30 2018 -0700
+
+    factor state out of navbar
+
+[33mcommit 43b0a46bd74d16ad98b587598193f264d47f7675[m
+Merge: 132d058 e4a2f0a
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 12:25:27 2018 -0700
+
+    merge changes
+
+[33mcommit a4547aceb51f318eae2cd1fe8c1e3d760c080033[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Sat Apr 21 12:25:20 2018 -0700
+
+    Fixed bug in favorites feature
+
+[33mcommit 132d05839e35798861b85ee5dcdc55159e3efaac[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 12:20:02 2018 -0700
+
+    preparing to merge and then refactor state
+
+[33mcommit e4a2f0af5d596e3687cac71e4ee687b6e355c532[m
+Merge: 3bca7ba 8622f1d
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 15:03:26 2018 -0400
+
+    Merge pull request #80 from ceyuen/favorites
+    
+    Likes page along with a few other things
+
+[33mcommit 8622f1dfc7540f75c1bcd548176aad137a2979ce[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Sat Apr 21 11:58:31 2018 -0700
+
+    Removed react-fontawesome in favor of react-icons
+
+[33mcommit cc6c59904814a083c1f1b4423f39409c74243622[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Sat Apr 21 11:47:43 2018 -0700
+
+    Changed login and signup modals.
+    Only Login appears in navbar now.
+    Link to signup is within login.
+
+[33mcommit f44f13bf187fa023ce938d561c1d0ae158529ada[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Sat Apr 21 10:09:59 2018 -0700
+
+    Changede footer on upload page
+
+[33mcommit 7fce988469a24e8ff653a547edc2b388f1415b7e[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Sat Apr 21 10:04:41 2018 -0700
+
+    changed map height to be dynamic on locations page.
+    Changed map height on upload page.
+
+[33mcommit e441caed09f6e60eb558ad7700746ca75c8ecd92[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 09:53:50 2018 -0700
+
+    make backend save locations and fetch nearest locations
+
+[33mcommit 8554a15d4af944153ef48d43b6e9bec0a3263e5f[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Sat Apr 21 09:41:32 2018 -0700
+
+    Changed details grid color
+
+[33mcommit 86ff526f9c886ac615a1bdb79337b0925112511c[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Sat Apr 21 09:39:07 2018 -0700
+
+    Fixed details to be able to click next card.
+    Changed colors
+
+[33mcommit 96ed3d659fbbf681c7a4228e2043d99691e1664f[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Sat Apr 21 09:25:08 2018 -0700
+
+    Changed imageStyle in details to always fit inside container and keep ratio
+
+[33mcommit e8ec2044955b270265dba7d0a0257ab4cedb70f3[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Sat Apr 21 08:58:22 2018 -0700
+
+    changed function name in locations to renderClickedCard
+
+[33mcommit 1100168d8332c96d05d64d6a3852b450509ec00c[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Sat Apr 21 08:49:11 2018 -0700
+
+    Only shows chevron arrows in row when picStatic is greater than 5
+
+[33mcommit 1241e7ed9be653b88abe27ce5e87dcc1ac2cd349[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Sat Apr 21 08:36:51 2018 -0700
+
+    Fixed footer to be sticky to the bottom of page
+
+[33mcommit a755fbe7efbce14e8077a70b8fc4b2c4b5f56295[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Sat Apr 21 08:07:36 2018 -0700
+
+    Removed some comments and styled navbar
+
+[33mcommit bb951fd6edb165edf18996685325754887a7f332[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 08:05:44 2018 -0700
+
+    add geolocation to database
+
+[33mcommit fde5227d2716be5e073be59deb58e580046b9876[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 07:22:06 2018 -0700
+
+    get user location from map
+
+[33mcommit 331390bef9542d031c22c43255a305bd7856b0fe[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 07:05:05 2018 -0700
+
+    add validation for upload
+
+[33mcommit 9956ee1c01aac442f6b1af6d97625b64ec238228[m
+Merge: 481d6a5 3bca7ba
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 06:40:50 2018 -0700
+
+    merging
+    
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy
+
+[33mcommit 481d6a5fc222aaa1aeaa7531f45f2714835d9f08[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Sat Apr 21 06:40:29 2018 -0700
+
+    about to merge
+
+[33mcommit 5af8409b8285ba26ea4c54c805feec5fe547073d[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Fri Apr 20 19:42:17 2018 -0700
+
+    Working favorites function! :D
+
+[33mcommit 1f5e132b6840dfaf2d4c20fc9a0d6cb63d3fcbbf[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Fri Apr 20 18:54:18 2018 -0700
+
+    Works with objectId now instead of imgurl
+
+[33mcommit 3ddfce3d6825575ea60468a4631c44083298f985[m
+Merge: 39b312d 3bca7ba
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Fri Apr 20 17:52:56 2018 -0700
+
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy into favorites
+
+[33mcommit 39b312d9c7ce99c214bf88fb96bf93d5d8e1d6ba[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Fri Apr 20 17:44:37 2018 -0700
+
+    Working favorites feature
+
+[33mcommit 3bca7ba9b6c60b9346c7cae51e73a8e46955e7f2[m
+Merge: 35727a8 69531cf
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 20 18:40:55 2018 -0400
+
+    Merge pull request #79 from roninjin10/master
+    
+    add api key to google
+
+[33mcommit 69531cf12a2cba3bb4c1905709df1807b3861f15[m
+Merge: 574f594 7303459
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 20 15:39:47 2018 -0700
+
+    fix conflict
+
+[33mcommit 574f594d723d7cd6ac1b7a9a87121577a11073f1[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 20 15:38:59 2018 -0700
+
+    add key to clustered map
+
+[33mcommit 35727a827031f00861135183f34d18ee7015f8ff[m
+Merge: 8f2f7d3 7303459
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 20 18:30:49 2018 -0400
+
+    Merge pull request #77 from roninjin10/master
+    
+    just deleting the stray index.html
+
+[33mcommit 9cd2edf396f67e75e7ad5699bf2e471c6d27c539[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 20 15:30:00 2018 -0700
+
+    add api key
+
+[33mcommit 78cfcdfb15ef9ba2296617cb8b1622fcf954255a[m
+Merge: 72e2753 8f2f7d3
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 20 15:26:30 2018 -0700
+
+    pulling
+    
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy
+
+[33mcommit 7303459736cb555de704146b48677744c3a06b59[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 20 15:25:42 2018 -0700
+
+    adding api key
+    
+    adding api key for google
+
+[33mcommit 8f2f7d3327485b4dbb0eba53ff9b490547cb50a7[m
+Merge: a6ac081 a1e90d2
+Author: Will <wvha17@gmail.com>
+Date:   Fri Apr 20 15:06:29 2018 -0700
+
+    Merge pull request #78 from wvha/likes
+    
+    changes for heroku
+
+[33mcommit a1e90d2b04877c1af8ddf5449a68e8843e21a72b[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Fri Apr 20 15:02:31 2018 -0700
+
+    changes for heroku
+
+[33mcommit 72e275332bbb66f2a4f14009bb82777b2c07b273[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 20 14:35:27 2018 -0700
+
+    remove upload.html
+
+[33mcommit 0ffc878672edfefc771bd0eafb3f0b9b2d0e41b4[m
+Merge: 21def0b a6ac081
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 20 14:34:50 2018 -0700
+
+    merge will ha
+    
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy
+
+[33mcommit a6ac0816d907b52c9635e9e2fd30166659d1458f[m
+Merge: 9d59ba0 5fd0391
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 20 17:34:32 2018 -0400
+
+    Merge pull request #76 from wvha/likes
+    
+    not likes, but row component to pull user images
+
+[33mcommit f272fe1e7ca00cc5ddcf3eeeedb85537fb331d95[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Fri Apr 20 14:25:45 2018 -0700
+
+    Pushes image src string
+
+[33mcommit db5e3cccbfb3d67fce95684af85b951bca386b46[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Fri Apr 20 14:12:54 2018 -0700
+
+    patches database with details
+
+[33mcommit 5fd0391d7865db51f4e83304a6d82440255f58a6[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Fri Apr 20 14:08:42 2018 -0700
+
+    updated row component to rerender based on rowtype is user
+
+[33mcommit 21def0b1b74d0b33697c2ef0eced5930e4ac7170[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 20 14:08:38 2018 -0700
+
+    about to remerge after messing everythign up
+
+[33mcommit 5cc6bff26c055cf61b45ab9b362a42b04d1b8433[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Fri Apr 20 14:06:39 2018 -0700
+
+    moved userpage link to require login
+
+[33mcommit d67428ce5bf105f75275714f7105ec3556ef7a2a[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Fri Apr 20 13:10:52 2018 -0700
+
+    ERRORS N BUGS
+
+[33mcommit a7e7c66f20b377b41a1c6ab21aba86fbdc306db4[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Fri Apr 20 11:08:39 2018 -0700
+
+    get user posts works on both sides!
+
+[33mcommit 1c9c527a9735bf126223fbae57ed5e3f421fd8cd[m
+Merge: f7f763b 9d59ba0
+Author: wvha <Wvha17@gmail.com>
+Date:   Fri Apr 20 10:22:20 2018 -0700
+
+    merge conflicts
+
+[33mcommit 10d798f8b35db3c48462210c220393749ca919c7[m
+Merge: 4276111 9d59ba0
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 20 10:17:55 2018 -0700
+
+    merging
+    
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy
+
+[33mcommit 4276111cbd57554b18b67331b1ce85c00cd4f906[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 20 10:17:49 2018 -0700
+
+    update googlePlaces
+
+[33mcommit 9d59ba0866bc556d250e09bfce5e1f1c0ec2c8d2[m
+Merge: ad01876 57ec62f
+Author: Sam Rosenblum <srosenblum@gmail.com>
+Date:   Fri Apr 20 10:13:48 2018 -0700
+
+    Merge pull request #75 from ceyuen/styleUpload
+    
+    Changes to upload page
+
+[33mcommit 57ec62fe70beda22267b8d0497d069fc4e6e238b[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Fri Apr 20 09:53:15 2018 -0700
+
+    Removed comment
+
+[33mcommit 97c7f5c42761646e0fed2e461f19c7634be2e956[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Fri Apr 20 09:50:26 2018 -0700
+
+    Added loading element to submit button.
+    Changed input of description to be text area.
+
+[33mcommit 8cb03daed7cfc81169156ebe6b8e32df0c638cc3[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Fri Apr 20 00:07:41 2018 -0700
+
+    Added loading spinner
+
+[33mcommit 35502d93936870de100e7c162baf72678c7b558f[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 19 23:48:10 2018 -0700
+
+    Changed text for when image is attached.
+    Added state for when image is successfully submitted
+
+[33mcommit f7f763b406a99f6eae07c872f1f713216674749a[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 23:34:45 2018 -0700
+
+    fixed get.userPosts function
+
+[33mcommit f5d25d69ed9a026c8ba7ab2d47659ff02106ef95[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 23:34:21 2018 -0700
+
+    updated database db.getUserPosts function
+
+[33mcommit a4b90d392682fc938bd24abae8a0b18684e36131[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 23:32:59 2018 -0700
+
+    added componentdidmount axios request
+
+[33mcommit cf5c7d819d88b4b5f5de711282751dea7a50142b[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 23:31:49 2018 -0700
+
+    added userpage link to username
+
+[33mcommit d4ccb8f3982185b50106131d1ec49b926e3182b0[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 22:48:04 2018 -0700
+
+    sigh, need to get push to work
+
+[33mcommit c8a3073aadd5913bc71f9ee6fc8325d18788fe80[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 21:03:32 2018 -0700
+
+    added to database
+
+[33mcommit 3330df64b81035d67d51f26c9507631262830432[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 21:03:01 2018 -0700
+
+    fixed upload data
+
+[33mcommit a32a242fe088758f4c1c35eb934f4722ee1aaaed[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 21:02:40 2018 -0700
+
+    fixed schemas
+
+[33mcommit f96941c39d07b6c1e784f44d75cc090e1e0fc6ad[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 20:28:21 2018 -0700
+
+    added user id property
+
+[33mcommit 9e6b2ba750215497d57ab21c0c865feadbab13b3[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 20:27:52 2018 -0700
+
+    added userlikes and userposts get functions
+
+[33mcommit 51ee063fb0a386ace32db3ee22bb25ffb5a374f4[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 20:27:11 2018 -0700
+
+    added routes for likes and userposts
+
+[33mcommit 4861fb74ca2e7f9adf4fdfbd41a2e54b6052bc0f[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 20:26:49 2018 -0700
+
+    updated schemas to use with populate
+
+[33mcommit 27b416adc9a4228f466ff964cf56ae45f903fdd8[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 20:26:27 2018 -0700
+
+    refactored index.jsx to have highest props
+
+[33mcommit 5be50f69e25bdd844058039a6b2cf13fb7d8f5ba[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 20:25:55 2018 -0700
+
+    linkedupload page to button
+
+[33mcommit a861876b064f918d794a026e24b85c311530c036[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 20:16:17 2018 -0700
+
+    will work on this later
+
+[33mcommit ad01876aa4919fb9fb4d5503fa61072ee0bf0001[m
+Merge: c570ae7 52cbb0a
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 23:12:52 2018 -0400
+
+    Merge pull request #74 from ceyuen/styleUpload
+    
+    Styled upload page
+
+[33mcommit 52cbb0a5f28ccf8bf2fd8bccd292ca1f7bf25b9b[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 19 19:04:31 2018 -0700
+
+    Added image change for dropzone
+
+[33mcommit 3e9b17e0be1b5beb535bf8148164acb934c12df8[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 19 18:45:15 2018 -0700
+
+    Styled upload page
+
+[33mcommit fddd4f33604f8abd633acceddb59a8cf46c46f47[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 19 17:21:36 2018 -0700
+
+    Updated Footer so that it always stays at the bottom.
+    Updated + icon to link to upload page
+
+[33mcommit a947e22fb268ec1a2da735cca26607bc734e4fd1[m
+Merge: 64ef9f0 c570ae7
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 15:58:04 2018 -0700
+
+    merge changes
+
+[33mcommit 64ef9f030512e353c927fb9c6bb6f259c537189a[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 15:52:42 2018 -0700
+
+    adding axios to userpage
+
+[33mcommit 101db9f5ead10de460f45cefde0cc675b2de0955[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 15:52:18 2018 -0700
+
+    added user likes and pics db functions
+
+[33mcommit 5f9bac71ce5d04473facab880ecb58869b7be27d[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 15:51:11 2018 -0700
+
+    created likes page
+
+[33mcommit c570ae7be6ec29ef3db1b9f43226c8af36085cf7[m
+Merge: 7a33714 2ae9a4b
+Author: Christina Yuen <34639576+ceyuen@users.noreply.github.com>
+Date:   Thu Apr 19 15:44:40 2018 -0700
+
+    Merge pull request #73 from roninjin10/master
+    
+    add upload page
+
+[33mcommit 2ae9a4b906158a0fe5ce77824e828de10e21b116[m
+Merge: 8d67b6b 7a33714
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 15:39:20 2018 -0700
+
+    fix conflicts with index.jsx
+
+[33mcommit 8d67b6bc9646dca4b365988bbc884e9cbde4aa08[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 15:36:02 2018 -0700
+
+    create upload page
+
+[33mcommit 7a337144a6deaba5467b27b1a19ef503fb0ce73b[m
+Merge: 41e62ed ab34f1b
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 18:35:34 2018 -0400
+
+    Merge pull request #72 from ceyuen/descriptionComponent
+    
+    Details, Footer, Modals
+
+[33mcommit ab34f1b775a0856b343400810a444dbce3bf0fa8[m
+Merge: 376a8a8 41e62ed
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 19 14:59:49 2018 -0700
+
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy into descriptionComponent
+
+[33mcommit 376a8a8586121b71c83a1e7d9c10db251ef5324a[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 19 14:56:47 2018 -0700
+
+    Made login and signup components modal.
+    Upon successfully logging in, it now redirects to the location page.
+    When not logged in, it doesn't show the home, favorites, and upload buttons.
+
+[33mcommit 64be65eb6c72f73f76d9f862c6b95844211f4d7d[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 14:33:37 2018 -0700
+
+    move all worthy map stuff to worthy map
+
+[33mcommit 20b5f9419e9a178b20375f951667e11930a04aa3[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 14:28:08 2018 -0700
+
+    change all the routes to api routes
+
+[33mcommit 69909d258b5d9994cf707116d214ddfcced5ea8c[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 13:24:32 2018 -0700
+
+    create functions to scrape google places api
+
+[33mcommit 438c417c4ea3848c7695524a980badae8bf26a00[m
+Merge: befc356 41e62ed
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 12:06:19 2018 -0700
+
+    merge changes again
+
+[33mcommit befc356ccb81c05984dda6bf1e2583f7b874ca1f[m
+Merge: 4cc9ec7 8364683
+Author: wvha <Wvha17@gmail.com>
+Date:   Thu Apr 19 12:05:20 2018 -0700
+
+    merging
+
+[33mcommit 41e62ed30e3bdd49bec0990d4b962262b9be6178[m
+Merge: 8364683 12180af
+Author: Will <wvha17@gmail.com>
+Date:   Thu Apr 19 11:50:21 2018 -0700
+
+    Merge pull request #71 from roninjin10/master
+    
+    prepared to connect front end to database
+
+[33mcommit 12180af629b33561b64a76d368373ef380996a28[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 11:46:34 2018 -0700
+
+    refactor sams react components to prepare to integrate everything
+
+[33mcommit ee59d6b6d5d217c4719dbf975f68c9e5cd622a2a[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 11:36:45 2018 -0700
+
+    refactor sams backend
+
+[33mcommit 3f588082d33c4e4e871750c3566120eacacafb31[m
+Merge: 030c35a 8364683
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 11:24:10 2018 -0700
+
+    merging sam
+    
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy
+
+[33mcommit 030c35a8fce9d2c772a78d9764f438df47f5ea73[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 11:24:00 2018 -0700
+
+    about to merge sams stuff
+
+[33mcommit 83646838f8b572d38a94b84c58f9b0530d9c132c[m
+Merge: 0c48768 7ec9e9e
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 14:23:10 2018 -0400
+
+    Merge pull request #70 from slrosenblum/master
+    
+    Add first implementation of picture upload form and picture display button to landing page
+
+[33mcommit 7ec9e9ef8129697f9eaaa2f67bef57c2225c10a3[m
+Author: Samuel Rosenblum <srosenblum@gmail.com>
+Date:   Thu Apr 19 11:10:26 2018 -0700
+
+    Add in database info displayer component to landing page + sync with server and database
+
+[33mcommit d536d7d7de9ef85fbc3244f2db0300ed56c0887f[m
+Author: Samuel Rosenblum <srosenblum@gmail.com>
+Date:   Thu Apr 19 10:55:56 2018 -0700
+
+    Get upload component working on landing page + synced with server and database
+
+[33mcommit 29599088abd15e61d59758ad13103a4c15f92203[m
+Author: Samuel Rosenblum <srosenblum@gmail.com>
+Date:   Thu Apr 19 10:24:24 2018 -0700
+
+    Added server route to index.js
+
+[33mcommit d146e564f9034b7501052370c379e95b91b0ef90[m
+Merge: b6ac6f6 0c48768
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 10:22:55 2018 -0700
+
+    another pull
+    
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy
+
+[33mcommit b6ac6f669e3ae03dc7a6fae937ae694f473fa269[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 19 10:22:50 2018 -0700
+
+    add clickhandler to marker
+
+[33mcommit 300f788e46b5e48dd1e4d1dcd8d77a564467dd43[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Wed Apr 18 22:02:21 2018 -0700
+
+    Removed react transition group from package.json
+
+[33mcommit d3bfb7505f0969cfccbe513d3352828717d9dfe0[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Wed Apr 18 21:50:27 2018 -0700
+
+    Added footer component
+
+[33mcommit b0ecf21e5f724d06f5972641656e7664b8367b4a[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Wed Apr 18 17:38:27 2018 -0700
+
+    minimum working details display
+
+[33mcommit 4cc9ec76a05c4803d7d241073c33b06ec4e6d047[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Wed Apr 18 17:09:52 2018 -0700
+
+    added potential schema table for pics and likes
+
+[33mcommit 1ad3f52d20b742939d0ccf757501a2b04822cd3e[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Wed Apr 18 17:08:52 2018 -0700
+
+    updated state object for userdata in navbar
+
+[33mcommit fd799c44e2f1608cd2e72669122ffd2fe63a4428[m
+Author: Samuel Rosenblum <srosenblum@gmail.com>
+Date:   Wed Apr 18 15:06:13 2018 -0700
+
+    Adds UploadForm component to landing component, sets up server route
+
+[33mcommit 23d89bd65cc6fe9227799db056573627a1da00fe[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Wed Apr 18 14:55:30 2018 -0700
+
+    created base template for userpage
+
+[33mcommit a446457c04bf8ce36c584416c02a95847f729d51[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Wed Apr 18 14:55:06 2018 -0700
+
+    added routes for userpage ish
+
+[33mcommit f8e00a2826544a07446db9d7dd582f4a5c3b95c4[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Wed Apr 18 14:24:54 2018 -0700
+
+    Added details component. Replaced all " with ` in card and row components
+
+[33mcommit bd95484cf2e7b0c0457aa5afb7a56750b4ab8f1e[m
+Merge: 49e30a7 0c48768
+Author: Samuel Rosenblum <srosenblum@gmail.com>
+Date:   Wed Apr 18 12:08:20 2018 -0700
+
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy
+
+[33mcommit 49e30a7873e480b6f7fb1b6b449e2ef87d2a2c92[m
+Author: Samuel Rosenblum <srosenblum@gmail.com>
+Date:   Wed Apr 18 12:02:31 2018 -0700
+
+    Add .vscode/ to .gitignore
+
+[33mcommit 0c487682aa498436bdd7e46d48c345a6c9c88b86[m
+Merge: 9d969d5 cc98cb5
+Author: Sam Rosenblum <srosenblum@gmail.com>
+Date:   Wed Apr 18 11:52:28 2018 -0700
+
+    Merge pull request #69 from ceyuen/mapCurrentLocation
+    
+    Added geolocation method
+
+[33mcommit 61d2690ba161677f2ade175574dbf9949af46652[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Wed Apr 18 11:49:51 2018 -0700
+
+    created userpage.jsx file
+
+[33mcommit cc98cb5299946599308c109291ee27fd1120ea18[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Wed Apr 18 11:22:55 2018 -0700
+
+    Working geolocation method, but very slow
+
+[33mcommit 9d969d52c429da0f80e523aa563317218772a221[m
+Merge: a09cd67 6372a51
+Author: Christina Yuen <34639576+ceyuen@users.noreply.github.com>
+Date:   Tue Apr 17 18:01:23 2018 -0700
+
+    Merge pull request #68 from roninjin10/master
+    
+    create search bar
+
+[33mcommit 6372a519911d2b9a57820b839785b46314fb5118[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Tue Apr 17 17:59:16 2018 -0700
+
+    add search feature
+
+[33mcommit 5d101e602c7fb37a1c385214a95abdd1f1a97a6c[m
+Merge: 43f5626 a09cd67
+Author: William Cory <willcory10@gmail.com>
+Date:   Tue Apr 17 17:58:22 2018 -0700
+
+    add logout
+    
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy
+
+[33mcommit a09cd67429f82d3b6eadeed0ee7727314845e1a9[m
+Merge: abdc8d3 0ed32ae
+Author: Christina Yuen <34639576+ceyuen@users.noreply.github.com>
+Date:   Tue Apr 17 17:58:02 2018 -0700
+
+    Merge pull request #67 from wvha/logout
+    
+    Logout button and show firstname
+
+[33mcommit 0ed32ae8456bb2eccd592f92e63809f872626dcb[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Tue Apr 17 17:44:55 2018 -0700
+
+    logout button reloads page
+
+[33mcommit 43f5626e53ad1de2e7126b82153d1497b1968f7e[m
+Merge: 7acc787 abdc8d3
+Author: William Cory <willcory10@gmail.com>
+Date:   Tue Apr 17 17:26:07 2018 -0700
+
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy
+
+[33mcommit 7acc7879dbf2db6a87910f1e9e406c968fccdeb3[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Tue Apr 17 17:25:59 2018 -0700
+
+    add zoom feature
+
+[33mcommit 12f8148c5a374643b8626d250f5f1be1ede532e2[m
+Merge: ecf08b6 abdc8d3
+Author: wvha <Wvha17@gmail.com>
+Date:   Tue Apr 17 17:12:45 2018 -0700
+
+    merge?
+
+[33mcommit ecf08b6d65db8c5b44e5240ac97952b80e2a940c[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Tue Apr 17 17:10:19 2018 -0700
+
+    removed spaces
+
+[33mcommit 9526306ed6ad40b54bd0b444808036ffdfe448fc[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Tue Apr 17 17:08:07 2018 -0700
+
+    added state and componentdidmount to navbar for firstname display and logout button! done
+
+[33mcommit 55fff0f1a4c36893634aa1e2c9fc979c9cc5c296[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Tue Apr 17 17:07:20 2018 -0700
+
+    added routes and functions for controller
+
+[33mcommit 9f2e7484d6b057745278343b2b5b8e5a631d6017[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Tue Apr 17 17:06:45 2018 -0700
+
+    fixed error with serialize/deserialize functions
+
+[33mcommit abdc8d36fb5c436bea3ef307e7080f5cc9c28799[m
+Merge: 7883853 e098564
+Author: Will <wvha17@gmail.com>
+Date:   Tue Apr 17 17:04:43 2018 -0700
+
+    Merge pull request #65 from ceyuen/cardComponent
+    
+    Card component
+
+[33mcommit e098564f88fbf8ce23fb6d0391ba15644cc58460[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Tue Apr 17 16:29:04 2018 -0700
+
+    Updated map size
+
+[33mcommit 1e3eeba4c5528a76d7c3b1050e6fad1229bbe9ae[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Tue Apr 17 15:53:33 2018 -0700
+
+    Added billabong font and changed css styling
+
+[33mcommit 5b5970cf4ebd28babf4ba83a6cc7846a69a62afc[m
+Merge: 774ad17 7883853
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Tue Apr 17 13:25:06 2018 -0700
+
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy into cardComponent
+
+[33mcommit 774ad173da260fd668248a8bb5c1c21eecfbc62c[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Tue Apr 17 13:17:47 2018 -0700
+
+    Moved row component from landing to to locations
+
+[33mcommit 7883853e4c2eaf5681df76473165b30a08afeb6a[m
+Merge: a53eddc 93ad8e0
+Author: Christina Yuen <34639576+ceyuen@users.noreply.github.com>
+Date:   Tue Apr 17 13:16:19 2018 -0700
+
+    Merge pull request #64 from roninjin10/master
+    
+    complete worthy map and turn off redirect for now
+
+[33mcommit 93ad8e04f17dc8e458354f810a38b07588c8da2f[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Tue Apr 17 13:08:34 2018 -0700
+
+    complete worthy map and turn off redirect for now
+
+[33mcommit 6a1f9bf9004d9a251da3efe8a641495b78b59a19[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Tue Apr 17 12:22:17 2018 -0700
+
+    Working card feature
+
+[33mcommit 78a38fb180c1e33caf12c0f485d607c9ff5fbe03[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Tue Apr 17 12:05:14 2018 -0700
+
+    fixed bug with function in db
+
+[33mcommit e29425fc021cebc93920603c98ca433323dcbe59[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Tue Apr 17 12:04:52 2018 -0700
+
+    added logout functionality
+
+[33mcommit 899d28ee0d26ec283a8e598293f912735bbcb7e7[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Tue Apr 17 10:27:13 2018 -0700
+
+    Building template for card
+
+[33mcommit a53eddcee579d13343bb0300eaef36d3d1bc0a34[m
+Merge: a18edcd 47c33bb
+Author: Will <wvha17@gmail.com>
+Date:   Tue Apr 17 09:40:42 2018 -0700
+
+    Merge pull request #59 from ceyuen/rowComponent
+    
+    Row component
+
+[33mcommit 47c33bb7d6d27ab1f68b0a398e0583fb5cfddffa[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Mon Apr 16 22:53:38 2018 -0700
+
+    Removed unnecessary line
+
+[33mcommit d462b5aff2cf390ccf3d374b5e5bf9bcd39cb0fe[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Mon Apr 16 22:49:40 2018 -0700
+
+    Working row component
+
+[33mcommit a18edcdf3a044cb5c261e06f06e9f63057eae34c[m
+Merge: 97eb65a b895344
+Author: Christina Yuen <34639576+ceyuen@users.noreply.github.com>
+Date:   Mon Apr 16 09:52:15 2018 -0700
+
+    Merge pull request #58 from roninjin10/master
+    
+    added comments and refactored code
+
+[33mcommit b895344845acc281e95d7a979d5c644b6039bbe0[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 13 16:10:15 2018 -0700
+
+    add comments and refactor some code
+
+[33mcommit 97eb65af4d961c2b2ed512af491c741db3139348[m
+Merge: a28eb41 44d13f7
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 13 16:09:06 2018 -0700
+
+    Merge pull request #57 from roninjin10/master
+    
+    fix bug with logging in and redirect to login if not signed in for so…
+
+[33mcommit 81c9a90246c31e1f60582d97e28cf40eff3f33eb[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 13 14:34:34 2018 -0700
+
+    trying to make travis stop yelling at me
+
+[33mcommit 44d13f7a12dd2454d934360e766d86c34ef23a22[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 13 14:27:44 2018 -0700
+
+    fix bug with logging in and redirect to login if not signed in for some pages
+
+[33mcommit a28eb4136daffe50680138d6bf956457772092b4[m
+Merge: 62d76be 1324fc2
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 13 11:13:41 2018 -0700
+
+    Merge pull request #53 from wvha/upload
+    
+    dropzone component with no conflicts
+
+[33mcommit 1324fc26563547fdd5b3c5194be89241fdac1ce6[m
+Merge: 3f9abd5 62d76be
+Author: wvha <Wvha17@gmail.com>
+Date:   Fri Apr 13 10:43:46 2018 -0700
+
+    pulled down files and fixed conflicts
+
+[33mcommit 3f9abd56b9e96af434b2189da1b6eacee23db285[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Fri Apr 13 10:25:18 2018 -0700
+
+    completed dropzone component for image upload with imgur api
+
+[33mcommit 62d76befc571befc81706fef8e1bdcf218284c36[m
+Merge: baf0762 034182e
+Author: Christina Yuen <34639576+ceyuen@users.noreply.github.com>
+Date:   Fri Apr 13 09:50:31 2018 -0700
+
+    Merge pull request #45 from roninjin10/master
+    
+    Created Map Component Can reload login map and signup pages now.
+
+[33mcommit 034182e462f6511675af4aac9e19d6dd86798bb2[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 13 08:31:18 2018 -0700
+
+    complete basic map component
+
+[33mcommit cbaf7914a62d4ed21b5f040bb5dde39802307c77[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 13 07:49:01 2018 -0700
+
+    create worthy map
+
+[33mcommit f4aa5b615f18c40ff93666236c816deb8648e169[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Fri Apr 13 06:56:22 2018 -0700
+
+    add a test to reactexamples
+
+[33mcommit 74c7bb04d9f77153a060ab8710f27a28d95cd5a7[m
+Merge: a19d71d baf0762
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 22:00:09 2018 -0700
+
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy
+
+[33mcommit baf0762f7fa82f9550d016acb1e6da62576d053b[m
+Merge: 846bc7a 9dcaaeb
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 21:59:56 2018 -0700
+
+    Merge pull request #43 from ceyuen/gitfix
+    
+    Landing page with carousel and jumbotron
+
+[33mcommit a19d71d10db00c46e55bbecfd77f41bb088f7966[m
+Merge: 7269a82 64ec69b
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 21:58:24 2018 -0700
+
+    make react router work good
+
+[33mcommit 9dcaaebd0ac0e3d79c7f881bc5a1d5ee9dbb86a0[m
+Merge: 2ffed03 846bc7a
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 12 21:52:42 2018 -0700
+
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy into gitfix
+
+[33mcommit 2ffed030e9b7420d1256bfce9c5f0f304346b36a[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 12 21:51:36 2018 -0700
+
+    Styled landing page
+
+[33mcommit 7269a826922b9469c5af1a678f8c5362671194e0[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 21:51:32 2018 -0700
+
+    trying to merge
+
+[33mcommit 64ec69bc494a0528ed5e1ce27cd78501cd9ae03f[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 21:51:02 2018 -0700
+
+    trying to merge with master
+
+[33mcommit 076bd01f95ab83a2200899f06019adfedb9ed36e[m
+Merge: 304a301 846bc7a
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 21:35:11 2018 -0700
+
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy into reactrouter
+
+[33mcommit 304a301085b0425be1501261989d67c4b57d6d5f[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 21:31:23 2018 -0700
+
+    trying to fix mess
+
+[33mcommit 3dc433f19f0cae6df8a4c2e41e278db440b15f61[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 21:31:03 2018 -0700
+
+    trying to fix mess
+
+[33mcommit 846bc7ae6ed4dae635c7387825f5dc57dbce9158[m
+Merge: fe94d94 f3e49d0
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 21:11:19 2018 -0700
+
+    Merge pull request #42 from ceyuen/gitfix
+    
+    Gitfix
+
+[33mcommit f3e49d06b5587b328c636187a523e9778e57000f[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 12 21:07:52 2018 -0700
+
+    Added jumbotron
+
+[33mcommit 1e2de40d0caf231865e4e1dbaf571adb06ac88e2[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 12 20:26:37 2018 -0700
+
+    Added carousel to landing page
+
+[33mcommit 4be8bd7a0d57143938e5d883e40a1558e40ebcf3[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 19:45:39 2018 -0700
+
+    saving commit
+
+[33mcommit de07f1217806c82ca438f9d0e4cd909f8e20681c[m
+Merge: 81149ef 4481c6f
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 16:13:08 2018 -0700
+
+    complete pull request with auth
+
+[33mcommit 4481c6f78ed5e841a90aad7129ee09d1e494bccb[m
+Merge: 4f18257 0967427
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 16:10:13 2018 -0700
+
+    Merge pull request #38 from ceyuen/registration
+    
+    Registration
+
+[33mcommit 0967427d0fd0fd92e8bc8b9323b851fdd9cc8f31[m
+Merge: 263145f 4f18257
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 12 16:05:08 2018 -0700
+
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy into registration
+
+[33mcommit 81149efb7167c4eab8151ba01556da788fa2c309[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 15:34:42 2018 -0700
+
+    get the server reload of page to work
+
+[33mcommit 4f182571b8cc01678119c52604f86966a89adad5[m
+Merge: ea9ed03 aeabaca
+Author: Christina Yuen <34639576+ceyuen@users.noreply.github.com>
+Date:   Thu Apr 12 12:01:22 2018 -0700
+
+    Merge pull request #26 from roninjin10/reactrouter
+    
+    added react router
+
+[33mcommit 263145f2513739bebd33d359c5dc3eb37df5d1e8[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 12 11:59:09 2018 -0700
+
+    Added password masking
+
+[33mcommit aeabacac4eadca37a0026bc29966676072e2e505[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 11:55:09 2018 -0700
+
+    add react router to project
+
+[33mcommit 2d778ba9bb6f2a2b1d7bc9b1936b9028f92afc94[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 12 11:32:41 2018 -0700
+
+    updated db query to use findOne rather than find
+
+[33mcommit 25f16383e402abbb8f073561ea88561f1b9af676[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 12 11:18:19 2018 -0700
+
+    Only adds unique usernames to db
+
+[33mcommit 33d0889f76f2798fc65f416939de7c1c55f32f14[m
+Merge: 3d77fda ea9ed03
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 10:42:54 2018 -0700
+
+    fix merge conflict
+
+[33mcommit 0a646913110f3a0efe94227a38f090995bfe75a1[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Thu Apr 12 10:42:46 2018 -0700
+
+    Working authentication
+
+[33mcommit 3d77fda5fdca31ce17e6cb87eab1f070cb737ec4[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Thu Apr 12 10:42:10 2018 -0700
+
+    about to pull from master branch
+
+[33mcommit 23315d23e5aae409d179f6c1f9d830b818f00448[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Wed Apr 11 23:10:06 2018 -0700
+
+    Incorportaed bcrypt and login succesfully. Some issues with successRedirect.
+
+[33mcommit ea9ed033e45b0f5d03c9ce198d9da29fffe8e666[m
+Merge: 16b00f7 8ec8378
+Author: Christina Yuen <34639576+ceyuen@users.noreply.github.com>
+Date:   Wed Apr 11 16:32:21 2018 -0700
+
+    Merge pull request #22 from wvha/react-navbar
+    
+    React navbar!
+
+[33mcommit 16b00f7a7bbdac7525b3c28c933456322beaf849[m
+Merge: 5a9955d 60e9e33
+Author: Will <wvha17@gmail.com>
+Date:   Wed Apr 11 16:30:58 2018 -0700
+
+    Merge pull request #21 from roninjin10/master
+    
+    Added support for both jest and travis ci
+
+[33mcommit 8ec8378c63726c41450a00ddc5c0c9708ff5d0e1[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Wed Apr 11 16:17:37 2018 -0700
+
+    updated navbar with font awesome icons and correct info
+
+[33mcommit 13a48da8638003d9036dfbe47740a6a1dab0ccbb[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Wed Apr 11 16:17:07 2018 -0700
+
+    updated package.json with fontawesome
+
+[33mcommit fe94d9492862019a599cfe01a80676b3d3cde633[m
+Merge: 60e9e33 5a9955d
+Author: William Cory <willcory10@gmail.com>
+Date:   Wed Apr 11 15:22:11 2018 -0700
+
+    pulling after doing tests setup
+    
+    Merge branch 'master' of https://github.com/PicWorthy/PicWorthy
+
+[33mcommit 3a36dd22d506b6d7c63077d58460b42af6ca7faf[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Wed Apr 11 15:20:57 2018 -0700
+
+    got react-bootstrap components to work
+
+[33mcommit e2695bf02a272122a28ef30676b53ceff3ebd61a[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Wed Apr 11 15:16:12 2018 -0700
+
+    Able to save to database
+
+[33mcommit 60e9e33bfb477fc3d7d7e9aa900c4aacda7578d6[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Wed Apr 11 14:58:22 2018 -0700
+
+    add notes on jest in testing readme
+
+[33mcommit 3fe85b3a27fa5f98b4c89a115ce03abcbb7b2a92[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Wed Apr 11 14:53:54 2018 -0700
+
+    trying to change the version to stable
+
+[33mcommit e31929005eeca837859c17d82c94efdd6bb678de[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Wed Apr 11 14:46:35 2018 -0700
+
+    seeing travis cl works with tests passign
+
+[33mcommit 1aecc3de16a8950aadc89bb9b9480d5bc65390f2[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Wed Apr 11 14:29:03 2018 -0700
+
+    testing to see if it breaks if the test fails
+
+[33mcommit 06cc1e56b96bc340aec3be847035c7537779bf59[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Wed Apr 11 14:26:51 2018 -0700
+
+    set up .travis.yml and jest
+
+[33mcommit a06523e20a60a347ef43f7b8389f6697b91a03a9[m
+Author: wvha <Wvha17@gmail.com>
+Date:   Wed Apr 11 12:38:38 2018 -0700
+
+    added react-bootstrap to package.json
+
+[33mcommit 5a9955d22db445b7dff235790d9fbe1436987cef[m
+Merge: 25853a4 1e8eb34
+Author: Christina Yuen <34639576+ceyuen@users.noreply.github.com>
+Date:   Wed Apr 11 13:55:09 2018 -0700
+
+    Merge pull request #20 from roninjin10/master
+    
+    build out basic file structure and set up basics of database
+
+[33mcommit 1e8eb34cda420dfc3319b29218cb163e6a05d4c8[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Tue Apr 10 22:41:17 2018 -0700
+
+    comment out some code examples and fix typo in index.js
+
+[33mcommit 61e1c16538cebbca3fd315e77b68192ce03aa658[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Tue Apr 10 22:35:43 2018 -0700
+
+    build out basic structure for back end and database
+
+[33mcommit 25853a44a413dca66632718ac8888d7fb52ecdfd[m
+Merge: c188da3 6f915ef
+Author: William Cory <willcory10@gmail.com>
+Date:   Tue Apr 10 13:26:47 2018 -0700
+
+    Merge pull request #12 from roninjin10/master
+    
+    set up package.json and webpack
+
+[33mcommit 6f915efb0949c538b3e3010b9ffaeaefe81990a6[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Tue Apr 10 13:25:30 2018 -0700
+
+    make react render
+
+[33mcommit f74e4f96bbdf2d3b95858ed699d4368901831344[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Tue Apr 10 11:54:28 2018 -0700
+
+    set up package.json and webpack
+
+[33mcommit c188da37bc3f8049488b98d700bdb1eb7112506d[m
+Author: Christina Yuen <34639576+ceyuen@users.noreply.github.com>
+Date:   Mon Apr 9 20:51:48 2018 -0700
+
+    Delete PRESS-RELEASE.md
+
+[33mcommit 2633d766bcd489002a50d6265086ae48f7e2492d[m
+Merge: 9a0764a a832217
+Author: Christina Yuen <34639576+ceyuen@users.noreply.github.com>
+Date:   Mon Apr 9 20:50:09 2018 -0700
+
+    Merge pull request #11 from roninjin10/master
+    
+    set up server
+
+[33mcommit a8322176d3367e66875acb7f41dc69e032c17be7[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Mon Apr 9 20:47:40 2018 -0700
+
+    set up server
+
+[33mcommit 9a0764a76765e973146240ef2225103be24d2842[m
+Merge: ee445d0 39c7c33
+Author: Sam Rosenblum <srosenblum@gmail.com>
+Date:   Mon Apr 9 19:52:32 2018 -0700
+
+    Merge pull request #4 from slrosenblum/master
+    
+    Fill in first version of press release
+
+[33mcommit 39c7c33178aea4b566623a34aaebdeec36b18409[m
+Author: Samuel Rosenblum <srosenblum@gmail.com>
+Date:   Mon Apr 9 19:50:55 2018 -0700
+
+    Fill in first version of press release
+
+[33mcommit ee445d097e18c05558d5b5cb695fb7488f011dc2[m
+Merge: d51e7bd f1dcbaf
+Author: Sam Rosenblum <srosenblum@gmail.com>
+Date:   Mon Apr 9 19:47:04 2018 -0700
+
+    Merge pull request #3 from roninjin10/master
+    
+    create a file structure
+
+[33mcommit f1dcbaf033b47f7e1ec3f3560998ff41e03a0d4d[m
+Author: William Cory <willcory10@gmail.com>
+Date:   Mon Apr 9 19:44:30 2018 -0700
+
+    create a file structure
+
+[33mcommit d51e7bd282e6308febcb1e612a1c40e0ab2f1daa[m
+Merge: 34a45c3 ef109e2
+Author: Sam Rosenblum <srosenblum@gmail.com>
+Date:   Mon Apr 9 19:34:21 2018 -0700
+
+    Merge pull request #2 from slrosenblum/master
+    
+    Add press release
+
+[33mcommit ef109e26dbb04481de9a91b82ed994bc27f52f23[m
+Author: Samuel Rosenblum <srosenblum@gmail.com>
+Date:   Mon Apr 9 19:32:44 2018 -0700
+
+    Add press release
+
+[33mcommit 34a45c3ef3ea3980b79263bd8e864313d6785788[m
+Author: Christina <christina.elaine.yuen@gmail.com>
+Date:   Mon Apr 9 19:21:06 2018 -0700
+
+    Initial commit

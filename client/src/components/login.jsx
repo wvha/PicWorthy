@@ -5,12 +5,15 @@ import { Modal } from 'react-bootstrap';
 
 export default class Login extends Component {
   constructor(props) {
+    
     super(props);
+    
     this.state = {
       username: '',
       password: '',
       failedLogin: ''
     };
+    
     this.updateInfo = this.updateInfo.bind(this);
     this.sendLogin = this.sendLogin.bind(this);
   }
@@ -27,6 +30,7 @@ export default class Login extends Component {
       .then((data) => {
         window.location.replace(`${window.location.origin}/locations`);
       })
+      
       .catch((err) => {
         this.setState({
           failedLogin: 'Incorrect username or password.'
@@ -38,10 +42,13 @@ export default class Login extends Component {
   render() {
     return (
       <div>
+        
         <Modal show={this.props.show} onHide={() => {this.props.hide()}} bsSize="small">
+          
           <Modal.Header closeButton>
             <Modal.Title>Login</Modal.Title>
           </Modal.Header>
+          
           <Modal.Body>
               Username: 
               <div>
@@ -49,6 +56,7 @@ export default class Login extends Component {
                 <br/>
               </div>
               <br />
+          
               Password:  <PasswordMask
                           id="loginPassword"
                           name="password"
@@ -57,13 +65,17 @@ export default class Login extends Component {
                           onChange={this.updateInfo}
                           useVendorStyles={false}
                         />
+          
               <span style={{color: "red"}}>
                 {this.state.failedLogin}
               </span>
           </Modal.Body>
+          
           <Modal.Footer>
             <a style={{float:`left`}} onClick={() => {this.props.handleShowSignup()}}>Need an account?</a>
+            
             <button onClick={this.sendLogin} style={{borderRadius: `5px`}}> Login </button>
+          
           </Modal.Footer>
         </Modal>
       </div>

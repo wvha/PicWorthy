@@ -13,10 +13,12 @@ post.signup = (req, res) => {
 
 post.login = (req, res, next) => {
   passport.authenticate('local', function (err, user, info) {
+    
     if (err || !user) {
       res.status(422).send(info);
+    
     } else {
-      // Remove sensitive data before login
+
       user.password = undefined;
       user.salt = undefined;
 
@@ -39,6 +41,7 @@ get.logout = (req, res) => {
 }
 
 get.user = (req, res) => {
+  
   if (req.user) {
     db.fetchUser(req.user.username).then(user => res.json(user));
   }
@@ -56,13 +59,11 @@ post.upload = (req, res) =>
 get.closestPics = function(req, res) {
   db.selectClosestPictures({lat: req.query.lat, lng: req.query.lng})
     .then((pictures) => {
-      console.log('sending pictures', pictures);
       res.json(pictures);
     });
 };
 
 post.favorites = function(req, res) {
-  console.log('favorites', req.body);
   db.addToFavorites(req.body)
     .then(() => {
       return db.fetchUser(req.body.username);

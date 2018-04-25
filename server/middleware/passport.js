@@ -21,7 +21,7 @@ passport.use(new LocalStrategy(
         if (user) {
           return bcrypt.compareAsync(password, user.password)
             .then((result) => {
-              console.log('line 30 passport.js', result)
+              
               if (result) {
                 done(null, user)
               } else {

@@ -7,10 +7,8 @@ import Login from './components/login.jsx';
 import Signup from './components/signup.jsx';
 import Landing from './components/landing.jsx'
 import Locations from './components/locations.jsx';
-// import Userpage from './components/userpage.jsx';
 import Upload from './components/upload.jsx';
 import Footer from './components/footer.jsx';
-// import Likes from './components/likes.jsx';
 
 
 export default class App extends Component {
@@ -20,6 +18,7 @@ export default class App extends Component {
     
     this.state = {
       userPromise: axios.get('/api/user'),
+      
       userData: {
         firstName: '',
         lastName: '',
@@ -28,6 +27,7 @@ export default class App extends Component {
         likes: [],
         photos: []
       },
+
       showLogin: false,
       showSignup: false,
       activeModal: '',
@@ -35,6 +35,7 @@ export default class App extends Component {
         lat: 41.9,
         lng: -87.624
       },
+
       mapZoom: 5,
       detailProps: undefined,
       lastCardClicked: undefined
@@ -99,6 +100,7 @@ export default class App extends Component {
             exact path='/'
             component={ Landing }
           />
+          
           <Route 
             path='/upload' 
             render={(props) => 
@@ -108,11 +110,10 @@ export default class App extends Component {
               />
             }
           />
+
           <Route 
-            // locations userpage and likes
             path='/' 
             render={(props) => {
-              console.log('rout props', props)
               return (
                 <Locations 
                   userPromise={ userPromise }
@@ -123,24 +124,6 @@ export default class App extends Component {
             }
           } 
           />
-          {/*
-          <Route 
-            path='/userpage' 
-            render={(props) => 
-              <Userpage 
-              userData={ userData } 
-              userPromise={ userPromise }
-              />
-            }/>
-          <Route 
-            path='/likes' 
-            render={(props) => 
-              <Likes 
-                userData={ userData } 
-                userPromise={ userPromise }
-              />
-            }/>
-            */}
         </Switch>
         <Footer />
       </div>

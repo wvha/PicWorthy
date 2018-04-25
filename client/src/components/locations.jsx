@@ -9,6 +9,26 @@ import Details from './details.jsx';
 import fetchClosestPics from '../helpers/fetchClosestPics.jsx';
 import getUserLocation from '../helpers/getUserLocation.jsx';
 
+/*
+ * The locations, userpage, and likes page all get rendered with the locations component
+ * 
+ */
+
+
+
+ /*
+  * showHideDetails
+  * toggles the details on and off.  It uses a set timeout so that the page smoothly
+  * moves up before eliminating the div with the details.  In the likes component
+  * is a commented out function that makes it smoothly move down too that
+  * we couldn't decide on which we liked better.
+  *  
+  */
+
+const rowStyle = {
+  marginLeft: `0px`, 
+  marginRight: `0px`
+}
 
 const showHideDetails = function(e, imageURL) {
   if (e.preventDefault !== undefined) {
@@ -26,6 +46,13 @@ const showHideDetails = function(e, imageURL) {
     setTimeout(() => this.setState({detailedPicURL}), 322);
 
   } else {
+    /* this reg ex is a
+     * last minute hack to eliminate bug. 
+     * The user and likes page were pretty last minute so they could both be made to itegrate
+     * with this component cleaner.
+     * 
+     */
+
     if (/^\/locations/.test(this.props.pathname)) {
       const detailedPicURL = imageURL;
       const coordinates = this.state.pics.filter(pic => pic.imageURL === imageURL)[0].loc.coordinates;
@@ -33,11 +60,13 @@ const showHideDetails = function(e, imageURL) {
         lat: coordinates[1],
         lng: coordinates[0]
       }
+      
       this.setState({
         detailedPicURL,
         position,
         zoom: 10
       });
+    
     } else{
       const detailedPicURL = imageURL;
       this.setState({
@@ -48,13 +77,9 @@ const showHideDetails = function(e, imageURL) {
   }
 }
 
-
-
-const rowStyle = {
-  marginLeft: `0px`, 
-  marginRight: `0px`
-}
-
+/*
+ * implements the feature to toggle row component left and right
+ */
 
 const rotatePicsLocation = function(e, direction) {
   e.preventDefault();
@@ -71,8 +96,14 @@ const rotatePicsLocation = function(e, direction) {
   this.setState({pics});
 }
 
+/*
+ * these are seperate functions to get ready to present fast.  Would have refactored if time.
+ */
+
 const rotatePicsUserpage = function(e, direction) {
+  
   e.preventDefault();
+  
   let userData = Object.assign({}, this.state.userData);
   let pics = [...userData.photos];
   
@@ -82,6 +113,7 @@ const rotatePicsUserpage = function(e, direction) {
   } else if (direction === 'RIGHT') {
     pics.push(pics.shift());
   }
+  
   userData = Object.assign({}, userData, {photos: pics});
   this.setState({userData});
 }
@@ -98,9 +130,11 @@ const rotatePicsLikes = function(e, direction) {
   } else if (direction === 'RIGHT') {
     pics.push(pics.shift());
   }
+  
   userData = Object.assign({}, userData, {likes: pics});
   this.setState({userData});
 }
+
 
 export default class Locations extends Component {
   constructor(props) {
@@ -114,7 +148,13 @@ export default class Locations extends Component {
       detailedPicURL: 'NONE',
       userData: props.userData
     };
-
+    /*
+     * this is a hacky way to get the userid to work.  We had major issues passing data
+     * from app into locations.  When state updated.
+     * This hacky solution is to pass a promise too so if 
+     * the userdata doesn't get passed by the time the component renders the user data
+     * can be extracted out of the promise that got passed as a prop.
+     */
     
     if (props.userData.user_id === '') {
       props.userPromise.then((result) => this.setState({userData: result.data}));
@@ -130,6 +170,13 @@ export default class Locations extends Component {
     this.rotatePicsUserpage = rotatePicsUserpage.bind(this);
     this.rotatePicsLikes = rotatePicsLikes.bind(this);
   }
+  
+  /*
+   * refresh user just in case they just uploaded a pic.
+   * would have the pic refresh in App and get passed down but react router gave issues.
+   * 
+   * if window changes size update how many pics are displayed.
+   */
 
   componentDidMount() {
     this.refreshUser();
@@ -142,12 +189,14 @@ export default class Locations extends Component {
     fetchClosestPics(lat, lng)
       .then(({data}) => {
         const clickHandler = this.showHideDetails;
+        
         const markers = data.map((pic) => ({
             lat: pic.loc.coordinates[1],
             lng: pic.loc.coordinates[0],
             clickHandler: (e) => clickHandler(e, pic.imageURL)
           })
         );
+        
         this.setState({
           pics: data,
           markers: markers
@@ -156,7 +205,6 @@ export default class Locations extends Component {
   }
 
   refreshUser() {
-    console.log('refresh user')
     axios.get('/api/user')
       .then((result) => this.setState({userData: result.data}));
   }
@@ -202,8 +250,10 @@ export default class Locations extends Component {
   
     return (
       <div style={{minHeight: `calc(100vh - 150px)`}}>
+        
         <h1 style={{fontFamily: `billabong`, textAlign: `center`, color: `#32bfff`}}>Hello {this.props.userData.firstName}</h1>
         <h2 style={{fontFamily: `billabong`, textAlign: `center`, color: `#919295`}}>Your Places</h2>
+        
         { pics.length === 0 ? <div /> :
           <PicRow 
             showHideDetails={ this.showHideDetails } 
@@ -213,7 +263,9 @@ export default class Locations extends Component {
             detailedPicURL={ this.state.detailedPicURL }
           />
         }
+        
         <br />
+        
         <Details 
           detailedPicURL={ this.state.detailedPicURL }
           pics={ this.state.userData.photos }
@@ -221,6 +273,7 @@ export default class Locations extends Component {
           handleStarClick={ this.handleStarClick }
           userFavorites={ this.state.userData.likes }
         />
+      
       </div>
     )
   }
@@ -231,9 +284,11 @@ export default class Locations extends Component {
     return (
       <div style={{minHeight: `calc(100vh - 150px)`}}>
         <div>
+        
         <h1 style={{fontFamily: `billabong`, textAlign: `center`, color: `#32bfff`}}>{this.props.userData.firstName}'s Favorites</h1>
         <br />
         </div>
+        
         { pics.length === 0 ? <div /> :
           <PicRow 
             showHideDetails={ this.showHideDetails } 
@@ -243,7 +298,9 @@ export default class Locations extends Component {
             detailedPicURL={ this.state.detailedPicURL }
           />
         }
+        
         <br/>
+        
         <Details 
           detailedPicURL={ this.state.detailedPicURL }
           pics={ this.state.userData.likes }
@@ -260,17 +317,22 @@ export default class Locations extends Component {
 
     return (
       <Grid style={{margin: `0`, width: `100vw`, paddingLeft: `0px`, paddingRight: `0px`, minHeight: `calc(100vh - 150px)`}}>
+        
         <Row style={{margin: `20px`, height:`calc((100vh - 150px)/2)`, minHeight: `400px`}}>
+        
         <WorthyMap
           markers={ this.state.markers } 
           defaultZoom={ this.state.zoom }
           defaultCenter={ this.state.position } 
           onCenterChanged={ this.updatePictures }
         />
+        
         </Row>
+        
         <div style={{textAlign: `center`, fontFamily: `billabong`, fontSize: `275%`, color: `#32bfff`}}>
           Around You
         </div>
+        
         <Row style={rowStyle}>
           { pics.length === 0 ? <div /> :
             <PicRow 
@@ -282,6 +344,7 @@ export default class Locations extends Component {
             />
           }
         </Row>
+        
         <Row style={rowStyle}>
           <Details 
             detailedPicURL={ this.state.detailedPicURL }
@@ -305,6 +368,7 @@ export default class Locations extends Component {
     
     } else if (/^\/likes/.test(this.props.pathname)) {
       return this.likesRender();
+    
     } else {
       return <div>PAGE NOT FOUND</div>
     

@@ -1,103 +1,7 @@
 import React, { Component } from 'react';
 import { Grid, Row, Col } from 'react-bootstrap';
 import FaIconPack, {FaStarO, FaStar, FaFacebookSquare, FaTwitter, FaYelp, FaInstagram} from 'react-icons/lib/fa';
-import axios from 'axios';
 
-export default class Details extends Component {
-
-  scrollToBottom() {
-    // not sure if I like this scroll down
-    // this.scrollEnd.scrollIntoView({behavior: 'smooth'});
-  }
-  
-  componentDidUpdate(prevProps) {
-    if (prevProps.detailedPicURL === 'NONE' && this.props.detailedPicURL !== 'NONE') {
-      this.scrollToBottom();
-    }
-  }
-
-  render() {
-    
-    const { detailedPicURL, pics, userFavorites, showHideDetails, handleStarClick } = this.props 
-
-    let pic = getPic(detailedPicURL, pics);
-
-    if (pic === 'NOT_FOUND') {
-      return <div />;
-    }
-
-    const isStarred = checkFavorites(userFavorites.map((p) => p.imageURL), pic.imageURL)
-    console.log('isStarred', isStarred, userFavorites, pic.imageURL);
-
-    return (
-      <div>
-        <br/>
-        <Grid style={ {
-          background: `linear-gradient(to right, #4cc7ff 0%, #99dfff  100%)`, 
-          padding: `20px`, 
-          width: `100vw`
-        } }>
-          <Row>
-            <Col 
-              md={ 6 } 
-              mdPush={ 6 } 
-              style={ {paddingRight: `100px`} }
-            >
-              <h1 style={ {fontFamily: `billabong`} }>
-                {pic.location }
-              </h1>
-              <h4>
-                Submitted by: { pic.username }
-              </h4>
-              <p>
-                { pic.description } 
-              </p>
-              <br />
-              <DisplayStar
-                pic={ pic }
-                handleStarClick={ handleStarClick }
-                isStarred={ isStarred }
-              />
-              {/*
-              <FaInstagram 
-                style={ iconStyle}  
-                size={ 30 } 
-              />
-              <FaFacebookSquare 
-                style={ iconStyle } 
-                size={ 30 } 
-              /> 
-              <FaTwitter 
-                style={ iconStyle } 
-                size={ 30 } 
-              />
-              <FaYelp 
-                style={ iconStyle } 
-                size={ 30 } 
-              />
-              */}
-            </Col>
-            <Col 
-              md={ 6 } 
-              mdPull={ 6 }
-            >
-              <span style={ imgSpanStyle }>
-                <img 
-                  src={ pic.imageURL } 
-                  style ={ imgStyle }
-                />
-              </span>
-            </Col>
-          </Row>
-        </Grid>
-        <br />
-        <div 
-          ref={ (el) => this.scrollEnd = el  }
-        />
-      </div>
-    )
-  }
-};
 
 const getPic = (url, pics) => {
   for (const pic of pics) {
@@ -116,6 +20,7 @@ const DisplayStar = ({ pic, handleStarClick, isStarred }) => {
         size={ 40 }
       />
     )
+  
   } else {
     return (
       <FaStarO
@@ -148,3 +53,114 @@ const imgStyle = {
 const iconStyle ={
   paddingRight: `10px`
 }
+
+
+export default class Details extends Component {
+
+  scrollToBottom() {
+    // not sure if I like this scroll down
+    // this.scrollEnd.scrollIntoView({behavior: 'smooth'});
+  }
+  
+  componentDidUpdate(prevProps) {
+    if (prevProps.detailedPicURL === 'NONE' && this.props.detailedPicURL !== 'NONE') {
+      this.scrollToBottom();
+    }
+  }
+
+  render() {
+    
+    const { detailedPicURL, pics, userFavorites, showHideDetails, handleStarClick } = this.props 
+
+    let pic = getPic(detailedPicURL, pics);
+
+    if (pic === 'NOT_FOUND') {
+      return <div />;
+    }
+
+    const isStarred = checkFavorites(userFavorites.map((p) => p.imageURL), pic.imageURL)
+
+
+    return (
+      <div>
+        <br/>
+        
+        <Grid style={ {
+          background: `linear-gradient(to right, #4cc7ff 0%, #99dfff  100%)`, 
+          padding: `20px`, 
+          width: `100vw`
+        } }>
+        
+          <Row>
+        
+            <Col 
+              md={ 6 } 
+              mdPush={ 6 } 
+              style={ {paddingRight: `100px`} }
+            >
+        
+              <h1 style={ {fontFamily: `billabong`} }>
+                {pic.location }
+              </h1>
+        
+              <h4>
+                Submitted by: { pic.username }
+              </h4>
+        
+              <p>
+                { pic.description } 
+              </p>
+        
+              <br />
+        
+              <DisplayStar
+                pic={ pic }
+                handleStarClick={ handleStarClick }
+                isStarred={ isStarred }
+              />
+              {/*
+              <FaInstagram 
+                style={ iconStyle}  
+                size={ 30 } 
+              />
+              <FaFacebookSquare 
+                style={ iconStyle } 
+                size={ 30 } 
+              /> 
+              <FaTwitter 
+                style={ iconStyle } 
+                size={ 30 } 
+              />
+              <FaYelp 
+                style={ iconStyle } 
+                size={ 30 } 
+              />
+              */}
+            </Col>
+            
+            <Col 
+              md={ 6 } 
+              mdPull={ 6 }
+            >
+            
+              <span style={ imgSpanStyle }>
+            
+                <img 
+                  src={ pic.imageURL } 
+                  style ={ imgStyle }
+                />
+              </span>
+            </Col>
+          </Row>
+        </Grid>
+        <br />
+        
+        <div 
+          ref={ (el) => this.scrollEnd = el  }
+        />
+      </div>
+    )
+  }
+};
+
+
