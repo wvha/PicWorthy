@@ -45,7 +45,6 @@ db.saveUser = (obj) => {
 };
 
 db.savePicture = function (data) {
-  console.log(data);
 
   const newPic = new models.Pictures({
     category: data.category,
@@ -80,7 +79,6 @@ db.selectClosestPictures = (location) =>
           coordinates: [Number(location.lng), Number(location.lat)]//[lat, lng]
         },
         distanceField: 'distance',
-        spherical: true,
         spherical: true,
         maxDistance: MAX_DISTANCE
       }},
