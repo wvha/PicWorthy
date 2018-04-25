@@ -63,9 +63,9 @@ export default class Signup extends Component {
           </Modal.Header>
           
           <Modal.Body>
-              First Name: <br/><input type="text" name="firstName" onChange = {this.updateInfo}/><br/><br/>
-              Last Name: <br/><input type="text" name="lastName" onChange = {this.updateInfo} /><br/><br/>
-              Username: <br/><input type="text" name="username" onChange = {this.updateInfo} /><br/><br/>
+              First Name: <br/><input type="text" name="firstName" placeholder="Enter first name" onChange = {this.updateInfo}/><br/><br/>
+              Last Name: <br/><input type="text" name="lastName" placeholder="Enter last name" onChange = {this.updateInfo} /><br/><br/>
+              Username: <br/><input type="text" name="username" placeholder="Enter username" onChange = {this.updateInfo} /><br/><br/>
               Password: <PasswordMask
                           id="signupPassword"
                           name="password"
@@ -79,7 +79,7 @@ export default class Signup extends Component {
           
           <Modal.Footer>
               <a style={{float:`left`}} onClick={() => {this.props.handleShowLogin()}}>Already have an account?</a>
-              <button onClick={this.sendInfo} style={{borderRadius: `5px`}}> Register </button>
+              <button onClick={this.sendInfo} style={{borderRadius: `5px`, padding: `5px`}}> Register </button>
           </Modal.Footer>
         </Modal>
     </div>)

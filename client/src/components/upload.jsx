@@ -6,6 +6,15 @@ import { Grid, Row, Col } from 'react-bootstrap';
 import axios from 'axios';
 import { BeatLoader } from 'react-spinners';
 
+/*
+ * This top-level component contains the entire upload page, including the map, photo dropzone and
+ * upload form subcomponents.
+ * 
+ * We keep track of the information that the user wants to upload in this component's state, and
+ * bind all the methods tracking the state to this component, so that we can add that information 
+ * within other components.
+ */
+
 export default class Upload extends Component {
   constructor(props) {
     
@@ -23,6 +32,10 @@ export default class Upload extends Component {
       latLng: {lat: null, lng: null},
       uploadStatus: []
     };
+
+    /*
+     * Bind and define methods that track the state change of this component within other components.
+     */
 
     this.getLink = this.getLink.bind(this);
     this.handleInputChange = this.handleInputChange.bind(this);
@@ -53,6 +66,11 @@ export default class Upload extends Component {
       [name]: value
     });
   }
+
+  /*
+   * Method checks whether any fields are empty, and then if all required information is present,
+   * submits post request using axios.
+   */
 
   handleSubmit(event) {
     event.preventDefault();
@@ -99,7 +117,6 @@ export default class Upload extends Component {
     })
     
       .then(res => {
-    
         this.setState({
           submitted: 'Successfully uploaded!',
           loading: false
@@ -130,6 +147,11 @@ export default class Upload extends Component {
         })
       })
   }
+
+  /*
+   * Renders the entire upload page, including the map, the photo upload dropzone and
+   * the upload form.
+   */
 
   render() {
     const { lat, lng } = this.state.latLng;

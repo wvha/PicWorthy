@@ -73,9 +73,11 @@ export default class Login extends Component {
           
           <Modal.Footer>
             <a style={{float:`left`}} onClick={() => {this.props.handleShowSignup()}}>Need an account?</a>
-            
-            <button onClick={this.sendLogin} style={{borderRadius: `5px`}}> Login </button>
-          
+            <button 
+              onClick={this.sendLogin} 
+              style={{borderRadius: `5px`, padding: `5px`}}> 
+                Login 
+              </button>
           </Modal.Footer>
         </Modal>
       </div>

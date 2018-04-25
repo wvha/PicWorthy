@@ -6,6 +6,13 @@ import { Link } from 'react-router-dom';
 import Login from './login.jsx';
 import Signup from './signup.jsx';
 
+/*
+ *
+ * Information is being passed in from App.jsx.
+ * Name function what appears on the right side of the navbar. 
+ * 
+ */
+
 
 export default class NavbarComp extends React.Component {
   logout() {
@@ -103,15 +110,8 @@ const Name = (props) => {
           eventKey={ 4 } 
           onClick={ (e) => {props.handleShow(e)} } 
           name="showLogin" 
-        
-        ><span
-          style={{
-            color: "#00b0ff"
-          }}
         >
           LOGIN
-        </span>
-          
         </NavItem>
         
         <Login 
