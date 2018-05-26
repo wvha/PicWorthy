@@ -1,5 +1,5 @@
  # PicWorthy
- HRR30 Team Ethereum - Greenfield Project
+by Team Picworthy
  
 ## Team
 
