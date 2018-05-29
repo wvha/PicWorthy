@@ -19,7 +19,7 @@ by Team Picworthy
 
 ## Usage
 
-Link: PicWorthy.herokuapp.com
+Link: https://picworthy.herokuapp.com
 
 Local: http://localhost:3000/
 
